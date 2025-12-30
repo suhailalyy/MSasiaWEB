@@ -67,255 +67,55 @@
 
 <body class="bg-brand-bg-main min-h-[200vh] text-brand-text-main transition-colors duration-500">
 
-    <!-- 1. EXTERNAL LOGO -->
-    <div id="external-logo" class="external-element fixed top-8 left-6 md:left-12 z-50 flex items-center gap-2 group">
-        <div
-            class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-heading-h1 to-brand-icon-primary flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-brand-heading-h1/20">
-            MA
+    <!-- 1. EXTERNAL LOGO (LEFT) -->
+    <div class="fixed top-8 left-6 md:left-12 z-50 pointer-events-none">
+        <div id="external-logo"
+            class="external-element pointer-events-auto flex items-center gap-3 transition-all duration-500">
+            <a href="index.html" class="navbar-logo flex items-center gap-2 no-underline">
+                <div
+                    class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-heading-h1 to-brand-icon-primary flex items-center justify-center text-white font-bold text-base shadow-lg">
+                    MA
+                </div>
+                <span class="text-xl font-bold text-brand-heading-h1 hidden sm:block">Ms Asia</span>
+            </a>
         </div>
-        <span class="text-xl font-bold tracking-tight text-brand-heading-h1 hidden md:block">Ms Asia</span>
     </div>
 
-    <!-- 2. NAVBAR PILL -->
+    <!-- 2. CENTER NAVBAR PILL -->
     <div class="fixed top-6 left-0 w-full flex justify-center z-40 pointer-events-none px-4">
         <nav id="navbar-pill"
-            class="glass-pill pointer-events-auto rounded-full p-2 flex items-center gap-2 transition-all duration-500">
+            class="glass-pill pointer-events-auto rounded-full px-4 py-2.5 flex items-center gap-1 transition-all duration-500 bg-brand-bg-card/90 backdrop-blur-md border border-brand-border-soft shadow-lg">
 
-            <!-- INTERNAL LOGO -->
-            <div id="internal-logo" class="internal-element flex items-center gap-2 pr-4">
+            <!-- INTERNAL LOGO (Desktop - appears on scroll) -->
+            <a href="index.html" id="internal-logo"
+                class="internal-element navbar-logo hidden md:flex items-center gap-2 no-underline opacity-0 max-w-0 overflow-hidden transition-all duration-300">
                 <div
                     class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-heading-h1 to-brand-icon-primary flex items-center justify-center text-white font-bold text-sm shadow-md">
                     MA
                 </div>
-                <span class="text-lg font-bold text-brand-heading-h1">Ms Asia</span>
-            </div>
+            </a>
 
-            <!-- MENU ITEMS -->
+            <!-- Desktop Navigation Links -->
             <ul class="hidden md:flex items-center gap-1">
-
-                <!-- What We Do Dropdown -->
-                <!-- What We Do Dropdown -->
-                <li class="group relative">
-                    <a href="#"
-                        class="px-3 py-2 rounded-full text-sm font-medium text-brand-text-muted group-hover:text-brand-heading-h1 group-hover:bg-brand-bg-highlight transition-colors inline-block">What
-                        We Do</a>
-                    <div
-                        class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[900px] bg-brand-bg-card rounded-2xl shadow-xl border border-brand-border-soft p-6 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 transform origin-top z-50">
-                        <div class="grid grid-cols-5 gap-6 text-sm">
-                            <div>
-                                <h4 class="font-bold text-brand-heading-h3 mb-3 border-b border-brand-border-soft pb-2">
-                                    Electronics & IT Assets</h4>
-                                <ul class="space-y-2 text-brand-text-muted">
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Corporate IT
-                                            Scrap Disposal</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">E-Waste
-                                            Recycling</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">HPLC Solvent
-                                            Waste Collection</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Motor &
-                                            Transformer Scrap</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Wire & Cable
-                                            Scrap</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Battery Scrap
-                                            Collection</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-brand-heading-h3 mb-3 border-b border-brand-border-soft pb-2">
-                                    Metals Recycling</h4>
-                                <ul class="space-y-2 text-brand-text-muted">
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Aluminium
-                                            Scrap Recycling</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Brass & Bronze
-                                            Scrap</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Ferrous Metal
-                                            Scrap</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Heavy
-                                            Equipment Scrap</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Industrial
-                                            Machinery Scrap</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Lead Scrap
-                                            Recycling</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Nickel & Alloy
-                                            Scrap</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Non-Ferrous
-                                            Metal Scrap</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Stainless
-                                            Steel Scrap</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-brand-heading-h3 mb-3 border-b border-brand-border-soft pb-2">
-                                    Industrial Waste Solutions</h4>
-                                <ul class="space-y-2 text-brand-text-muted">
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Construction &
-                                            Demolition Scrap</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">HVAC Scrap
-                                            Recovery</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Chemical
-                                            Packing</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-brand-heading-h3 mb-3 border-b border-brand-border-soft pb-2">
-                                    Recyclable Materials</h4>
-                                <ul class="space-y-2 text-brand-text-muted">
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Glass Waste
-                                            Recycling</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Paper &
-                                            Cardboard Recycling</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Plastic Scrap
-                                            Processing</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Rubber & Tyre
-                                            Scrap</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Textile &
-                                            Fabric Scrap</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Wood & Pallet
-                                            Scrap</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-brand-heading-h3 mb-3 border-b border-brand-border-soft pb-2">
-                                    Special Waste Services</h4>
-                                <ul class="space-y-2 text-brand-text-muted">
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Biohazardous
-                                            Medical Waste Disposal</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Pharmaceutical
-                                            Waste</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Regulated
-                                            Medical Waste Services</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Sharps
-                                            Disposal Service</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                <li><a href="#"
+                        class="px-3 py-2 rounded-full text-sm font-medium text-brand-text-muted hover:text-brand-heading-h1 hover:bg-brand-bg-highlight transition-colors">What
+                        We Do</a></li>
+                <li><a href="#"
+                        class="px-3 py-2 rounded-full text-sm font-medium text-brand-text-muted hover:text-brand-heading-h1 hover:bg-brand-bg-highlight transition-colors">Industries
+                        We Serve</a></li>
+                <li><a href="#"
+                        class="px-3 py-2 rounded-full text-sm font-medium text-brand-text-muted hover:text-brand-heading-h1 hover:bg-brand-bg-highlight transition-colors">Company</a>
                 </li>
-
-                <!-- Industries Dropdown -->
-                <li class="group relative">
-                    <a href="#"
-                        class="px-3 py-2 rounded-full text-sm font-medium text-brand-text-muted group-hover:text-brand-heading-h1 group-hover:bg-brand-bg-highlight transition-colors inline-block">Industries
-                        We Serve</a>
-                    <div
-                        class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[900px] bg-brand-bg-card rounded-2xl shadow-xl border border-brand-border-soft p-6 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 transform origin-top z-50">
-                        <div class="grid grid-cols-4 gap-6 text-sm">
-                            <div>
-                                <h4 class="font-bold text-brand-heading-h3 mb-3 border-b border-brand-border-soft pb-2">
-                                    Healthcare</h4>
-                                <ul class="space-y-2 text-brand-text-muted">
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Hospitals &
-                                            Health Systems</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Clinics &
-                                            Urgent Care Centers</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Dental
-                                            Clinics</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Dialysis
-                                            Centers</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Physician
-                                            Offices</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Surgery
-                                            Centers</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Nursing &
-                                            Long-Term Care Facilities</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Veterinary
-                                            Clinics & Hospitals</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-brand-heading-h3 mb-3 border-b border-brand-border-soft pb-2">
-                                    Pharmacy & Research</h4>
-                                <ul class="space-y-2 text-brand-text-muted">
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Retail
-                                            Pharmacies</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Compounding
-                                            Pharmacies</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Laboratory &
-                                            Research Organizations</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Blood
-                                            Banks</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-brand-heading-h3 mb-3 border-b border-brand-border-soft pb-2">
-                                    Corporate & Enterprise</h4>
-                                <ul class="space-y-2 text-brand-text-muted">
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Enterprise
-                                            Healthcare</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">National &
-                                            Corporate Healthcare</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Non-Acute
-                                            Hospital Affiliates</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Home Health
-                                            Organizations</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Practices &
-                                            Care Providers</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-brand-heading-h3 mb-3 border-b border-brand-border-soft pb-2">
-                                    Other Sectors</h4>
-                                <ul class="space-y-2 text-brand-text-muted">
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Chemical &
-                                            Specialty Chemical</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Pharmaceutical
-                                            & Biotechnology</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Education /
-                                            Educational Institutions</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Government &
-                                            Military</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Energy</a>
-                                    </li>
-                                    <li><a href="#"
-                                            class="hover:text-brand-link-hover transition-colors">Transportation</a>
-                                    </li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Utilities</a>
-                                    </li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Steel &
-                                            Primary Metals</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">General
-                                            Manufacturing</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Engineering &
-                                            Consulting</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Refinery</a>
-                                    </li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Railroad
-                                            Services</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Airports &
-                                            Seaports</a></li>
-                                    <li><a href="#" class="hover:text-brand-link-hover transition-colors">Small
-                                            Businesses</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <!-- Company Dropdown (New) -->
-                <li class="group relative">
-                    <a href="#"
-                        class="px-3 py-2 rounded-full text-sm font-medium text-brand-text-muted group-hover:text-brand-heading-h1 group-hover:bg-brand-bg-highlight transition-colors inline-block">Company</a>
-                    <div
-                        class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-brand-bg-card rounded-2xl shadow-xl border border-brand-border-soft p-4 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 transform origin-top z-50">
-                        <ul class="space-y-2 text-brand-text-muted text-sm">
-                            <li><a href="#" class="hover:text-brand-link-hover transition-colors">About Us</a></li>
-                            <li><a href="#" class="hover:text-brand-link-hover transition-colors">Careers</a></li>
-                            <li><a href="#" class="hover:text-brand-link-hover transition-colors">Contact Us</a></li>
-                            <li><a href="#" class="hover:text-brand-link-hover transition-colors">Excellence</a></li>
-                        </ul>
-                    </div>
-                </li>
-
                 <li><a href="#"
                         class="px-3 py-2 rounded-full text-sm font-medium text-brand-text-muted hover:text-brand-heading-h1 hover:bg-brand-bg-highlight transition-colors">Blog</a>
                 </li>
             </ul>
 
-            <!-- DIVIDER -->
+            <!-- DIVIDER (Desktop only) -->
             <div class="h-6 w-px bg-brand-border-divider hidden md:block mx-1"></div>
 
-            <!-- EXPANDABLE SEARCH -->
-            <div id="search-container" class="hidden md:flex items-center rounded-full px-1 py-1">
+            <!-- SEARCH BUTTON -->
+            <div id="search-container" class="flex items-center rounded-full">
                 <button id="search-btn"
                     class="p-2 text-brand-icon-primary hover:bg-brand-bg-highlight rounded-full transition-colors focus:outline-none">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -324,58 +124,62 @@
                     </svg>
                 </button>
                 <input id="search-input" type="text" placeholder="Search..."
-                    class="bg-transparent border-none outline-none text-sm text-brand-text-main placeholder-brand-text-muted">
+                    class="hidden md:block bg-transparent border-none outline-none text-sm text-brand-text-main placeholder-brand-text-muted w-0 transition-all">
             </div>
 
-            <!-- INTERNAL CONTACT -->
-            <div id="internal-contact" class="internal-element pl-2">
-                <a href="#"
-                    class="bg-brand-btn-primary hover:bg-brand-btn-primary-hover text-white rounded-full px-5 py-2 whitespace-nowrap text-sm font-semibold shadow-md transition-colors flex items-center gap-2">
-                    Contact Us <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                </a>
-            </div>
-
-            <!-- MOBILE HAMBURGER (Legacy - hidden by CSS) -->
-            <div class="md:hidden flex items-center gap-2 pl-2">
-                <span class="font-bold text-brand-heading-h1 text-sm">Menu</span>
-                <button id="hamburger-btn" class="p-2 text-brand-icon-primary bg-brand-bg-highlight rounded-full">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16m-7 6h7" />
-                    </svg>
-                </button>
-            </div>
-
-            <!-- ===== MOBILE NOTCH-STYLE NAVIGATION ===== -->
-            <!-- These elements are styled by CSS to only show on mobile -->
-
-            <!-- Mobile Logo (Left) -->
-            <div class="mobile-logo hidden">
-                <div class="logo-badge">MA</div>
-            </div>
-
-            <!-- Mobile Menu Button (Center) -->
-            <button id="mobile-menu-btn" class="mobile-menu-btn hidden" onclick="toggleMobileMenu()">
-                <span id="menu-btn-text">Menu</span>
-                <svg id="menu-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            <!-- MOBILE: Logo + Menu Button (for simplified mobile view) -->
+            <a href="index.html" class="navbar-logo flex md:hidden items-center gap-2 no-underline">
+                <div
+                    class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-heading-h1 to-brand-icon-primary flex items-center justify-center text-white font-bold text-sm shadow-md">
+                    MA
+                </div>
+            </a>
+            <button id="menu-btn"
+                class="md:hidden px-3 py-1.5 rounded-full text-sm font-medium text-brand-text-main hover:bg-brand-bg-highlight transition-colors flex items-center gap-1">
+                <span>Menu</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
             </button>
 
-            <!-- Mobile Contact Button (Right) -->
-            <a href="#" class="mobile-contact-btn hidden">Contact</a>
+            <!-- MOBILE: Theme Toggle (Only on mobile) -->
+            <button id="mobile-theme-toggle"
+                class="md:hidden p-2 rounded-full text-brand-icon-primary hover:bg-brand-bg-highlight transition-all border border-brand-border-soft">
+                <!-- Sun icon (shown in dark mode) -->
+                <svg class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <!-- Moon icon (shown in light mode) -->
+                <svg class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+            </button>
 
+            <!-- INTERNAL CONTACT (Desktop - appears on scroll) -->
+            <a href="#contact" id="internal-contact"
+                class="internal-element hidden md:flex bg-brand-btn-primary hover:bg-brand-btn-primary-hover text-white rounded-full px-4 py-1.5 text-sm font-semibold shadow-md transition-all items-center gap-1 opacity-0 max-w-0 overflow-hidden">
+                <span>Contact Us</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+            </a>
+
+            <!-- MOBILE: Contact Button -->
+            <a href="#contact"
+                class="md:hidden bg-brand-btn-primary hover:bg-brand-btn-primary-hover text-white rounded-full px-3 py-1.5 text-xs font-semibold shadow-md transition-all">
+                Contact
+            </a>
         </nav>
     </div>
 
-    <!-- 3. RIGHT UTILITIES (Fixed Stack) -->
-    <div class="fixed top-8 right-6 md:right-12 z-50 flex items-center gap-3 pointer-events-none">
-        <!-- EXTERNAL CONTACT -->
-        <div id="external-contact" class="external-element pointer-events-auto">
-            <a href="#"
+    <!-- 3. EXTERNAL CONTACT BUTTON + THEME TOGGLE (RIGHT - Desktop only) -->
+    <div class="hidden md:flex fixed top-8 right-6 md:right-12 z-50 items-center gap-3 pointer-events-none">
+        <!-- Contact Button -->
+        <div id="external-contact" class="external-element pointer-events-auto hidden md:block">
+            <a href="#contact"
                 class="bg-brand-btn-primary hover:bg-brand-btn-primary-hover text-white rounded-full pl-5 pr-2 py-2 shadow-lg shadow-brand-btn-primary/30 flex items-center gap-2 transition-transform hover:scale-105 active:scale-95">
                 <span class="font-semibold text-sm">Contact Us</span>
                 <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
@@ -386,15 +190,16 @@
                 </div>
             </a>
         </div>
-
-        <!-- THEME TOGGLE -->
+        <!-- Theme Toggle (Desktop only) -->
         <button id="theme-toggle"
-            class="pointer-events-auto p-2.5 bg-brand-bg-card/80 backdrop-blur-md rounded-full text-brand-icon-primary hover:bg-brand-bg-highlight transition-all shadow-sm group border border-brand-border-soft">
+            class="hidden md:block pointer-events-auto p-2.5 bg-brand-bg-card/90 backdrop-blur-md rounded-full text-brand-icon-primary hover:bg-brand-bg-highlight transition-all shadow-lg group border border-brand-border-soft">
+            <!-- Sun icon (shown in dark mode) -->
             <svg class="w-5 h-5 hidden dark:block group-hover:rotate-90 transition-transform" fill="none"
                 stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
             </svg>
+            <!-- Moon icon (shown in light mode) -->
             <svg class="w-5 h-5 block dark:hidden group-hover:-rotate-90 transition-transform" fill="none"
                 stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -405,47 +210,12 @@
 
     <!-- MOBILE MENU OVERLAY -->
     <div id="mobile-menu"
-        class="mobile-overlay fixed inset-0 bg-brand-bg-card/98 backdrop-blur-xl z-[60] flex flex-col pt-24 px-6 md:hidden">
-        <button id="close-menu" class="absolute top-6 right-6 p-2 text-brand-text-muted bg-brand-bg-alt rounded-full">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </button>
-
+        class="fixed inset-0 bg-brand-bg-card/98 backdrop-blur-xl z-50 flex flex-col pt-24 px-6 transform translate-x-full transition-transform duration-300">
         <div class="flex flex-col gap-4 text-xl font-medium text-brand-text-main">
-            <a href="#" class="py-3 border-b border-brand-border-soft">Home</a>
             <a href="#" class="py-3 border-b border-brand-border-soft">What We Do</a>
             <a href="#" class="py-3 border-b border-brand-border-soft">Industries We Serve</a>
             <a href="#" class="py-3 border-b border-brand-border-soft">Company</a>
             <a href="#" class="py-3 border-b border-brand-border-soft">Blog</a>
-        </div>
-
-        <div class="mt-8 flex flex-col gap-4">
-            <div class="flex items-center bg-brand-bg-alt rounded-lg p-3">
-                <svg class="w-5 h-5 text-brand-text-muted mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-                <input type="text" placeholder="Search..."
-                    class="bg-transparent w-full outline-none text-brand-text-main placeholder-brand-text-muted">
-            </div>
-
-            <button id="theme-toggle-mobile"
-                class="flex items-center justify-between w-full p-4 bg-brand-bg-alt rounded-lg text-brand-text-main">
-                <span class="font-medium">Dark Mode</span>
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                </svg>
-            </button>
-
-            <a href="#"
-                class="bg-brand-btn-primary text-white text-center font-bold py-4 rounded-lg shadow-lg mt-2 flex items-center justify-center gap-2">
-                Contact Us <svg class="w-5 h-5" fill="nav-link-default" stroke="nav-link-default" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-            </a>
         </div>
     </div>
 
@@ -559,49 +329,197 @@
             </div>
         </div>
 
-        <!-- Right Visual -->
-        <div class="hero-pharma-visual">
-            <div class="hero-visual-illustration">
-                <div class="hero-visual-steps">
-                    <!-- Step 1 -->
-                    <div class="hero-visual-step">
-                        <div class="hero-visual-step-number">1</div>
-                        <div class="hero-visual-step-content">
-                            <h4>Collection</h4>
-                            <p>Secure pickup from your facility</p>
-                        </div>
+        <!-- Right Stats Panel (30%) -->
+        <div class="hero-stats-panel">
+            <div class="hero-stats-grid">
+                <!-- Stat 1: Clients Served -->
+                <div class="hero-stat-card">
+                    <div class="hero-stat-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
                     </div>
-
-                    <!-- Step 2 -->
-                    <div class="hero-visual-step">
-                        <div class="hero-visual-step-number">2</div>
-                        <div class="hero-visual-step-content">
-                            <h4>Processing</h4>
-                            <p>Safe treatment & segregation</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="hero-visual-step">
-                        <div class="hero-visual-step-number">3</div>
-                        <div class="hero-visual-step-content">
-                            <h4>Disposal</h4>
-                            <p>Compliant final disposition</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 4 -->
-                    <div class="hero-visual-step">
-                        <div class="hero-visual-step-number">4</div>
-                        <div class="hero-visual-step-content">
-                            <h4>Documentation</h4>
-                            <p>Full audit trail & certificates</p>
-                        </div>
-                    </div>
+                    <div class="hero-stat-number">500+</div>
+                    <div class="hero-stat-label">Clients Served</div>
                 </div>
+
+                <!-- Stat 2: Compliance Rate -->
+                <div class="hero-stat-card">
+                    <div class="hero-stat-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div class="hero-stat-number">99.9%</div>
+                    <div class="hero-stat-label">Compliance Rate</div>
+                </div>
+
+                <!-- Stat 3: Years Experience -->
+                <div class="hero-stat-card">
+                    <div class="hero-stat-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div class="hero-stat-number">15+</div>
+                    <div class="hero-stat-label">Years Experience</div>
+                </div>
+
+                <!-- Stat 4: Tons Processed -->
+                <div class="hero-stat-card">
+                    <div class="hero-stat-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                    </div>
+                    <div class="hero-stat-number">50K+</div>
+                    <div class="hero-stat-label">Tons Processed</div>
+                </div>
+            </div>
+
+            <!-- Compliance Badge -->
+            <div class="hero-compliance-badge">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                <span>SEA Regulatory Compliant</span>
             </div>
         </div>
     </section>
+
+
+    <!-- ===== FOOTER SECTION ===== -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Column 1: Company Info -->
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <div class="footer-logo-badge">MA</div>
+                        <span class="footer-logo-text">Ms Asia</span>
+                    </div>
+                    <p class="footer-description">
+                        Leading pharmaceutical waste management solutions provider in Southeast Asia.
+                        Committed to environmental compliance and sustainable practices.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-link" aria-label="LinkedIn">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+                                <circle cx="4" cy="4" r="2" stroke-width="2" />
+                            </svg>
+                        </a>
+                        <a href="#" class="footer-social-link" aria-label="Twitter">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="footer-social-link" aria-label="Email">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div class="footer-column">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">What We Do</a></li>
+                        <li><a href="#">Industries We Serve</a></li>
+                        <li><a href="#">About Company</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Certifications -->
+                <div class="footer-column">
+                    <h4 class="footer-heading">Certifications</h4>
+                    <div class="footer-certs">
+                        <div class="footer-cert-badge">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                            </svg>
+                            <span>ISO 14001</span>
+                        </div>
+                        <div class="footer-cert-badge">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>WHO Standards</span>
+                        </div>
+                        <div class="footer-cert-badge">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                            <span>GMP Certified</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 4: Contact -->
+                <div class="footer-column">
+                    <h4 class="footer-heading">Contact Us</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span>123 Pharma District, Singapore 018956</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <span>+65 6123 4567</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <span>info@msasia.com</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>Mon - Fri: 8:00 AM - 6:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="footer-container">
+                <p>&copy; 2024 Ms Asia. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
     <script>
@@ -609,11 +527,13 @@
         const navbarPill = document.getElementById('navbar-pill');
         const externalLogo = document.getElementById('external-logo');
         const externalContact = document.getElementById('external-contact');
+        const internalLogo = document.getElementById('internal-logo');
+        const internalContact = document.getElementById('internal-contact');
 
         const themeToggle = document.getElementById('theme-toggle');
-        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
 
         const hamburgerBtn = document.getElementById('hamburger-btn');
+        const menuBtn = document.getElementById('menu-btn');
         const closeMenu = document.getElementById('close-menu');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -640,18 +560,26 @@
                     navbarPill.classList.remove('mobile-scrolled');
                 }
             } else {
-                // Desktop scroll animation (keep existing behavior)
+                // Desktop scroll animation - collapse all into navbar pill
                 const threshold = 50;
                 if (scrollY > threshold && !isScrolled) {
                     isScrolled = true;
                     navbarPill.classList.add('scrolled');
-                    externalLogo.classList.add('hidden-state');
-                    externalContact.classList.add('hidden-state');
+                    // Hide external elements
+                    if (externalLogo) externalLogo.classList.add('hidden-state');
+                    if (externalContact) externalContact.classList.add('hidden-state');
+                    // Show internal elements
+                    if (internalLogo) internalLogo.classList.add('visible-state');
+                    if (internalContact) internalContact.classList.add('visible-state');
                 } else if (scrollY <= threshold && isScrolled) {
                     isScrolled = false;
                     navbarPill.classList.remove('scrolled');
-                    externalLogo.classList.remove('hidden-state');
-                    externalContact.classList.remove('hidden-state');
+                    // Show external elements
+                    if (externalLogo) externalLogo.classList.remove('hidden-state');
+                    if (externalContact) externalContact.classList.remove('hidden-state');
+                    // Hide internal elements
+                    if (internalLogo) internalLogo.classList.remove('visible-state');
+                    if (internalContact) internalContact.classList.remove('visible-state');
                 }
             }
         });
@@ -679,26 +607,21 @@
             }
         }
 
-        // Close mobile menu when clicking close button
-        document.getElementById('close-menu').addEventListener('click', () => {
-            if (isMobileMenuOpen) {
-                toggleMobileMenu();
-            }
-        });
-
         // --- SEARCH EXPANSION ---
-        searchBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            searchContainer.classList.toggle('expanded');
-            if (searchContainer.classList.contains('expanded')) {
-                searchInput.focus();
-            }
-        });
-        document.addEventListener('click', (e) => {
-            if (!searchContainer.contains(e.target) && searchContainer.classList.contains('expanded')) {
-                searchContainer.classList.remove('expanded');
-            }
-        });
+        if (searchBtn && searchContainer) {
+            searchBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                searchContainer.classList.toggle('expanded');
+                if (searchContainer.classList.contains('expanded') && searchInput) {
+                    searchInput.focus();
+                }
+            });
+            document.addEventListener('click', (e) => {
+                if (!searchContainer.contains(e.target) && searchContainer.classList.contains('expanded')) {
+                    searchContainer.classList.remove('expanded');
+                }
+            });
+        }
 
         // --- THEME ---
         // Check for saved theme
@@ -717,8 +640,11 @@
                 localStorage.theme = 'dark';
             }
         }
-        themeToggle.addEventListener('click', toggleTheme);
-        themeToggleMobile.addEventListener('click', toggleTheme);
+        if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+
+        // Mobile theme toggle
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+        if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
 
         // --- MOBILE MENU ---
         function openMenu() {
@@ -729,8 +655,20 @@
             mobileMenu.classList.remove('open');
             document.body.style.overflow = '';
         }
-        hamburgerBtn.addEventListener('click', openMenu);
-        closeMenu.addEventListener('click', closeMenuFunc);
+        if (hamburgerBtn) hamburgerBtn.addEventListener('click', openMenu);
+        if (menuBtn) menuBtn.addEventListener('click', () => {
+            const menuBtnSpan = menuBtn.querySelector('span');
+
+            if (mobileMenu.classList.contains('open')) {
+                closeMenuFunc();
+                // Change back to "Menu"
+                if (menuBtnSpan) menuBtnSpan.textContent = 'Menu';
+            } else {
+                openMenu();
+                // Change to "Close"
+                if (menuBtnSpan) menuBtnSpan.textContent = 'Close';
+            }
+        });
     </script>
 </body>
 
