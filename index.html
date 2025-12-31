@@ -65,7 +65,7 @@
     <link rel="stylesheet" href="global.css">
 </head>
 
-<body class="bg-brand-bg-main min-h-[200vh] text-brand-text-main transition-colors duration-500">
+<body class="bg-brand-bg-main min-h-screen text-brand-text-main transition-colors duration-500">
 
     <!-- 1. EXTERNAL LOGO (LEFT) -->
     <div class="fixed top-8 left-6 md:left-12 z-50 pointer-events-none">
@@ -219,175 +219,85 @@
         </div>
     </div>
 
+    <!-- ===== INDUSTRIAL HERO SECTION ===== -->
+    <section class="industrial-hero">
+        <div class="industrial-hero-container">
+            <!-- LEFT CONTENT (60%) -->
+            <div class="industrial-hero-content">
+                <!-- Main Heading -->
+                <h1 class="industrial-hero-heading">Pharmaceutical Waste Management & Compliance Solutions</h1>
 
-    <!-- ===== HERO SECTION ===== -->
-    <section class="hero-pharma">
-        <!-- Left Content -->
-        <div class="hero-pharma-content">
-            <!-- Badge -->
-            <div class="hero-badge">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-                Certified Waste Solutions
-            </div>
+                <!-- Sub-heading -->
+                <p class="industrial-hero-subheading">Ms Asia delivers certified collection, recycling, and disposal
+                    services for pharmaceutical and industrial waste across Southeast Asia — ensuring regulatory
+                    compliance at every step.</p>
 
-            <!-- Headline -->
-            <h1 class="hero-headline">Responsible Pharma Waste Management Solutions</h1>
-
-            <!-- Sub-headline -->
-            <p class="hero-subheadline">Ms Asia provides compliant collection, recycling, and disposal services for
-                pharmaceutical industry waste across Southeast Asia.</p>
-
-            <!-- Service Cards -->
-            <div class="hero-services">
-                <!-- Card 1: Expired Medicines -->
-                <div class="hero-service-card">
-                    <div class="hero-service-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                        </svg>
+                <!-- Feature Points -->
+                <div class="industrial-hero-features">
+                    <div class="industrial-hero-feature">
+                        <div class="industrial-hero-feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <span>Compliant Collection & Transport</span>
                     </div>
-                    <div>
-                        <h3 class="hero-service-title">Expired Medicines</h3>
-                        <p class="hero-service-desc">Safe collection & disposal</p>
+                    <div class="industrial-hero-feature">
+                        <div class="industrial-hero-feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <span>Eco-Friendly Recycling & Recovery</span>
                     </div>
-                </div>
-
-                <!-- Card 2: Chemical Waste -->
-                <div class="hero-service-card">
-                    <div class="hero-service-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="hero-service-title">Chemical Waste</h3>
-                        <p class="hero-service-desc">Treatment & neutralization</p>
+                    <div class="industrial-hero-feature">
+                        <div class="industrial-hero-feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <span>Manufacturing Waste Disposal</span>
                     </div>
                 </div>
 
-                <!-- Card 3: Manufacturing Scrap -->
-                <div class="hero-service-card">
-                    <div class="hero-service-icon">
+                <!-- CTA Buttons -->
+                <div class="industrial-hero-cta">
+                    <a href="#contact" class="industrial-btn-primary">
+                        Get Waste Audit
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
-                    </div>
-                    <div>
-                        <h3 class="hero-service-title">Manufacturing Scrap</h3>
-                        <p class="hero-service-desc">Recycling & resource recovery</p>
-                    </div>
+                    </a>
+                    <a href="#services" class="industrial-btn-secondary">
+                        View Services
+                    </a>
                 </div>
             </div>
 
-            <!-- CTA Buttons -->
-            <div class="hero-cta-container">
-                <a href="#" class="hero-btn-primary">
-                    Get Waste Audit
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                </a>
-                <a href="#" class="hero-btn-secondary">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                    Download Guide
-                </a>
-            </div>
-
-            <!-- Trust Badges -->
-            <div class="hero-trust-badges">
-                <div class="hero-trust-badge">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                    </svg>
-                    ISO 14001 Certified
-                </div>
-                <div class="hero-trust-badge">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    WHO Standards Compliant
-                </div>
-                <div class="hero-trust-badge">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                    GMP Compliant
-                </div>
-            </div>
-        </div>
-
-        <!-- Right Stats Panel (30%) -->
-        <div class="hero-stats-panel">
-            <div class="hero-stats-grid">
-                <!-- Stat 1: Clients Served -->
-                <div class="hero-stat-card">
-                    <div class="hero-stat-icon">
+            <!-- RIGHT IMAGE (40%) -->
+            <div class="industrial-hero-image">
+                <div class="industrial-hero-image-wrapper">
+                    <!-- Placeholder for industrial image -->
+                    <div class="industrial-hero-placeholder">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                        <span>Industrial Facility</span>
+                    </div>
+                    <!-- Certification Badge -->
+                    <div class="industrial-hero-badge">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                         </svg>
+                        <span>ISO 14001 Certified</span>
                     </div>
-                    <div class="hero-stat-number">500+</div>
-                    <div class="hero-stat-label">Clients Served</div>
                 </div>
-
-                <!-- Stat 2: Compliance Rate -->
-                <div class="hero-stat-card">
-                    <div class="hero-stat-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <div class="hero-stat-number">99.9%</div>
-                    <div class="hero-stat-label">Compliance Rate</div>
-                </div>
-
-                <!-- Stat 3: Years Experience -->
-                <div class="hero-stat-card">
-                    <div class="hero-stat-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <div class="hero-stat-number">15+</div>
-                    <div class="hero-stat-label">Years Experience</div>
-                </div>
-
-                <!-- Stat 4: Tons Processed -->
-                <div class="hero-stat-card">
-                    <div class="hero-stat-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                        </svg>
-                    </div>
-                    <div class="hero-stat-number">50K+</div>
-                    <div class="hero-stat-label">Tons Processed</div>
-                </div>
-            </div>
-
-            <!-- Compliance Badge -->
-            <div class="hero-compliance-badge">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-                <span>SEA Regulatory Compliant</span>
             </div>
         </div>
     </section>
