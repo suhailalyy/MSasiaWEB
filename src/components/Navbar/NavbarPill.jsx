@@ -29,23 +29,23 @@ function NavbarPill({
                     </a>
 
                     {/* Desktop Navigation Links */}
-                    <ul className="flex items-center gap-1">
-                        <li>
-                            <a href="#" className="px-3 py-2 rounded-full text-sm font-medium text-brand-text-muted hover:text-brand-heading-h1 hover:bg-brand-bg-highlight transition-colors">
+                    <ul className="flex items-center gap-1 [&>li]:!m-0">
+                        <li style={{ margin: 0 }}>
+                            <a href="#" className="px-3 rounded-full text-sm font-medium text-brand-text-muted hover:text-brand-heading-h1 hover:bg-brand-bg-highlight transition-colors">
                                 What We Do
                             </a>
                         </li>
-                        <li>
+                        <li style={{ margin: 0 }}>
                             <a href="#" className="px-3 py-2 rounded-full text-sm font-medium text-brand-text-muted hover:text-brand-heading-h1 hover:bg-brand-bg-highlight transition-colors">
                                 Industries We Serve
                             </a>
                         </li>
-                        <li>
+                        <li style={{ margin: 0 }}>
                             <a href="#" className="px-3 py-2 rounded-full text-sm font-medium text-brand-text-muted hover:text-brand-heading-h1 hover:bg-brand-bg-highlight transition-colors">
                                 Company
                             </a>
                         </li>
-                        <li>
+                        <li style={{ margin: 0 }}>
                             <a href="#" className="px-3 py-2 rounded-full text-sm font-medium text-brand-text-muted hover:text-brand-heading-h1 hover:bg-brand-bg-highlight transition-colors">
                                 Blog
                             </a>
