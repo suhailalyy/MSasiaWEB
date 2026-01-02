@@ -1,0 +1,222 @@
+/* WorkProcess.css - Scoped styles for Work Process section */
+
+.work-process-section {
+    padding: 80px 20px;
+    background-color: #f8fafc;
+    text-align: center;
+}
+
+.work-process-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header Styles */
+.work-process-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #47622A;
+    background-color: rgba(71, 98, 42, 0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+}
+
+.work-process-heading {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1a2e05;
+    margin-bottom: 60px;
+    line-height: 1.3;
+}
+
+/* Steps Grid */
+.work-process-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/* Individual Step Card */
+.work-process-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 220px;
+}
+
+/* Image Container with Badge */
+.work-process-image-wrapper {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin-bottom: 20px;
+}
+
+.work-process-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #47622A;
+    box-shadow: 0 8px 24px rgba(71, 98, 42, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.work-process-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px rgba(71, 98, 42, 0.3);
+}
+
+/* Number Badge */
+.work-process-badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #47622A 0%, #799851 100%);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(71, 98, 42, 0.4);
+    border: 2px solid white;
+}
+
+/* Step Title */
+.work-process-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a2e05;
+    margin: 0;
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* Connector Lines (Desktop only) */
+.work-process-connector {
+    display: none;
+}
+
+@media (min-width: 900px) {
+    .work-process-grid {
+        flex-wrap: nowrap;
+        gap: 20px;
+    }
+
+    .work-process-step {
+        position: relative;
+    }
+
+    .work-process-connector {
+        display: block;
+        position: absolute;
+        top: 90px;
+        right: -40px;
+        width: 40px;
+        height: 2px;
+        background: linear-gradient(90deg, #47622A, #799851);
+    }
+
+    .work-process-step:last-child .work-process-connector {
+        display: none;
+    }
+}
+
+/* Tablet Responsive */
+@media (max-width: 899px) and (min-width: 641px) {
+    .work-process-grid {
+        gap: 30px;
+    }
+
+    .work-process-step {
+        max-width: 200px;
+    }
+
+    .work-process-image-wrapper {
+        width: 160px;
+        height: 160px;
+    }
+
+    .work-process-image {
+        width: 160px;
+        height: 160px;
+    }
+
+    .work-process-heading {
+        font-size: 30px;
+        margin-bottom: 40px;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+    .work-process-section {
+        padding: 60px 16px;
+    }
+
+    .work-process-heading {
+        font-size: 24px;
+        margin-bottom: 40px;
+    }
+
+    .work-process-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .work-process-step {
+        max-width: 280px;
+    }
+
+    .work-process-image-wrapper {
+        width: 200px;
+        height: 200px;
+    }
+
+    .work-process-image {
+        width: 200px;
+        height: 200px;
+    }
+
+    .work-process-badge {
+        width: 44px;
+        height: 44px;
+        font-size: 16px;
+    }
+
+    .work-process-title {
+        font-size: 18px;
+    }
+}
+
+/* Dark Mode Support */
+.dark .work-process-section {
+    background-color: #1a2810;
+}
+
+.dark .work-process-label {
+    color: #F8F272;
+    background-color: rgba(248, 242, 114, 0.1);
+}
+
+.dark .work-process-heading {
+    color: #F8F272;
+}
+
+.dark .work-process-title {
+    color: #f1f5f9;
+}
+
+.dark .work-process-image {
+    border-color: #799851;
+}

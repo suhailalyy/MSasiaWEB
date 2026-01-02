@@ -1,6 +1,6 @@
 function ExternalLogo({ isHidden }) {
     return (
-        <div className="fixed top-10 left-6 md:left-12 z-50 pointer-events-none">
+        <div className="hidden md:block fixed top-10 left-6 md:left-12 z-50 pointer-events-none">
             <div
                 className={`external-element pointer-events-auto flex items-center gap-3 transition-all duration-500 ${isHidden ? 'hidden-state' : ''
                     }`}

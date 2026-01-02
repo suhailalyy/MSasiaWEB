@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar/Navbar'
 import IndustrialHero from './components/Hero/IndustrialHero'
+import WorkProcess from './components/WorkProcess'
 import Footer from './components/Footer/Footer'
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <>
             <Navbar isDark={isDark} toggleTheme={toggleTheme} />
             <IndustrialHero />
+            <WorkProcess />
             <Footer />
         </>
     )

@@ -4052,3 +4052,26 @@ html.dark .backdrop {
 .dark .industrial-hero-badge span {
     color: #F1F5F9;
 }
+
+/* ===== MOBILE THEME TOGGLE - Phone Only (max-width: 640px) ===== */
+/* Hide this separate toggle on tablet (641-768px) - only show on phones */
+@media (min-width: 641px) {
+
+    #mobile-theme-toggle-separate,
+    .mobile-theme-toggle-outside {
+        display: none !important;
+    }
+}
+
+/* Ensure toggle is visible and properly positioned on phone screens only */
+@media (max-width: 640px) {
+
+    #mobile-theme-toggle-separate,
+    .mobile-theme-toggle-outside {
+        display: flex !important;
+        position: fixed !important;
+        top: 1.5rem !important;
+        right: 1rem !important;
+        z-index: 40 !important;
+    }
+}
