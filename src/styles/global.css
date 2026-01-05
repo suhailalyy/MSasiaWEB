@@ -271,12 +271,21 @@ html.dark body {
 }
 
 /* ===== HEADER & NAVIGATION ===== */
+/* Default header styles for dashboard/checkout pages */
 header {
     background-color: var(--bg-white);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
     z-index: 1000;
+}
+
+/* Transparent header for landing page navbar pill only */
+header:has(#navbar-pill-desktop),
+header:has(#navbar-pill-mobile) {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    position: fixed;
 }
 
 nav {
@@ -3761,10 +3770,14 @@ html.dark .backdrop {
 
 .industrial-hero {
     background-color: #FFFFFF;
-    padding-top: 140px;
-    padding-bottom: 48px;
-    margin-bottom: 0;
+    padding-top: 200px;
+    /* User-specified: increased for navbar clearance */
+    padding-bottom: 60px;
+    /* User-specified: 60px */
+    margin: 0;
     width: 100%;
+    min-height: auto;
+    /* Let content determine height */
 }
 
 .industrial-hero-container {
@@ -3772,14 +3785,22 @@ html.dark .backdrop {
     margin: 0 auto;
     padding: 0 24px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    /* Align to top for stability */
+    justify-content: space-between;
     gap: 48px;
+    width: 100%;
 }
 
-/* LEFT CONTENT (60%) */
+/* LEFT CONTENT (55%) - Stable width */
 .industrial-hero-content {
-    flex: 0 0 60%;
-    max-width: 60%;
+    flex: 0 0 55%;
+    max-width: 55%;
+    flex-shrink: 0;
+    /* Prevent collapse */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 /* Main Heading - 48px, #0F172A, Bold */
@@ -3788,7 +3809,7 @@ html.dark .backdrop {
     font-weight: 700;
     line-height: 1.2;
     color: #0F172A;
-    margin: 0 0 24px 0;
+    margin: 0;
 }
 
 /* Sub-heading - 20px, #6B7280, Medium */
@@ -3797,15 +3818,15 @@ html.dark .backdrop {
     font-weight: 500;
     line-height: 1.5;
     color: #6B7280;
-    margin: 0 0 32px 0;
+    margin: 0;
 }
 
 /* Feature Points Container */
 .industrial-hero-features {
     display: flex;
     flex-direction: column;
-    gap: 0;
-    margin-bottom: 40px;
+    gap: 8px;
+    margin: 0;
 }
 
 /* Each Feature Point - 40px height */
@@ -3841,6 +3862,7 @@ html.dark .backdrop {
     display: flex;
     align-items: center;
     gap: 16px;
+    margin: 0;
 }
 
 /* Primary Button - #47622A background, white text */
@@ -3889,14 +3911,19 @@ html.dark .backdrop {
     background-color: #F3F4F6;
 }
 
-/* RIGHT IMAGE (40%) */
+/* RIGHT IMAGE (40%) - Stable width */
 .industrial-hero-image {
     flex: 0 0 40%;
     max-width: 40%;
+    flex-shrink: 0;
+    /* Prevent collapse */
+    padding: 0;
 }
 
 .industrial-hero-image-wrapper {
     position: relative;
+    width: 100%;
+    padding: 0;
 }
 
 /* Image Placeholder */
@@ -3997,7 +4024,7 @@ html.dark .backdrop {
 
 @media (max-width: 640px) {
     .industrial-hero {
-        padding-top: 100px;
+        padding-top: 160px;
         padding-bottom: 32px;
     }
 
@@ -4082,4 +4109,21 @@ html.dark .backdrop {
         right: 1rem !important;
         z-index: 40 !important;
     }
+}
+
+/* Animation Utilities */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.3s ease-out forwards;
 }
