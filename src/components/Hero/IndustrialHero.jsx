@@ -58,13 +58,13 @@ function IndustrialHero() {
 
                     {/* CTA Buttons */}
                     <div className="industrial-hero-cta">
-                        <a href="#contact" className="industrial-btn-primary">
+                        <a href="#contact" className="industrial-btn-primary font-semibold">
                             Get Waste Audit
                             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                             </svg>
                         </a>
-                        <a href="#services" className="industrial-btn-secondary">
+                        <a href="#services" className="industrial-btn-secondary font-semibold">
                             View Services
                         </a>
                     </div>

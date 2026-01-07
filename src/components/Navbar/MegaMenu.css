@@ -1,0 +1,83 @@
+/* Mega Menu Animations */
+@keyframes dropdownOpen {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.animate-dropdown {
+    animation: dropdownOpen 0.25s ease-out forwards;
+}
+
+/* NEW: Vertical Dropdown without Centering Shift */
+@keyframes dropdownVertical {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-dropdown-vertical {
+    animation: dropdownVertical 0.25s ease-out forwards;
+}
+
+/* Fade in animation for content panel */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.2s ease-out forwards;
+}
+
+/* Custom Scrollbar for Mega Menu */
+.mega-menu-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.mega-menu-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.mega-menu-scrollbar::-webkit-scrollbar-thumb {
+    background: #e85d2d;
+    border-radius: 3px;
+}
+
+.mega-menu-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #d14d1f;
+}
+
+/* FORCE DARK TEXT (Overrides Global Dark Mode) */
+.force-dark-text {
+    color: #111827 !important;
+    /* Gray-900 */
+}
+
+.force-dark-text:hover {
+    color: #e85d2d !important;
+    /* Brand Orange */
+}
+
+.force-dark-text-container {
+    color: #111827 !important;
+}

@@ -4127,3 +4127,23 @@ html.dark .backdrop {
 .animate-fadeIn {
     animation: fadeIn 0.3s ease-out forwards;
 }
+
+/* FORCE DARK TEXT for Mega Menu (Critical Fix for Dark Mode) 
+   Placed here to ensure it overrides all component-level styles.
+*/
+.force-dark-text,
+a.force-dark-text,
+span.force-dark-text,
+div.force-dark-text {
+    color: #111827 !important;
+    /* Gray-900 */
+}
+
+/* Ensure hover state remains orange */
+.force-dark-text:hover,
+a.force-dark-text:hover,
+span.force-dark-text:hover,
+div.force-dark-text:hover {
+    color: #e85d2d !important;
+    /* Brand Orange */
+}
