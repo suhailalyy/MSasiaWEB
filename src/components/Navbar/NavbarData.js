@@ -1,56 +1,64 @@
 // Navbar Mega Menu Data Structure
-// Each main menu item has categories, and each category has items
+// Each main menu item has categories with descriptions
 
 export const NAV_MENU_DATA = {
     "What We Do": {
         columns: [
             {
-                title: "Electronics Scrap",
+                title: "Electronics",
+                description: "E-waste collection and responsible disposal",
                 items: [
                     "Corporate IT Scrap Disposal",
                     "E-Waste Recycling",
-                    "HPLC Solvent Waste",
+                    "HPLC Solvent Waste Collection",
                     "Motor & Transformer Scrap",
                     "Wire & Cable Scrap"
                 ]
             },
             {
                 title: "Industrial & Construction",
+                description: "Industrial waste management solutions",
                 items: [
                     "Battery Scrap Collection",
                     "Chemical Packing",
-                    "Construction & Demolition",
+                    "Construction & Demolition Scrap",
                     "HVAC Scrap Recovery"
                 ]
             },
             {
-                title: "Metals Recycling",
+                title: "Metals",
+                description: "Metal scrap processing and recycling",
                 items: [
-                    "Aluminium Scrap",
-                    "Brass & Bronze",
-                    "Ferrous Metals",
-                    "Heavy Equipment",
-                    "Stainless Steel"
+                    "Aluminium Scrap Recycling",
+                    "Brass & Bronze Scrap",
+                    "Ferrous Metal Scrap",
+                    "Heavy Equipment Scrap",
+                    "Industrial Machinery Scrap",
+                    "Lead Scrap Recycling",
+                    "Nickel & Alloy Scrap",
+                    "Non-Ferrous Metal Scrap",
+                    "Stainless Steel Scrap"
                 ]
             },
             {
                 title: "Recyclables",
+                description: "Sustainable recycling services",
                 items: [
-                    "Glass Waste",
-                    "Paper & Cardboard",
-                    "Plastic Recycling",
-                    "Rubber & Tyre",
-                    "Textile Waste",
-                    "Wood & Pallet"
+                    "Glass Waste Recycling",
+                    "Paper & Cardboard Recycling",
+                    "Plastic Scrap Processing",
+                    "Rubber & Tyre Scrap",
+                    "Textile & Fabric Scrap",
+                    "Wood & Pallet Scrap"
                 ]
             },
             {
                 title: "Special Waste Services",
+                description: "Hazardous and medical waste disposal",
                 items: [
-                    "Biohazard Medical Waste",
+                    "Biohazardous Medical Waste Disposal",
                     "Pharmaceutical Waste",
-                    "Regulated Medical Waste",
-                    "Sharps Disposal"
+                    "Regulated Medical Waste Services"
                 ]
             }
         ]
@@ -58,31 +66,50 @@ export const NAV_MENU_DATA = {
     "Industries We Serve": {
         columns: [
             {
-                title: "Healthcare & Life Sciences",
+                title: "Healthcare",
+                description: "Healthcare waste management solutions",
                 items: [
-                    "Hospitals & Health Systems",
-                    "Clinics & Urgent Care",
+                    "Clinics & Urgent Care Centers",
                     "Dental Clinics",
-                    "Laboratories & Research",
-                    "Nursing Homes",
-                    "Veterinary Clinics"
+                    "Dialysis Centers",
+                    "Enterprise Healthcare",
+                    "Home Health Organizations",
+                    "Hospitals & Health Systems",
+                    "National & Corporate Healthcare",
+                    "Non-Acute Hospital Affiliates",
+                    "Nursing & Long-Term Care Facilities",
+                    "Physician Offices",
+                    "Practices & Care Providers",
+                    "Surgery Centers",
+                    "Veterinary Clinics & Hospitals"
                 ]
             },
             {
-                title: "Pharmaceuticals",
+                title: "Pharmacy, Labs & Research",
+                description: "Pharma and lab waste disposal",
                 items: [
-                    "Manufacturing",
-                    "Research Labs",
-                    "Retail Pharmacy",
-                    "Compounding"
+                    "Blood Banks",
+                    "Compounding Pharmacies",
+                    "Laboratory & Research Organizations",
+                    "Retail Pharmacies"
                 ]
             },
             {
                 title: "Other Industries",
+                description: "Industry-specific waste solutions",
                 items: [
-                    "Manufacturing & Industrial",
+                    "Airports & Seaports",
+                    "Chemical & Specialty Chemical",
+                    "Education / Educational Institutions",
+                    "Energy",
+                    "Engineering & Consulting",
+                    "General Manufacturing",
                     "Government & Military",
-                    "Education Institutions",
+                    "Pharmaceutical & Biotechnology",
+                    "Railroad Services",
+                    "Refinery",
+                    "Small Businesses",
+                    "Steel & Primary Metals",
                     "Transportation",
                     "Utilities"
                 ]
@@ -92,12 +119,26 @@ export const NAV_MENU_DATA = {
     "Company": {
         columns: [
             {
-                title: "", // No title for simple list
+                title: "Overview",
+                description: "Who we are and what drives us",
                 items: [
                     "About Us",
+                    "Mission & Values",
+                    "Certifications",
+                    "Technology & Innovation",
+                    "Safety Standards",
+                    "Sustainability Report"
+                ]
+            },
+            {
+                title: "More",
+                description: "Careers and connect with us",
+                items: [
                     "Careers",
+                    "Client Testimonials",
+                    "Case Studies",
                     "Contact Us",
-                    "Standards of Excellence"
+                    "Standard of Excellence"
                 ]
             }
         ]
