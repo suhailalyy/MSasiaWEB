@@ -318,29 +318,29 @@ function NavbarPill({
                         onMouseLeave={handleMenuLeave}
                     >
 
-                        {/* HACKTHEBOX STYLE DARK MEGA MENU - TRUE FULL WIDTH */}
-                        <div className="bg-[#1A1A1A] w-full rounded-none shadow-2xl overflow-hidden border-t-2 border-[#47622A] flex flex-row min-h-[500px]">
-                            {isCompanyMenu ? (
-                                /* ===== COMPANY DROPDOWN (Dark Simple) ===== */
-                                /* ===== COMPANY DROPDOWN (Dark Simple) ===== */
-                                <div className="p-10 w-full bg-[#1A1A1A] flex justify-center">
-                                    <div className="max-w-[1000px] w-full">
-                                        <div className="grid grid-cols-2 gap-20">
+                        {/* HACKTHEBOX STYLE DARK MEGA MENU - TRUE FULL WIDTH BACKGROUND, PROPERLY CONSTRAINED CONTENT */}
+                        <div className="bg-[#1A1A1A] w-full border-t-2 border-[#47622A] shadow-2xl flex justify-center relative z-50">
+                            <div className="w-full max-w-[1280px] flex flex-row min-h-[500px] bg-[#1A1A1A] overflow-hidden">
+                                {isCompanyMenu ? (
+                                    /* ===== COMPANY DROPDOWN (Dark Simple) ===== */
+                                    /* ===== COMPANY DROPDOWN (Dark Simple) ===== */
+                                    <div className="w-full bg-[#1A1A1A] flex flex-col">
+                                        <div className="flex-1 flex flex-row">
                                             {currentMenuData.columns.map((column, colIdx) => (
-                                                <div key={colIdx} className="flex flex-col">
-                                                    <div className="mb-6 pb-4 border-b border-[#333333]">
-                                                        <p className="text-[13px] font-bold text-[#47622A] uppercase tracking-widest mb-2">{column.title}</p>
-                                                        <p className="text-[13px] text-gray-400">{column.description}</p>
+                                                <div key={colIdx} className="flex-1 flex flex-col">
+                                                    <div className="px-5 py-3 bg-[#1A1A1A] flex flex-col gap-1">
+                                                        <p className="text-[13px] font-bold text-[#47622A] uppercase tracking-widest leading-none !m-0">{column.title}</p>
+                                                        <p className="text-[13px] text-gray-400 !m-0 leading-tight">{column.description}</p>
                                                     </div>
-                                                    <ul className="space-y-4 list-none m-0 p-0">
+                                                    <ul className="flex flex-col m-0 p-0 w-full bg-[#1A1A1A] list-none">
                                                         {column.items.map((subItem, idx) => (
-                                                            <li key={idx}>
+                                                            <li key={idx} className="w-full">
                                                                 <a
                                                                     href="#"
-                                                                    className="group flex items-center justify-between text-[15px] font-medium text-gray-300 hover:text-white transition-all duration-200 pl-2 hover:pl-0 hover:bg-[#47622A]/20 hover:px-4 py-2 rounded-lg -ml-2"
+                                                                    className="group flex items-center justify-between text-[14px] font-medium text-gray-300 hover:text-white hover:bg-[#47622A]/20 px-5 py-2 w-full transition-all duration-200 last:border-none uppercase tracking-wide"
                                                                 >
                                                                     <span>{subItem}</span>
-                                                                    <svg className="w-4 h-4 text-[#47622A] opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                    <svg className="w-4 h-4 text-[#47622A] opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-[-10px] group-hover:translate-x-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                                                                     </svg>
                                                                 </a>
@@ -351,151 +351,158 @@ function NavbarPill({
                                             ))}
                                         </div>
                                     </div>
-                                </div>
-                            ) : (
-                                /* ===== 3-PANEL LAYOUT (Categories | Items | Promo) ===== */
-                                <>
-                                    {/* PANEL 1: CATEGORIES (Left - Fixed %) */}
-                                    <div className="w-[22%] min-w-[280px] bg-[#1A1A1A] py-10 flex flex-col justify-between border-r border-[#333333]">
-                                        <div>
-                                            <p className="text-[12px] font-bold text-gray-500 uppercase tracking-widest px-8 mb-6">Categories</p>
-                                            <div className="flex-1 overflow-y-auto custom-scrollbar">
+                                ) : (
+                                    /* ===== 3-PANEL LAYOUT (Categories | Items | Promo) ===== */
+                                    <>
+                                        {/* PANEL 1: CATEGORIES (Left - Fixed %) */}
+                                        <div className="w-[25%] min-w-[280px] bg-[#1A1A1A] flex flex-col">
+                                            <div className="flex-1 overflow-y-auto custom-scrollbar flex flex-col">
                                                 {currentMenuData.columns.map((column, colIdx) => (
                                                     <div
                                                         key={colIdx}
                                                         onMouseEnter={() => handleCategoryEnter(colIdx)}
-                                                        className={`px-8 py-4 cursor-pointer flex items-center justify-between transition-all duration-200 ${activeCategory === colIdx
-                                                            ? 'bg-[#47622A] text-white border-r-4 border-white'
-                                                            : 'text-gray-400 hover:text-white hover:bg-[#47622A]/20'
+                                                        className={`w-full px-6 py-2 cursor-pointer flex items-center justify-between transition-all duration-200 group last:border-none ${activeCategory === colIdx
+                                                            ? 'bg-[#47622A] text-white'
+                                                            : 'text-gray-400 hover:text-white hover:bg-[#47622A]/10'
                                                             }`}
                                                     >
-                                                        <span className="text-[15px] font-medium">{column.title}</span>
+                                                        <span className={`text-[15px] font-medium transition-transform duration-300 ${activeCategory === colIdx ? 'translate-x-2' : ''}`}>{column.title}</span>
                                                         {activeCategory === colIdx && (
-                                                            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                                                            </svg>
+                                                            <motion.div
+                                                                layoutId="active-indicator"
+                                                                className="w-1 absolute left-0 h-full bg-white"
+                                                                transition={{ duration: 0.3 }}
+                                                            />
                                                         )}
+
                                                     </div>
                                                 ))}
                                             </div>
                                         </div>
-                                    </div>
 
-                                    {/* PANEL 2: ITEMS (Middle - Flexible) */}
-                                    <div className="flex-1 bg-[#1A1A1A] py-10 px-12 flex flex-col border-l border-[#333333]">
-                                        {activeCategory !== null && currentMenuData.columns[activeCategory] && (
-                                            <div className="animate-fadeIn h-full flex flex-col">
-                                                <p className="text-[12px] font-bold text-gray-500 uppercase tracking-widest mb-3">Services</p>
-                                                <h3 className="text-[24px] font-bold text-white mb-8 flex items-center gap-3">
-                                                    {currentMenuData.columns[activeCategory].title}
-                                                    <span className="text-[#47622A] text-lg font-normal">→</span>
-                                                </h3>
-
-                                                <ul className="grid grid-cols-2 gap-x-12 gap-y-4 list-none m-0 p-0 mb-8">
-                                                    {currentMenuData.columns[activeCategory].items.map((subItem, idx) => (
-                                                        <li key={idx}>
-                                                            <a
-                                                                href="#"
-                                                                className="block text-[15px] text-gray-400 hover:text-[#47622A] hover:translate-x-1 transition-all duration-200"
-                                                            >
-                                                                {subItem}
-                                                            </a>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-
-                                                {/* View All Button */}
-                                                <a
-                                                    href="#"
-                                                    className="inline-flex items-center gap-2 text-sm font-bold text-[#47622A] hover:text-white transition-colors duration-200 uppercase tracking-wide group mt-auto"
-                                                >
-                                                    View All {currentMenuData.columns[activeCategory].title}
-                                                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        )}
-                                    </div>
-
-
-                                    {/* PANEL 3: DYNAMIC INTERACTIVE (Right - Fixed %) */}
-                                    <div className="w-[28%] min-w-[380px] bg-[#1A1A1A] border-l border-[#333333] relative overflow-hidden group">
-                                        <AnimatePresence mode="wait">
-                                            {activeCategory !== null ? (
+                                        {/* PANEL 2: ITEMS (Middle - Flexible) */}
+                                        {/* PANEL 2: ITEMS (Middle - Flexible) */}
+                                        <div className="flex-1 bg-[#1A1A1A] flex flex-col">
+                                            {activeCategory !== null && currentMenuData.columns[activeCategory] && (
                                                 <motion.div
                                                     key={activeCategory}
-                                                    initial={{ opacity: 0, filter: 'blur(4px)' }}
-                                                    animate={{ opacity: 1, filter: 'blur(0px)' }}
-                                                    exit={{ opacity: 0, filter: 'blur(4px)' }}
-                                                    transition={{ duration: 0.3 }}
-                                                    className="absolute inset-0 p-10 flex flex-col justify-between h-full"
+                                                    initial={{ opacity: 0, x: -10 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    transition={{ duration: 0.3, ease: "easeOut" }}
+                                                    className="h-full flex flex-col"
                                                 >
-                                                    {/* Top Content (Fixed Position) */}
-                                                    <div className="relative z-10">
-                                                        <p className="text-[11px] font-bold text-[#47622A] uppercase tracking-widest mb-4">
-                                                            {CATEGORY_CONTENT_MAP[currentMenuData.columns[activeCategory].title]?.title || 'CATEGORY'}
-                                                        </p>
-                                                        <h4 className="text-white text-3xl font-bold mb-5 leading-tight">
-                                                            {CATEGORY_CONTENT_MAP[currentMenuData.columns[activeCategory].title]?.heading || 'Explore Services'}
-                                                        </h4>
-                                                        <p className="text-gray-400 text-[15px] mb-8 leading-relaxed">
-                                                            {CATEGORY_CONTENT_MAP[currentMenuData.columns[activeCategory].title]?.description}
-                                                        </p>
-
-                                                        {/* Mini Service List */}
-                                                        <ul className="space-y-3 mb-10">
-                                                            {CATEGORY_CONTENT_MAP[currentMenuData.columns[activeCategory].title]?.services.map((service, i) => (
-                                                                <li key={i} className="flex items-center gap-3 text-[14px] text-gray-500">
-                                                                    <div className="w-1.5 h-1.5 rounded-full bg-[#47622A]"></div>
-                                                                    <span className="truncate">{service}</span>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    </div>
-
-                                                    {/* Bottom Content (Button) */}
-                                                    <div className="relative z-10 mt-auto">
-                                                        <a href="#" className="inline-flex items-center gap-2 text-white text-xs font-bold uppercase tracking-wider group-hover:gap-3 transition-all">
-                                                            {CATEGORY_CONTENT_MAP[currentMenuData.columns[activeCategory].title]?.buttonText}
-                                                            <span className="text-[#47622A]">→</span>
+                                                    <div className="px-4 py-3 flex items-center justify-between bg-[#1A1A1A]">
+                                                        <h3 className="text-[20px] font-bold text-white flex items-center gap-3 m-0 leading-none">
+                                                            {currentMenuData.columns[activeCategory].title}
+                                                        </h3>
+                                                        <a
+                                                            href="#"
+                                                            className="text-[11px] font-bold text-[#47622A] hover:text-white uppercase tracking-wider transition-colors"
+                                                        >
+                                                            View All →
                                                         </a>
                                                     </div>
 
-                                                    {/* Background Glow */}
-                                                    <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#47622A]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-                                                </motion.div>
-                                            ) : (
-                                                /* Default State: Partner with MS Asia */
-                                                <motion.div
-                                                    key="default"
-                                                    initial={{ opacity: 0 }}
-                                                    animate={{ opacity: 1 }}
-                                                    exit={{ opacity: 0 }}
-                                                    transition={{ duration: 0.3 }}
-                                                    className="absolute inset-0 p-10 flex flex-col justify-end h-full"
-                                                >
-                                                    <div className="relative z-10">
-                                                        <div className="w-16 h-16 bg-[#47622A] rounded-2xl flex items-center justify-center mb-8 text-white shadow-lg shadow-[#47622A]/20">
-                                                            <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                                            </svg>
-                                                        </div>
-                                                        <h4 className="text-white text-3xl font-bold mb-4">Partner with MS Asia</h4>
-                                                        <p className="text-gray-400 text-[15px] mb-10 leading-relaxed max-w-[320px]">
-                                                            Discover comprehensive waste management solutions tailored for your industry.
-                                                        </p>
-                                                        <a href="#contact" className="inline-block bg-white/10 hover:bg-white/20 text-white text-sm font-medium px-8 py-3.5 rounded-lg transition-colors border border-white/10">
-                                                            Get Started
-                                                        </a>
-                                                    </div>
-                                                    <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#e85d2d]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+                                                    <ul className="grid grid-cols-2 w-full m-0 p-0 flex-1 content-start bg-[#1A1A1A] list-none">
+                                                        {currentMenuData.columns[activeCategory].items.map((subItem, idx) => (
+                                                            <motion.li
+                                                                key={idx}
+                                                                initial={{ opacity: 0 }}
+                                                                animate={{ opacity: 1 }}
+                                                                transition={{ delay: idx * 0.02 }}
+                                                                className=""
+                                                            >
+                                                                <a
+                                                                    href="#"
+                                                                    className="block w-full h-full px-5 py-2 text-[14px] text-gray-400 hover:text-white hover:bg-[#47622A]/10 transition-colors duration-200"
+                                                                >
+                                                                    {subItem}
+                                                                </a>
+                                                            </motion.li>
+                                                        ))}
+                                                    </ul>
                                                 </motion.div>
                                             )}
-                                        </AnimatePresence>
-                                    </div>
-                                </>
-                            )}
+                                        </div>
+
+
+                                        {/* PANEL 3: DYNAMIC INTERACTIVE (Right - Fixed %) */}
+                                        <div className="w-[30%] min-w-[320px] bg-[#1d2633] relative overflow-hidden group">
+                                            <AnimatePresence mode="wait">
+                                                {activeCategory !== null ? (
+                                                    <motion.div
+                                                        key={activeCategory}
+                                                        initial={{ opacity: 0, filter: 'blur(5px)' }}
+                                                        animate={{ opacity: 1, filter: 'blur(0px)' }}
+                                                        exit={{ opacity: 0, filter: 'blur(5px)' }}
+                                                        transition={{ duration: 0.4, ease: "easeOut" }}
+                                                        className="absolute inset-0 flex flex-col h-full"
+                                                    >
+                                                        <div className="p-8 flex flex-col h-full relative z-10">
+                                                            <h4 className="text-white text-xl font-bold mb-0 pb-2 leading-tight m-0">
+                                                                {CATEGORY_CONTENT_MAP[currentMenuData.columns[activeCategory].title]?.heading || 'Explore Services'}
+                                                            </h4>
+                                                            <p className="text-gray-400 text-[13px] leading-relaxed line-clamp-4 m-0 py-3">
+                                                                {CATEGORY_CONTENT_MAP[currentMenuData.columns[activeCategory].title]?.description}
+                                                            </p>
+
+                                                            {/* Compact Service List */}
+                                                            <ul className="flex flex-col !m-0 !p-0 !mt-0 flex-1 w-full list-none">
+                                                                {CATEGORY_CONTENT_MAP[currentMenuData.columns[activeCategory].title]?.services.map((service, i) => (
+                                                                    <motion.li
+                                                                        key={i}
+                                                                        initial={{ opacity: 0, x: 20 }}
+                                                                        animate={{ opacity: 1, x: 0 }}
+                                                                        transition={{ delay: 0.1 + (i * 0.05) }}
+                                                                        className="flex items-center gap-1.5 text-[13px] text-gray-400 !m-0 !mb-0 py-1.5 last:border-none"
+                                                                    >
+
+                                                                        <span className="truncate">{service}</span>
+                                                                    </motion.li>
+                                                                ))}
+                                                            </ul>
+
+                                                            {/* Bottom Button */}
+                                                            <div className="mt-0 pt-6">
+                                                                <a href="#" className="inline-flex items-center gap-2 text-white text-xs font-bold uppercase tracking-wider hover:text-[#47622A] transition-colors">
+                                                                    {CATEGORY_CONTENT_MAP[currentMenuData.columns[activeCategory].title]?.buttonText}
+                                                                    <span>→</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+
+                                                        {/* Background Glow */}
+                                                        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#47622A]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+                                                    </motion.div>
+                                                ) : (
+                                                    /* Default State */
+                                                    <motion.div
+                                                        key="default"
+                                                        initial={{ opacity: 0 }}
+                                                        animate={{ opacity: 1 }}
+                                                        exit={{ opacity: 0 }}
+                                                        transition={{ duration: 0.3 }}
+                                                        className="absolute inset-0 p-8 flex flex-col justify-end h-full"
+                                                    >
+                                                        <div className="relative z-10">
+                                                            <div className="w-14 h-14 bg-[#47622A] rounded-2xl flex items-center justify-center mb-6 text-white shadow-lg shadow-[#47622A]/20">
+                                                                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                                                </svg>
+                                                            </div>
+                                                            <h4 className="text-white text-2xl font-bold mb-3 m-0">Partner with MS Asia</h4>
+                                                            <p className="text-gray-400 text-[14px] leading-relaxed max-w-[300px] m-0">
+                                                                Discover comprehensive waste management solutions tailored for your industry.
+                                                            </p>
+                                                        </div>
+                                                        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#e85d2d]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+                                                    </motion.div>
+                                                )}
+                                            </AnimatePresence>
+                                        </div>
+                                    </>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>,

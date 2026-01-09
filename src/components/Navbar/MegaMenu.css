@@ -1,25 +1,10 @@
-/* Mega Menu Animations */
+/* --- FIXED ANIMATION --- */
+/* Remove translateX(-50%) because we are now using full width left-0 */
 @keyframes dropdownOpen {
     0% {
         opacity: 0;
-        transform: translateX(-50%) translateY(-10px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-    }
-}
-
-.animate-dropdown {
-    animation: dropdownOpen 0.25s ease-out forwards;
-}
-
-/* NEW: Vertical Dropdown without Centering Shift */
-@keyframes dropdownVertical {
-    0% {
-        opacity: 0;
         transform: translateY(-10px);
+        /* Sirf upar se niche aayega */
     }
 
     100% {
@@ -28,10 +13,11 @@
     }
 }
 
-.animate-dropdown-vertical {
-    animation: dropdownVertical 0.25s ease-out forwards;
+.animate-dropdown {
+    animation: dropdownOpen 0.25s ease-out forwards;
 }
 
+/* --- KEEPING THIS (It is good) --- */
 /* Fade in animation for content panel */
 @keyframes fadeIn {
     0% {
@@ -49,7 +35,7 @@
     animation: fadeIn 0.2s ease-out forwards;
 }
 
-/* Custom Scrollbar for Mega Menu */
+/* --- SCROLLBAR LOOKS GOOD --- */
 .mega-menu-scrollbar::-webkit-scrollbar {
     width: 6px;
 }
@@ -67,17 +53,11 @@
     background: #d14d1f;
 }
 
-/* FORCE DARK TEXT (Overrides Global Dark Mode) */
+/* --- UTILITIES --- */
 .force-dark-text {
     color: #111827 !important;
-    /* Gray-900 */
 }
 
 .force-dark-text:hover {
     color: #e85d2d !important;
-    /* Brand Orange */
-}
-
-.force-dark-text-container {
-    color: #111827 !important;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { NAV_MENU_DATA } from './NavbarData';
 
 const MegaMenu = ({ activeMenu, isVisible, onMouseEnter, onMouseLeave }) => {
+    // 1. Basic Validation
     if (!activeMenu || !isVisible) return null;
 
     const menuData = NAV_MENU_DATA[activeMenu];
@@ -9,44 +10,57 @@ const MegaMenu = ({ activeMenu, isVisible, onMouseEnter, onMouseLeave }) => {
 
     return (
         <>
+            {/* --- HOVER BRIDGE --- 
+                Ye invisible div gap ko fill karta hai taaki mouse neeche late waqt menu band na ho 
+            */}
             <div
-                className="fixed top-[56px] left-0 w-full h-4 z-[9998]"
+                className="fixed top-[56px] left-0 w-full h-6 z-[9998]"
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
             />
 
-            {/* SIMPLE AND CLEAN - MINIMAL SPACE */}
+            {/* --- MAIN MENU CONTAINER --- 
+                Fixed position, Full Width Background, Vertical Animation
+            */}
             <div
-                className="fixed top-[76px] left-1/2 z-[9999]"
-                style={{
-                    transform: 'translateX(-50%)',
-                    width: 'fit-content'
-                }}
+                className="fixed top-[76px] left-0 w-full z-[9999] bg-white border-b border-gray-200 shadow-xl animate-dropdown"
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
             >
-                <div className="bg-white border border-gray-300">
-                    <div className="flex divide-x divide-gray-200">
+                {/* --- CONTENT CONSTRAINT --- 
+                    Ye sabse important part hai. 
+                    max-w-[1280px] content ko failne se rokega.
+                    mx-auto content ko center mein rakhega.
+                */}
+                <div className="max-w-[1280px] mx-auto px-6 py-8">
+
+                    {/* Grid Layout for Columns */}
+                    <div className="flex items-start gap-8">
                         {menuData.columns.map((column, colIdx) => (
-                            <div key={colIdx} className="min-w-0">
+                            <div key={colIdx} className="flex-1 min-w-0">
+
+                                {/* Column Title */}
                                 {column.title && (
-                                    <div className="border-b border-gray-200 px-2 py-1">
-                                        <div className="text-[11px] font-bold text-gray-900 uppercase">
+                                    <div className="mb-4 border-b border-gray-100 pb-2">
+                                        <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wider">
                                             {column.title}
-                                        </div>
+                                        </h3>
                                     </div>
                                 )}
-                                <div>
+
+                                {/* Links List */}
+                                <ul className="space-y-2">
                                     {column.items.map((item, itemIdx) => (
-                                        <a
-                                            key={itemIdx}
-                                            href="#"
-                                            className="block text-[11px] text-gray-700 hover:text-[#e85d2d] px-2 py-1 hover:bg-gray-50"
-                                        >
-                                            {item}
-                                        </a>
+                                        <li key={itemIdx}>
+                                            <a
+                                                href="#"
+                                                className="block text-sm text-gray-600 hover:text-[#e85d2d] transition-colors duration-200"
+                                            >
+                                                {item}
+                                            </a>
+                                        </li>
                                     ))}
-                                </div>
+                                </ul>
                             </div>
                         ))}
                     </div>
