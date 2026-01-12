@@ -1,10 +1,57 @@
-/* --- FIXED ANIMATION --- */
-/* Remove translateX(-50%) because we are now using full width left-0 */
+/* --- VARIABLES --- */
+:root {
+    --mm-bg: #FFFFFF;
+    /* White */
+    --mm-sidebar-bg: #F9FAFB;
+    /* Very Light Grey */
+    --mm-text-main: #111111;
+    /* Dark Text */
+    --mm-text-muted: #6B7280;
+    /* Grey 500 */
+    --mm-accent: #799851;
+    /* Palm Leaf */
+    --mm-accent-hover: #111111;
+    /* Dark on Hover */
+    --mm-border: #E5E7EB;
+    /* Light Border */
+    --mm-card-bg: #FFFFFF;
+    --mm-hover-bg: #F3F4F6;
+    /* Light Hover */
+    --mm-placeholder-start: #F3F4F6;
+    --mm-placeholder-end: #E5E7EB;
+    --mm-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Overrides */
+.dark,
+:root[class~="dark"] {
+    --mm-bg: #000000;
+    /* Pitch Black */
+    --mm-sidebar-bg: #111111;
+    /* Dark Grey Alt */
+    --mm-text-main: #FFFFFF;
+    /* White Text */
+    --mm-text-muted: #A1A1AA;
+    /* Light Grey Muted */
+    --mm-accent: #799851;
+    /* Palm Leaf */
+    --mm-accent-hover: #FFFFFF;
+    /* White on Hover */
+    --mm-border: #333333;
+    /* Dark Border */
+    --mm-card-bg: #111111;
+    --mm-hover-bg: rgba(255, 255, 255, 0.05);
+    /* Dark Hover */
+    --mm-placeholder-start: #111111;
+    --mm-placeholder-end: #000000;
+    --mm-shadow: rgba(0, 0, 0, 0.5);
+}
+
+/* --- ANIMATIONS --- */
 @keyframes dropdownOpen {
     0% {
         opacity: 0;
         transform: translateY(-10px);
-        /* Sirf upar se niche aayega */
     }
 
     100% {
@@ -14,50 +61,347 @@
 }
 
 .animate-dropdown {
-    animation: dropdownOpen 0.25s ease-out forwards;
+    animation: dropdownOpen 0.2s ease-out forwards;
 }
 
-/* --- KEEPING THIS (It is good) --- */
-/* Fade in animation for content panel */
+/* --- LAYOUT --- */
+.mega-menu-bridge {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    /* Bridge gap between pill and menu */
+    z-index: 9998;
+}
+
+.mega-menu-container {
+    position: fixed;
+    top: 90px;
+    /* Adjust based on navbar height */
+    left: 0;
+    width: 100%;
+    background-color: var(--mm-bg);
+    border-bottom: 1px solid var(--mm-border);
+    box-shadow: 0 20px 50px var(--mm-shadow);
+    z-index: 9999;
+    font-family: 'Inter', sans-serif;
+    /* Ensure modern font */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.mega-menu-wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0;
+    height: 500px;
+    /* Fixed height for consistency */
+}
+
+.mega-menu-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 9997;
+    animation: fadeIn 0.3s ease-out forwards;
+    pointer-events: none;
+    /* Let clicks pass through if needed, though usually strictly visual */
+}
+
 @keyframes fadeIn {
-    0% {
+    from {
         opacity: 0;
-        transform: translateX(10px);
     }
 
-    100% {
+    to {
         opacity: 1;
-        transform: translateX(0);
     }
 }
 
-.animate-fadeIn {
-    animation: fadeIn 0.2s ease-out forwards;
+.mega-menu-grid {
+    display: grid;
+    grid-template-columns: 20% 25% 55%;
+    /* Precise user requested widths */
+    /* Fixed Sidebar, Flexible Content, Fixed Promo */
+    height: 100%;
 }
 
-/* --- SCROLLBAR LOOKS GOOD --- */
-.mega-menu-scrollbar::-webkit-scrollbar {
-    width: 6px;
+/* --- COLUMN 1: SIDEBAR --- */
+.mm-sidebar {
+    background-color: var(--mm-sidebar-bg);
+    border-right: 1px solid var(--mm-border);
+    padding: 24px;
+    /* Consistent Padding */
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.mega-menu-scrollbar::-webkit-scrollbar-track {
-    background: #f1f1f1;
+.mm-section-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--mm-text-muted);
+    padding: 0 25px;
+    margin-bottom: 15px;
 }
 
-.mega-menu-scrollbar::-webkit-scrollbar-thumb {
-    background: #e85d2d;
-    border-radius: 3px;
+.mm-category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+    overflow-y: auto;
 }
 
-.mega-menu-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #d14d1f;
+.mm-category-item {
+    padding: 8px 15px;
+    /* Compact padding */
+    margin-bottom: 2px;
+    /* Reduced margin */
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+    color: var(--mm-text-main);
 }
 
-/* --- UTILITIES --- */
-.force-dark-text {
-    color: #111827 !important;
+.mm-category-item:hover {
+    background-color: var(--mm-hover-bg);
+    color: var(--mm-text-main);
 }
 
-.force-dark-text:hover {
-    color: #e85d2d !important;
+.mm-category-item.active {
+    background-color: rgba(121, 152, 81, 0.15);
+    /* Green opacity bg */
+    border-left-color: var(--mm-accent);
+    color: var(--mm-accent);
+}
+
+.mm-category-text {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.mm-arrow-icon {
+    width: 16px;
+    height: 16px;
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: all 0.2s;
+}
+
+.mm-category-item.active .mm-arrow-icon {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* --- COLUMN 2: SUB-MENU --- */
+.mm-submenu {
+    padding: 24px;
+    /* Consistent Padding */
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.mm-submenu-header {
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--mm-border);
+    padding-bottom: 15px;
+    transition: border-color 0.3s ease;
+}
+
+.mm-category-heading {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--mm-text-main);
+    margin: 0 0 5px 0;
+}
+
+.mm-category-desc {
+    font-size: 14px;
+    color: var(--mm-text-muted);
+    margin: 0;
+}
+
+.mm-link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    padding-right: 10px;
+    /* Space for scrollbar */
+    /* Reverted to single column per user request */
+}
+
+.mm-link-item {
+    display: block;
+    padding: 12px 0;
+    color: var(--mm-text-main);
+    font-size: 15px;
+    text-decoration: none;
+    transition: color 0.2s;
+    border-bottom: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mm-link-item:hover {
+    color: var(--mm-accent);
+    padding-left: 5px;
+    text-decoration: none;
+    /* Ensure no underline */
+}
+
+.mm-link-icon {
+    color: var(--mm-accent);
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 0;
+    margin-top: -2px;
+}
+
+/* --- COLUMN 3: PROMO CARD --- */
+.mm-promo {
+    padding: 24px;
+    /* Consistent Padding */
+    background: radial-gradient(circle at top right, rgba(121, 152, 81, 0.1), transparent 70%);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.mm-promo-card {
+    background-color: var(--mm-card-bg);
+    border: 1px solid var(--mm-border);
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    /* Stretch vertically */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.mm-promo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px var(--mm-shadow);
+    border-color: var(--mm-accent);
+}
+
+.featured-image-placeholder {
+    height: 220px;
+    /* Increased height for larger image */
+    background: linear-gradient(135deg, var(--mm-placeholder-start), var(--mm-placeholder-end));
+    display: block;
+    /* Changed from flex to block for full image */
+    padding: 0;
+    /* Remove padding */
+    position: relative;
+    border-bottom: 1px solid var(--mm-border);
+    overflow: hidden;
+    /* Ensure image fits */
+}
+
+.mm-promo-tag {
+    background-color: var(--mm-accent);
+    color: white;
+    font-size: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: absolute;
+    /* User requested absolute positioning */
+    top: 15px;
+    left: 15px;
+    z-index: 10;
+}
+
+.mm-promo-content {
+    padding: 25px 20px 20px 20px;
+    /* Increased top padding */
+    flex: 1;
+    /* Allow content to grow/fill space */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    /* Center text */
+    align-items: center;
+    /* Center button */
+}
+
+.mm-promo-content h3 {
+    margin: 0 0 10px 0;
+    color: var(--mm-text-main);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.mm-promo-content p {
+    margin: 0 0 20px 0;
+    color: var(--mm-text-muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.mm-promo-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: max-content;
+    /* Fix button width */
+    padding: 10px 20px;
+    /* Add horizontal padding */
+    background-color: transparent;
+    border: 1px solid var(--mm-accent);
+    color: var(--mm-accent);
+    font-weight: 600;
+    font-size: 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: auto;
+    /* Push button to bottom */
+}
+
+.mm-promo-btn:hover {
+    background-color: var(--mm-accent);
+    color: white;
+}
+
+.mm-promo-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* --- SCROLLBARS --- */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #333333;
+    border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--mm-accent);
 }

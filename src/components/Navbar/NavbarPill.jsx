@@ -2,67 +2,10 @@ import React, { useState, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NAV_MENU_DATA } from './NavbarData';
+import MegaMenu from './MegaMenu';
 import './MegaMenu.css';
 
-// Content content map for Mega Menu Interactivity
-const CATEGORY_CONTENT_MAP = {
-    'Electronics': {
-        title: 'ELECTRONICS',
-        heading: 'E-Waste & IT Asset Disposal',
-        description: 'Secure, compliant disposal of electronic waste, IT equipment, and data-bearing devices with certified destruction and recycling.',
-        services: ['Corporate IT Scrap Disposal', 'E-Waste Recycling', 'HPLC Solvent Waste Collection', 'Motor & Transformer Scrap', 'Wire & Cable Scrap'],
-        buttonText: 'Explore Electronics'
-    },
-    'Industrial & Construction': {
-        title: 'INDUSTRIAL & CONSTRUCTION',
-        heading: 'Heavy Industry Waste Solutions',
-        description: 'Comprehensive waste management for construction sites, manufacturing plants, and industrial facilities.',
-        services: ['Battery Scrap Collection', 'Chemical Packing', 'Construction & Demolition Scrap', 'HVAC Scrap Recovery'],
-        buttonText: 'Explore Industrial'
-    },
-    'Metals': {
-        title: 'METALS',
-        heading: 'Metal Scrap Recycling',
-        description: 'Efficient processing and recycling of ferrous and non-ferrous metals with maximum recovery value.',
-        services: ['Aluminium Scrap Recy...', 'Brass & Bronze Scrap', 'Ferrous Metal Scrap', 'Heavy Equipment Scrap', 'Industrial Machinery'],
-        buttonText: 'Explore Metals'
-    },
-    'Recyclables': {
-        title: 'RECYCLABLES',
-        heading: 'Sustainable Recycling Services',
-        description: 'Discover our comprehensive solutions for recyclables. We ensure compliant, sustainable, and efficient handling.',
-        services: ['Glass Waste Recycling', 'Paper & Cardboard Recy...', 'Plastic Scrap Processing', 'Rubber & Tyre Scrap'],
-        buttonText: 'Explore Recyclables'
-    },
-    'Special Waste Services': {
-        title: 'SPECIAL WASTE SERVICES',
-        heading: 'Hazardous & Medical Waste Management',
-        description: 'Safe handling and disposal of regulated, hazardous, and medical waste with full compliance.',
-        services: ['Biohazardous Medical W...', 'Pharmaceutical Waste', 'Regulated Medical Waste', 'Sharps Disposal'],
-        buttonText: 'Explore Special Services'
-    },
-    'Healthcare': {
-        title: 'HEALTHCARE',
-        heading: 'Medical Waste Solutions',
-        description: 'Specialized waste management for hospitals, clinics, and healthcare facilities ensuring safety and compliance.',
-        services: ['Hospitals & Health Systems', 'Clinics & Urgent Care', 'Dental Clinics', 'Veterinary Clinics'],
-        buttonText: 'Explore Healthcare'
-    },
-    'Pharmacy, Labs & Research': {
-        title: 'PHARMACY & LABS',
-        heading: 'Pharmaceutical Disposal',
-        description: 'Expert disposal services for pharmacies, laboratories, and research centers dealing with effectively managing waste.',
-        services: ['Retail Pharmacies', 'Compounding Pharmacies', 'Research Labs', 'Blood Banks'],
-        buttonText: 'Explore Pharma'
-    },
-    'Other Industries': {
-        title: 'OTHER INDUSTRIES',
-        heading: 'Commercial Waste Services',
-        description: 'Tailored waste management solutions for educational institutions, government bodies, and manufacturing sectors.',
-        services: ['Education Institutions', 'Government & Military', 'General Manufacturing', 'Utilities & Energy'],
-        buttonText: 'Explore Industries'
-    }
-};
+
 
 
 
@@ -162,7 +105,7 @@ function NavbarPill({
                                 : 'opacity-0 -translate-x-4 pointer-events-none'
                             }`}
                     >
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#e85d2d] to-[#f4a574] flex items-center justify-center flex-shrink-0">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#47622A] to-[#799851] flex items-center justify-center flex-shrink-0">
                             <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.76 0 3.41-.46 4.84-1.26C14.08 19.2 12 16.79 12 14c0-3.31 2.69-6 6-6 .68 0 1.34.11 1.95.32C18.46 4.93 15.48 2 12 2z" />
                             </svg>
@@ -213,7 +156,7 @@ function NavbarPill({
                                     className={`flex items-center transition-all duration-300 overflow-hidden ${isScrolled ? 'w-8 opacity-100 mr-1' : 'w-0 opacity-0 mr-0'
                                         }`}
                                 >
-                                    <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#e85d2d] to-[#f4a574] flex items-center justify-center flex-shrink-0">
+                                    <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#47622A] to-[#799851] flex items-center justify-center flex-shrink-0">
                                         <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
                                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.76 0 3.41-.46 4.84-1.26C14.08 19.2 12 16.79 12 14c0-3.31 2.69-6 6-6 .68 0 1.34.11 1.95.32C18.46 4.93 15.48 2 12 2z" />
                                         </svg>
@@ -229,9 +172,9 @@ function NavbarPill({
                                         <a
                                             key={item}
                                             href={hasDropdown ? '#' : '/blog'}
-                                            className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 whitespace-nowrap ${isActive
-                                                ? 'text-[#e85d2d] bg-orange-50'
-                                                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                                            className={`flex items-center gap-1 px-5 py-2 text-sm font-medium rounded-full transition-all duration-300 whitespace-nowrap no-underline hover:no-underline ${isActive
+                                                ? 'bg-[#47622A] text-white shadow-[0_4px_6px_-1px_rgba(71,98,42,0.3)]'
+                                                : 'text-black hover:bg-gray-100 hover:text-[#47622A]'
                                                 }`}
                                             onMouseEnter={(e) => hasDropdown && handleMenuEnter(e, item)}
                                             onMouseLeave={handleMenuLeave}
@@ -265,7 +208,7 @@ function NavbarPill({
                                 {/* Internal Contact on scroll */}
                                 <a
                                     href="#contact"
-                                    className={`flex items-center gap-1.5 bg-[#e85d2d] hover:bg-[#d14d1f] text-white rounded-full text-sm font-medium transition-all duration-300 overflow-hidden ${isScrolled ? 'px-4 py-2 opacity-100 ml-1' : 'w-0 px-0 py-2 opacity-0 ml-0'
+                                    className={`flex items-center gap-1.5 bg-[#47622A] hover:bg-[#374426] text-white rounded-full text-sm font-medium transition-all duration-300 overflow-hidden ${isScrolled ? 'px-4 py-2 opacity-100 ml-1' : 'w-0 px-0 py-2 opacity-0 ml-0'
                                         }`}
                                 >
                                     <span className="whitespace-nowrap">Contact Us</span>
@@ -284,7 +227,7 @@ function NavbarPill({
                         <a
                             href="#contact"
                             id="external-contact"
-                            className="flex items-center bg-[#e85d2d] hover:bg-[#d14d1f] text-white rounded-full px-5 py-2.5 text-sm font-medium shadow-md transition-all"
+                            className="flex items-center bg-[#47622A] hover:bg-[#374426] text-white rounded-full px-5 py-2.5 text-sm font-medium shadow-md transition-all"
                         >
                             Contact Us
                         </a>
@@ -292,220 +235,19 @@ function NavbarPill({
                 </div>
             </header>
 
-            {/* ===== DROPDOWN PORTAL - Rendered at body level ===== */}
-            {activeMenu && currentMenuData && ReactDOM.createPortal(
-                <div
-                    className="fixed inset-0 pointer-events-none z-[999999]"
-                >
-                    {/* INJECTED STYLE FIX FOR DARK MODE */}
-                    <style>{`
-                        .force-dark-text { color: #111827 !important; }
-                        .force-dark-text:hover { color: #e85d2d !important; }
-                    `}</style>
-
-                    {/* BACKDROP BLUR */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-black/40 backdrop-blur-sm"
-                    />
-
-                    {/* Wrapper - FULL WIDTH FIXED */}
-                    <div
-                        className={`fixed top-[84px] left-0 w-full pt-2 pointer-events-auto z-[999999]`}
-                        onMouseEnter={handleDropdownEnter}
-                        onMouseLeave={handleMenuLeave}
-                    >
-
-                        {/* HACKTHEBOX STYLE DARK MEGA MENU - TRUE FULL WIDTH BACKGROUND, PROPERLY CONSTRAINED CONTENT */}
-                        <div className="bg-[#1A1A1A] w-full border-t-2 border-[#47622A] shadow-2xl flex justify-center relative z-50">
-                            <div className="w-full max-w-[1280px] flex flex-row min-h-[500px] bg-[#1A1A1A] overflow-hidden">
-                                {isCompanyMenu ? (
-                                    /* ===== COMPANY DROPDOWN (Dark Simple) ===== */
-                                    /* ===== COMPANY DROPDOWN (Dark Simple) ===== */
-                                    <div className="w-full bg-[#1A1A1A] flex flex-col">
-                                        <div className="flex-1 flex flex-row">
-                                            {currentMenuData.columns.map((column, colIdx) => (
-                                                <div key={colIdx} className="flex-1 flex flex-col">
-                                                    <div className="px-5 py-3 bg-[#1A1A1A] flex flex-col gap-1">
-                                                        <p className="text-[13px] font-bold text-[#47622A] uppercase tracking-widest leading-none !m-0">{column.title}</p>
-                                                        <p className="text-[13px] text-gray-400 !m-0 leading-tight">{column.description}</p>
-                                                    </div>
-                                                    <ul className="flex flex-col m-0 p-0 w-full bg-[#1A1A1A] list-none">
-                                                        {column.items.map((subItem, idx) => (
-                                                            <li key={idx} className="w-full">
-                                                                <a
-                                                                    href="#"
-                                                                    className="group flex items-center justify-between text-[14px] font-medium text-gray-300 hover:text-white hover:bg-[#47622A]/20 px-5 py-2 w-full transition-all duration-200 last:border-none uppercase tracking-wide"
-                                                                >
-                                                                    <span>{subItem}</span>
-                                                                    <svg className="w-4 h-4 text-[#47622A] opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-[-10px] group-hover:translate-x-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                                                                    </svg>
-                                                                </a>
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                ) : (
-                                    /* ===== 3-PANEL LAYOUT (Categories | Items | Promo) ===== */
-                                    <>
-                                        {/* PANEL 1: CATEGORIES (Left - Fixed %) */}
-                                        <div className="w-[25%] min-w-[280px] bg-[#1A1A1A] flex flex-col">
-                                            <div className="flex-1 overflow-y-auto custom-scrollbar flex flex-col">
-                                                {currentMenuData.columns.map((column, colIdx) => (
-                                                    <div
-                                                        key={colIdx}
-                                                        onMouseEnter={() => handleCategoryEnter(colIdx)}
-                                                        className={`w-full px-6 py-2 cursor-pointer flex items-center justify-between transition-all duration-200 group last:border-none ${activeCategory === colIdx
-                                                            ? 'bg-[#47622A] text-white'
-                                                            : 'text-gray-400 hover:text-white hover:bg-[#47622A]/10'
-                                                            }`}
-                                                    >
-                                                        <span className={`text-[15px] font-medium transition-transform duration-300 ${activeCategory === colIdx ? 'translate-x-2' : ''}`}>{column.title}</span>
-                                                        {activeCategory === colIdx && (
-                                                            <motion.div
-                                                                layoutId="active-indicator"
-                                                                className="w-1 absolute left-0 h-full bg-white"
-                                                                transition={{ duration: 0.3 }}
-                                                            />
-                                                        )}
-
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-
-                                        {/* PANEL 2: ITEMS (Middle - Flexible) */}
-                                        {/* PANEL 2: ITEMS (Middle - Flexible) */}
-                                        <div className="flex-1 bg-[#1A1A1A] flex flex-col">
-                                            {activeCategory !== null && currentMenuData.columns[activeCategory] && (
-                                                <motion.div
-                                                    key={activeCategory}
-                                                    initial={{ opacity: 0, x: -10 }}
-                                                    animate={{ opacity: 1, x: 0 }}
-                                                    transition={{ duration: 0.3, ease: "easeOut" }}
-                                                    className="h-full flex flex-col"
-                                                >
-                                                    <div className="px-4 py-3 flex items-center justify-between bg-[#1A1A1A]">
-                                                        <h3 className="text-[20px] font-bold text-white flex items-center gap-3 m-0 leading-none">
-                                                            {currentMenuData.columns[activeCategory].title}
-                                                        </h3>
-                                                        <a
-                                                            href="#"
-                                                            className="text-[11px] font-bold text-[#47622A] hover:text-white uppercase tracking-wider transition-colors"
-                                                        >
-                                                            View All →
-                                                        </a>
-                                                    </div>
-
-                                                    <ul className="grid grid-cols-2 w-full m-0 p-0 flex-1 content-start bg-[#1A1A1A] list-none">
-                                                        {currentMenuData.columns[activeCategory].items.map((subItem, idx) => (
-                                                            <motion.li
-                                                                key={idx}
-                                                                initial={{ opacity: 0 }}
-                                                                animate={{ opacity: 1 }}
-                                                                transition={{ delay: idx * 0.02 }}
-                                                                className=""
-                                                            >
-                                                                <a
-                                                                    href="#"
-                                                                    className="block w-full h-full px-5 py-2 text-[14px] text-gray-400 hover:text-white hover:bg-[#47622A]/10 transition-colors duration-200"
-                                                                >
-                                                                    {subItem}
-                                                                </a>
-                                                            </motion.li>
-                                                        ))}
-                                                    </ul>
-                                                </motion.div>
-                                            )}
-                                        </div>
-
-
-                                        {/* PANEL 3: DYNAMIC INTERACTIVE (Right - Fixed %) */}
-                                        <div className="w-[30%] min-w-[320px] bg-[#1d2633] relative overflow-hidden group">
-                                            <AnimatePresence mode="wait">
-                                                {activeCategory !== null ? (
-                                                    <motion.div
-                                                        key={activeCategory}
-                                                        initial={{ opacity: 0, filter: 'blur(5px)' }}
-                                                        animate={{ opacity: 1, filter: 'blur(0px)' }}
-                                                        exit={{ opacity: 0, filter: 'blur(5px)' }}
-                                                        transition={{ duration: 0.4, ease: "easeOut" }}
-                                                        className="absolute inset-0 flex flex-col h-full"
-                                                    >
-                                                        <div className="p-8 flex flex-col h-full relative z-10">
-                                                            <h4 className="text-white text-xl font-bold mb-0 pb-2 leading-tight m-0">
-                                                                {CATEGORY_CONTENT_MAP[currentMenuData.columns[activeCategory].title]?.heading || 'Explore Services'}
-                                                            </h4>
-                                                            <p className="text-gray-400 text-[13px] leading-relaxed line-clamp-4 m-0 py-3">
-                                                                {CATEGORY_CONTENT_MAP[currentMenuData.columns[activeCategory].title]?.description}
-                                                            </p>
-
-                                                            {/* Compact Service List */}
-                                                            <ul className="flex flex-col !m-0 !p-0 !mt-0 flex-1 w-full list-none">
-                                                                {CATEGORY_CONTENT_MAP[currentMenuData.columns[activeCategory].title]?.services.map((service, i) => (
-                                                                    <motion.li
-                                                                        key={i}
-                                                                        initial={{ opacity: 0, x: 20 }}
-                                                                        animate={{ opacity: 1, x: 0 }}
-                                                                        transition={{ delay: 0.1 + (i * 0.05) }}
-                                                                        className="flex items-center gap-1.5 text-[13px] text-gray-400 !m-0 !mb-0 py-1.5 last:border-none"
-                                                                    >
-
-                                                                        <span className="truncate">{service}</span>
-                                                                    </motion.li>
-                                                                ))}
-                                                            </ul>
-
-                                                            {/* Bottom Button */}
-                                                            <div className="mt-0 pt-6">
-                                                                <a href="#" className="inline-flex items-center gap-2 text-white text-xs font-bold uppercase tracking-wider hover:text-[#47622A] transition-colors">
-                                                                    {CATEGORY_CONTENT_MAP[currentMenuData.columns[activeCategory].title]?.buttonText}
-                                                                    <span>→</span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-
-                                                        {/* Background Glow */}
-                                                        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#47622A]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-                                                    </motion.div>
-                                                ) : (
-                                                    /* Default State */
-                                                    <motion.div
-                                                        key="default"
-                                                        initial={{ opacity: 0 }}
-                                                        animate={{ opacity: 1 }}
-                                                        exit={{ opacity: 0 }}
-                                                        transition={{ duration: 0.3 }}
-                                                        className="absolute inset-0 p-8 flex flex-col justify-end h-full"
-                                                    >
-                                                        <div className="relative z-10">
-                                                            <div className="w-14 h-14 bg-[#47622A] rounded-2xl flex items-center justify-center mb-6 text-white shadow-lg shadow-[#47622A]/20">
-                                                                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                                                </svg>
-                                                            </div>
-                                                            <h4 className="text-white text-2xl font-bold mb-3 m-0">Partner with MS Asia</h4>
-                                                            <p className="text-gray-400 text-[14px] leading-relaxed max-w-[300px] m-0">
-                                                                Discover comprehensive waste management solutions tailored for your industry.
-                                                            </p>
-                                                        </div>
-                                                        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#e85d2d]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-                                                    </motion.div>
-                                                )}
-                                            </AnimatePresence>
-                                        </div>
-                                    </>
-                                )}
-                            </div>
-                        </div>
-                    </div>
-                </div>,
+            {/* ===== DROPDOWN PORTAL (MEGA MENU) ===== */}
+            {ReactDOM.createPortal(
+                <MegaMenu
+                    activeMenu={activeMenu}
+                    isVisible={!!activeMenu}
+                    onMouseEnter={() => {
+                        if (closeTimeoutRef.current) {
+                            clearTimeout(closeTimeoutRef.current);
+                            closeTimeoutRef.current = null;
+                        }
+                    }}
+                    onMouseLeave={handleMenuLeave}
+                />,
                 document.body
             )}
 
@@ -525,7 +267,7 @@ function NavbarPill({
                     >
                         {/* Mobile Logo */}
                         <a href="/" className="flex items-center">
-                            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#e85d2d] to-[#f4a574] flex items-center justify-center">
+                            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#47622A] to-[#799851] flex items-center justify-center">
                                 <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.76 0 3.41-.46 4.84-1.26C14.08 19.2 12 16.79 12 14c0-3.31 2.69-6 6-6 .68 0 1.34.11 1.95.32C18.46 4.93 15.48 2 12 2z" />
                                 </svg>
@@ -535,7 +277,7 @@ function NavbarPill({
                         {/* Mobile Menu Button */}
                         <button
                             onClick={toggleMobileMenu}
-                            className="flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-full bg-[#e85d2d] text-white text-xs font-medium"
+                            className="flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-full bg-[#47622A] text-white text-xs font-medium"
                         >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 {isMobileMenuOpen ? (
@@ -560,7 +302,7 @@ function NavbarPill({
                         {/* Mobile Contact */}
                         <a
                             href="#contact"
-                            className="flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-full bg-[#e85d2d] text-white text-xs font-medium"
+                            className="flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-full bg-[#47622A] text-white text-xs font-medium"
                         >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -577,7 +319,7 @@ function NavbarPill({
                         {/* Mobile Header */}
                         <div className="flex items-center justify-between p-5 border-b border-gray-800 bg-[#111827]">
                             <div className="flex items-center gap-2">
-                                <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#e85d2d] to-[#f4a574] flex items-center justify-center">
+                                <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#47622A] to-[#799851] flex items-center justify-center">
                                     <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.76 0 3.41-.46 4.84-1.26C14.08 19.2 12 16.79 12 14c0-3.31 2.69-6 6-6 .68 0 1.34.11 1.95.32C18.46 4.93 15.48 2 12 2z" />
                                     </svg>
@@ -617,11 +359,11 @@ function NavbarPill({
                                                 className="flex items-center justify-between group cursor-pointer"
                                                 onClick={() => setActiveMenu(activeMenu === item ? null : item)}
                                             >
-                                                <span className={`text-lg font-medium transition-colors ${activeMenu === item ? 'text-[#e85d2d]' : 'text-gray-300 group-hover:text-white'}`}>
+                                                <span className={`text-lg font-medium transition-colors ${activeMenu === item ? 'text-[#47622A]' : 'text-gray-300 group-hover:text-white'}`}>
                                                     {item}
                                                 </span>
                                                 <svg
-                                                    className={`w-5 h-5 transition-transform duration-300 text-gray-500 ${activeMenu === item ? 'rotate-180 text-[#e85d2d]' : ''}`}
+                                                    className={`w-5 h-5 transition-transform duration-300 text-gray-500 ${activeMenu === item ? 'rotate-180 text-[#47622A]' : ''}`}
                                                     fill="none"
                                                     stroke="currentColor"
                                                     viewBox="0 0 24 24"
@@ -637,7 +379,7 @@ function NavbarPill({
                                                 {menuData.columns.map((col, colIdx) => (
                                                     <div key={colIdx}>
                                                         <h4 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-3 flex items-center gap-2">
-                                                            <span className="w-1.5 h-1.5 rounded-full bg-[#e85d2d]"></span>
+                                                            <span className="w-1.5 h-1.5 rounded-full bg-[#47622A]"></span>
                                                             {col.title}
                                                         </h4>
                                                         <ul className="space-y-3 border-l border-gray-800 ml-0.5 pl-4">
@@ -659,7 +401,7 @@ function NavbarPill({
 
                             {/* Mobile Actions */}
                             <div className="pt-6 space-y-4">
-                                <a href="#contact" className="flex items-center justify-center w-full py-3 bg-[#e85d2d] text-white rounded-xl font-bold hover:bg-[#d14d1f] transition-colors">
+                                <a href="#contact" className="flex items-center justify-center w-full py-3 bg-[#47622A] text-white rounded-xl font-bold hover:bg-[#374426] transition-colors">
                                     Contact Us
                                 </a>
                                 <div className="flex items-center justify-center gap-4 text-gray-500 text-sm">

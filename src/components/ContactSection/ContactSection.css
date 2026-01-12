@@ -2,9 +2,9 @@
 .contact-section {
     padding-top: 80px;
     padding-bottom: 80px;
-    background-color: #f0fdf4;
-    /* Very light green */
-    color: #1a2e05;
+    background-color: #FFFFFF;
+    /* Pure White */
+    color: #000000;
 }
 
 .contact-container {
@@ -56,7 +56,7 @@
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #47622A;
+    color: #799851;
     margin-bottom: 16px;
     align-items: center;
     gap: 8px;
@@ -69,7 +69,7 @@
     display: block;
     width: 20px;
     height: 2px;
-    background-color: #47622A;
+    background-color: #799851;
 }
 
 .contact-heading {
@@ -161,8 +161,8 @@
     padding: 14px 28px;
     border-radius: 8px;
     /* Slightly rounded corners */
-    background-color: #E85C33;
-    /* Brand Orange */
+    background-color: #47622A;
+    /* Brand Green */
     color: white;
     border: none;
     display: flex;
@@ -177,10 +177,10 @@
 }
 
 .contact-submit-btn:hover {
-    background-color: #D14B25;
-    /* Darker Orange */
+    background-color: #374426;
+    /* Darker Green */
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(232, 92, 51, 0.3);
+    box-shadow: 0 4px 12px rgba(71, 98, 42, 0.3);
 }
 
 /* Responsive - Fix Breakpoints */
@@ -263,7 +263,7 @@
 
 /* Dark Mode */
 .dark .contact-section {
-    background-color: #1a2810;
+    background-color: #000000;
     color: #f1f5f9;
 }
 
@@ -282,7 +282,7 @@
 }
 
 .dark .contact-heading {
-    color: #F8F272;
+    color: #FFFFFF;
 }
 
 .dark .contact-field label {
@@ -290,9 +290,9 @@
 }
 
 .dark .contact-label {
-    color: #F8F272;
+    color: #799851;
 }
 
 .dark .contact-label::before {
-    background-color: #F8F272;
+    background-color: #799851;
 }

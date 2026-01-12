@@ -1,4 +1,5 @@
 /* Tailwind CSS Directives */
+/* Tailwind CSS Directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -22,91 +23,78 @@ html {
     --font-body: 'Roboto', sans-serif;
 
     /* ============================================
-       TAILWIND BRAND COLOR SYSTEM (Light Mode)
-       NEW COLOR PALETTE:
-       - #47622A (Dark Moss Green) = Primary buttons
-       - #799851 (Palm Leaf) = Secondary elements
-       - #A0C4E8 (Pastel Blue) = Section highlights
-       - #F8F272 (Lemon Yellow) = Headings accent
+       UPDATED COLOR SYSTEM: JET BLACK & MOSS GREEN
        ============================================ */
 
     /* Background Colors */
     --bg-main: #FFFFFF;
-    --bg-alt: #F5F7FA;
-    --bg-highlight: #A0C4E8;
-    /* Pastel Blue for section highlights */
+    --bg-alt: #F9FAFB;
+    --bg-highlight: #F3F4F6;
     --bg-card: #FFFFFF;
 
-    /* Text Colors */
-    --text-main: #6B7280;
-    /* Body text - Gray */
-    --text-muted: #6B7280;
+    /* Text Colors - PURE BLACK */
+    --text-main: #000000;
+    --text-muted: #000000;
+    --text-gray: #000000;
 
-    /* Heading Colors - All headings use #47622A */
-    --heading-h1: #47622A;
-    --heading-h2: #47622A;
-    --heading-h3: #47622A;
-    --heading-h4: #47622A;
+    /* Heading Colors - PURE BLACK */
+    --heading-h1: #000000;
+    --heading-h2: #000000;
+    --heading-h3: #000000;
+    --heading-h4: #000000;
 
     /* Accent Color */
     --accent: #799851;
     /* Palm Leaf */
 
-    /* Link Colors - (Green shades) */
+    /* Link Colors */
     --link-default: #47622A;
-    /* Dark Moss Green */
-    --link-hover: #374426;
-    /* Darker on hover */
+    /* Moss Green */
+    --link-hover: #000000;
+    /* Black on Hover */
 
     /* Icon Colors */
-    --icon-primary: #47622A;
-    /* Dark Moss Green */
+    --icon-primary: #000000;
+    /* Black */
     --icon-eco: #799851;
-    /* Palm Leaf */
-    --icon-muted: #9CA3AF;
+    /* Green */
+    --icon-muted: #000000;
 
     /* Border Colors */
-    --border-soft: #A0C4E8;
-    /* Pastel Blue */
-    --border-divider: #D1D5DB;
+    --border-soft: #E5E7EB;
+    --border-divider: #000000;
+    /* Black Divider */
+    --border-gray: #E5E7EB;
+    --border-hover: #47622A;
 
-    /* Button Colors - बटन रंग */
+    /* Button Colors */
     --btn-primary: #47622A;
-    /* Dark Moss Green */
-    --btn-primary-hover: #374426;
-    /* Darker hover */
+    /* Green */
+    --btn-primary-hover: #000000;
+    /* Black Hover */
     --btn-secondary: #799851;
-    /* Palm Leaf */
     --btn-secondary-hover: #47622A;
 
-    /* Glass Effect - ग्लास इफेक्ट */
-    --glass-bg: rgba(255, 255, 255, 0.92);
-    --glass-bg-scrolled: rgba(255, 255, 255, 0.70);
-    --glass-border: #A0C4E8;
-    /* Pastel Blue */
-    --glass-shadow: rgba(71, 98, 42, 0.12);
+    /* Glass Effect */
+    --glass-bg: rgba(255, 255, 255, 0.95);
+    --glass-bg-scrolled: rgba(255, 255, 255, 0.85);
+    --glass-border: #E5E7EB;
+    --glass-shadow: rgba(0, 0, 0, 0.1);
 
     /* ============================================
-       GENERAL COLOR PALETTE
+       GENERAL COLOR PALETTE (Legacy Variables Updated)
        ============================================ */
     --bg-white: #FFFFFF;
     --primary-green: #47622A;
-    /* Dark Moss Green */
     --secondary-green: #799851;
-    /* Palm Leaf */
     --dark-green: #374426;
-    /* Darker green */
-    --pastel-blue: #A0C4E8;
-    /* Pastel Blue */
-    --lemon-yellow: #F8F272;
-    /* Lemon Yellow */
-    --text-black: #0F172A;
-    --text-gray: #6B7280;
-    --border-gray: #E5E7EB;
+    --pastel-blue: #E5E7EB;
+    /* Changed to Grey */
+    --lemon-yellow: #000000;
+    /* Changed to Black */
+    --text-black: #000000;
     --light-gray-bg: #F3F4F6;
-    --accent-yellow: #F8F272;
-    /* Lemon Yellow */
-    --border-hover: #47622A;
+    --accent-yellow: #799851;
 
     /* Icon Size System */
     --icon-xs: 1rem;
@@ -145,60 +133,52 @@ html {
 }
 
 /* ============================================
-   DARK MODE VARIABLES
-   डार्क मोड के लिए रंग (with new palette)
+   DARK MODE VARIABLES (PITCH BLACK)
    ============================================ */
 .dark {
     /* Background Colors */
-    --bg-main: #1A2810;
-    /* Very dark green-black */
-    --bg-alt: #243318;
-    /* Dark moss */
-    --bg-highlight: #374426;
-    /* Dark green */
-    --bg-card: #243318;
+    --bg-main: #000000;
+    --bg-alt: #111111;
+    --bg-highlight: #222222;
+    --bg-card: #111111;
 
     /* Text Colors */
-    --text-main: #F1F5F9;
-    --text-muted: #94A3B8;
+    --text-main: #FFFFFF;
+    --text-muted: #FFFFFF;
+    --text-black: #FFFFFF;
+    --text-gray: #FFFFFF;
 
-    /* Heading Colors (Lemon Yellow in dark mode for contrast) */
-    --heading-h1: #F8F272;
-    /* Lemon Yellow */
-    --heading-h2: #F8F272;
-    /* Lemon Yellow */
-    --heading-h3: #E2E8F0;
-    --heading-h4: #CBD5E1;
+    /* Heading Colors */
+    --heading-h1: #FFFFFF;
+    --heading-h2: #FFFFFF;
+    --heading-h3: #E5E5E5;
+    --heading-h4: #D4D4D8;
 
     /* Link Colors */
     --link-default: #799851;
-    /* Palm Leaf */
-    --link-hover: #A0C4E8;
-    /* Pastel Blue */
+    --link-hover: #FFFFFF;
 
     /* Icon Colors */
-    --icon-primary: #E2E8F0;
+    --icon-primary: #FFFFFF;
     --icon-eco: #799851;
-    /* Palm Leaf */
     --icon-muted: #64748B;
 
     /* Border Colors */
-    --border-soft: #374426;
-    --border-divider: #47622A;
+    --border-soft: #333333;
+    --border-divider: #FFFFFF;
+    --border-gray: #333333;
 
     /* Button Colors */
-    --btn-primary: #799851;
-    /* Palm Leaf */
-    --btn-primary-hover: #47622A;
-    /* Dark Moss */
-    --btn-secondary: #374426;
-    --btn-secondary-hover: #47622A;
+    --btn-primary: #FFFFFF;
+    --btn-primary-hover: #E5E5E5;
+    --btn-secondary: #333333;
+    --btn-secondary-hover: #FFFFFF;
 
     /* Glass Effect */
-    --glass-bg: rgba(26, 40, 16, 0.85);
-    --glass-bg-scrolled: rgba(26, 40, 16, 0.70);
-    --glass-border: rgba(121, 152, 81, 0.3);
-    --glass-shadow: rgba(0, 0, 0, 0.3);
+    --glass-bg: rgba(0, 0, 0, 0.85);
+    --glass-bg-scrolled: rgba(0, 0, 0, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-shadow: rgba(255, 255, 255, 0.05);
 }
 
 body {
@@ -273,7 +253,7 @@ html.dark body {
 /* ===== HEADER & NAVIGATION ===== */
 /* Default header styles for dashboard/checkout pages */
 header {
-    background-color: var(--bg-white);
+    background-color: var(--bg-main);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
@@ -318,7 +298,7 @@ nav {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
-    scrollbar-color: var(--text-gray) transparent;
+    scrollbar-color: var(--text-muted) transparent;
     padding: 0 var(--spacing-md);
     gap: 40px;
     flex: 1;
@@ -334,14 +314,14 @@ nav {
 }
 
 .nav-menu::-webkit-scrollbar-thumb {
-    background-color: var(--text-gray);
+    background-color: var(--text-muted);
     border-radius: 10px;
 }
 
 .nav-item {
     font-family: var(--font-heading);
     font-size: 16px;
-    color: var(--text-black);
+    color: var(--text-main);
     text-decoration: none;
     white-space: nowrap;
     padding: 0.5rem 0;
@@ -387,7 +367,7 @@ nav {
 .contact-btn {
     width: 150px;
     height: 50px;
-    background-color: var(--primary-green);
+    background-color: var(--btn-primary);
     color: white;
     border: none;
     border-radius: 4px;
@@ -403,9 +383,9 @@ nav {
 }
 
 .contact-btn:hover {
-    background-color: var(--dark-green);
+    background-color: var(--btn-primary-hover);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(71, 98, 42, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Mobile Menu Toggle */
@@ -414,7 +394,7 @@ nav {
     background: none;
     border: none;
     font-size: 1.5rem;
-    color: var(--text-black);
+    color: var(--text-main);
     cursor: pointer;
     padding: 0.5rem;
 }
@@ -468,13 +448,13 @@ article {
     max-width: 800px;
     margin: 0 auto var(--spacing-2xl);
     padding: var(--spacing-xl);
-    background-color: var(--bg-white);
+    background-color: var(--bg-main);
     border-radius: 8px;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
 }
 
 aside {
-    background-color: var(--light-gray-bg);
+    background-color: var(--bg-alt);
     padding: var(--spacing-xl);
     border-radius: 8px;
     margin: var(--spacing-xl) 0;
@@ -492,38 +472,38 @@ h6 {
     font-weight: 700;
     line-height: 1.3;
     margin-bottom: var(--spacing-md);
-    color: var(--text-black);
+    color: var(--heading-h1);
 }
 
 h1 {
     font-size: clamp(2.25rem, 5vw, 3.5rem);
     /* Responsive */
-    color: var(--primary-green);
+    color: var(--heading-h1);
 }
 
 h2 {
     font-size: clamp(1.75rem, 4vw, 2.5rem);
-    color: var(--dark-green);
+    color: var(--heading-h2);
 }
 
 h3 {
     font-size: clamp(1.5rem, 3.5vw, 2rem);
-    color: var(--text-black);
+    color: var(--heading-h3);
 }
 
 h4 {
     font-size: clamp(1.25rem, 3vw, 1.5rem);
-    color: var(--text-black);
+    color: var(--heading-h4);
 }
 
 h5 {
     font-size: clamp(1.125rem, 2.5vw, 1.25rem);
-    color: var(--text-gray);
+    color: var(--text-muted);
 }
 
 h6 {
     font-size: clamp(0.875rem, 2vw, 1rem);
-    color: var(--text-gray);
+    color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -531,7 +511,7 @@ h6 {
 p {
     font-size: clamp(1rem, 2vw, 1.125rem);
     margin-bottom: var(--spacing-md);
-    color: var(--text-black);
+    color: var(--text-main);
     line-height: 1.7;
 }
 
@@ -542,7 +522,7 @@ span {
 
 strong {
     font-weight: 700;
-    color: var(--dark-green);
+    color: var(--text-main);
 }
 
 em {
@@ -579,13 +559,13 @@ ol {
 
 /* ===== LINKS ===== */
 a {
-    color: var(--primary-green);
+    color: var(--link-default);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: var(--dark-green);
+    color: var(--link-hover);
     text-decoration: underline;
 }
 
@@ -604,7 +584,7 @@ figure {
 
 figcaption {
     font-size: 0.875rem;
-    color: var(--text-gray);
+    color: var(--text-muted);
     margin-top: var(--spacing-xs);
     font-style: italic;
 }
@@ -618,14 +598,14 @@ button {
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s ease;
-    background-color: var(--primary-green);
+    background-color: var(--btn-primary);
     color: white;
 }
 
 button:hover {
-    background-color: var(--dark-green);
+    background-color: var(--btn-primary-hover);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(71, 98, 42, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* ===== FORMS ===== */
@@ -633,16 +613,16 @@ form {
     max-width: 600px;
     margin: var(--spacing-xl) auto;
     padding: var(--spacing-xl);
-    background-color: var(--light-gray-bg);
+    background-color: var(--bg-alt);
     border-radius: 8px;
-    border: 1px solid var(--border-gray);
+    border: 1px solid var(--border-soft);
 }
 
 label {
     display: block;
     margin-bottom: var(--spacing-xs);
     font-weight: 600;
-    color: var(--text-black);
+    color: var(--text-main);
     font-family: var(--font-heading);
     font-size: clamp(0.875rem, 2vw, 1rem);
 }
@@ -653,10 +633,12 @@ select {
     width: 100%;
     padding: 0.75rem;
     margin-bottom: var(--spacing-md);
-    border: 1px solid var(--border-gray);
+    border: 1px solid var(--border-soft);
     border-radius: 4px;
     font-family: var(--font-body);
     font-size: clamp(0.875rem, 2vw, 1rem);
+    background-color: var(--bg-main);
+    color: var(--text-main);
     transition: border-color 0.3s ease;
 }
 
@@ -674,7 +656,7 @@ textarea {
 }
 
 select {
-    background-color: white;
+    background-color: var(--bg-main);
     cursor: pointer;
 }
 
@@ -684,7 +666,7 @@ option {
 
 /* ===== FOOTER ===== */
 footer {
-    background-color: var(--dark-green);
+    background-color: var(--primary-green);
     color: white;
     padding: var(--spacing-2xl) var(--spacing-lg);
     margin-top: var(--spacing-2xl);
@@ -704,7 +686,8 @@ footer a {
 }
 
 footer a:hover {
-    color: var(--secondary-green);
+    color: var(--text-main);
+    /* Black hover */
 }
 
 /* ===== ICON SYSTEM ===== */
@@ -1672,79 +1655,79 @@ footer a:hover {
 :root {
     /* Navbar Colors - Light Mode */
     --nav-bg-main: #FFFFFF;
-    --nav-bg-alt: #F5F7FA;
-    --nav-bg-highlight: #EEF3F7;
+    --nav-bg-alt: #F9FAFB;
+    --nav-bg-highlight: #F3F4F6;
     --nav-bg-card: #FFFFFF;
 
-    --nav-text-main: #374151;
-    --nav-text-muted: #6B7280;
+    --nav-text-main: #000000;
+    --nav-text-muted: #000000;
 
-    /* Dark Navy for headings */
-    --nav-heading-h1: #0B3C5D;
-    --nav-heading-h2: #0B3C5D;
-    --nav-heading-h3: #123F63;
-    --nav-heading-h4: #1F4E6B;
+    /* Dark Navy for headings - CHANGED TO BLACK */
+    --nav-heading-h1: #000000;
+    --nav-heading-h2: #000000;
+    --nav-heading-h3: #000000;
+    --nav-heading-h4: #000000;
 
-    /* Turquoise green for accent links */
-    --nav-link-default: #1A9562;
-    --nav-link-hover: #158a56;
+    /* Turquoise green for accent links - CHANGED TO MOSS GREEN */
+    --nav-link-default: #47622A;
+    --nav-link-hover: #000000;
 
-    --nav-icon-primary: #0B3C5D;
-    --nav-icon-eco: #1A9562;
-    --nav-icon-muted: #9CA3AF;
+    --nav-icon-primary: #000000;
+    --nav-icon-eco: #799851;
+    --nav-icon-muted: #000000;
 
     --nav-border-soft: #E5E7EB;
-    --nav-border-divider: #D1D5DB;
+    --nav-border-divider: #000000;
 
     /* Contact Button: Bright Green #3ABE7C (matches screenshot) */
-    --nav-btn-primary: #3ABE7C;
-    --nav-btn-primary-hover: #2E9B68;
-    --nav-btn-secondary: #0B3C5D;
-    --nav-btn-secondary-hover: #093251;
+    --nav-btn-primary: #47622A;
+    --nav-btn-primary-hover: #000000;
+    --nav-btn-secondary: #000000;
+    --nav-btn-secondary-hover: #47622A;
 
     /* Glass Effects - Light */
-    --nav-glass-bg: rgba(255, 255, 255, 0.92);
-    --nav-glass-bg-scrolled: rgba(255, 255, 255, 0.70);
+    --nav-glass-bg: rgba(255, 255, 255, 0.95);
+    --nav-glass-bg-scrolled: rgba(255, 255, 255, 0.85);
     --nav-glass-border: #E5E7EB;
-    --nav-glass-shadow: rgba(0, 0, 0, 0.08);
+    --nav-glass-shadow: rgba(0, 0, 0, 0.1);
 }
 
 /* --- NAVBAR THEME VARIABLES (Dark Mode) --- */
 .dark {
-    --nav-bg-main: #0B1120;
-    --nav-bg-alt: #162032;
-    --nav-bg-highlight: #1E293B;
-    --nav-bg-card: #162032;
+    --nav-bg-main: #000000;
+    --nav-bg-alt: #111111;
+    --nav-bg-highlight: #222222;
+    --nav-bg-card: #111111;
 
-    --nav-text-main: #F1F5F9;
-    --nav-text-muted: #94A3B8;
+    --nav-text-main: #FFFFFF;
+    --nav-text-muted: #FFFFFF;
 
-    --nav-heading-h1: #F8FAFC;
-    --nav-heading-h2: #F8FAFC;
-    --nav-heading-h3: #E2E8F0;
-    --nav-heading-h4: #CBD5E1;
+    --nav-heading-h1: #FFFFFF;
+    --nav-heading-h2: #FFFFFF;
+    --nav-heading-h3: #E5E5E5;
+    --nav-heading-h4: #D4D4D8;
 
-    --nav-link-default: #4ADE80;
-    --nav-link-hover: #1A9562;
+    --nav-link-default: #799851;
+    --nav-link-hover: #FFFFFF;
 
-    --nav-icon-primary: #E2E8F0;
-    --nav-icon-eco: #1A9562;
-    --nav-icon-muted: #64748B;
+    --nav-icon-primary: #FFFFFF;
+    --nav-icon-eco: #799851;
+    --nav-icon-muted: #FFFFFF;
 
-    --nav-border-soft: #334155;
-    --nav-border-divider: #475569;
+    --nav-border-soft: #333333;
+    --nav-border-divider: #FFFFFF;
 
     /* Contact Button: Light Green default, Turquoise on hover */
-    --nav-btn-primary: #4ADE80;
-    --nav-btn-primary-hover: #1A9562;
-    --nav-btn-secondary: #1E293B;
-    --nav-btn-secondary-hover: #1A9562;
+    --nav-btn-primary: #FFFFFF;
+    --nav-btn-primary-hover: #E5E5E5;
+    --nav-btn-secondary: #333333;
+    --nav-btn-secondary-hover: #FFFFFF;
 
     /* Glass Effects - Dark (30% transparency after scrolling) */
-    --nav-glass-bg: rgba(11, 17, 32, 0.8);
-    --nav-glass-bg-scrolled: rgba(11, 17, 32, 0.70);
-    --nav-glass-border: rgba(160, 196, 232, 0.2);
-    --nav-glass-shadow: rgba(26, 149, 98, 0.15);
+    --nav-glass-bg: rgba(0, 0, 0, 0.85);
+    --nav-glass-bg-scrolled: rgba(0, 0, 0, 0.75);
+    --nav-glass-border: rgba(255, 255, 255, 0.15);
+    --nav-glass-shadow: rgba(255, 255, 255, 0.05);
 }
 
 /* --- GLASS PILL BASE --- */
@@ -1784,7 +1767,8 @@ footer a:hover {
 /* Glass pill के अंदर links */
 .glass-pill a {
     text-decoration: none;
-    color: var(--text-muted);
+    color: var(--nav-text-main);
+    /* Changed to Black */
     /* Changed to use variable */
     font-weight: 500;
     font-size: 16px !important;
@@ -2923,12 +2907,18 @@ button.bg-brand-btn-primary:hover {
 
 /* Hero Color Variables */
 .hero-pharma {
-    --hero-primary: #1E3A5F;
-    --hero-secondary: #2D5A7B;
-    --hero-accent: #4A90B8;
-    --hero-light: #E8F4FC;
-    --hero-text: #1A2B3C;
-    --hero-muted: #5A6B7C;
+    /* UPDATED TO BLACK THEME */
+    --hero-primary: #000000;
+    /* Main Black */
+    --hero-secondary: #000000;
+    /* Dark Grey */
+    --hero-accent: #799851;
+    /* Green Accent */
+    --hero-light: #F9FAFB;
+    /* Light Grey */
+    --hero-text: #000000;
+    /* Black Text */
+    --hero-muted: #000000;
 }
 
 /* Hero Section Container - 70/30 Layout */
@@ -3328,12 +3318,13 @@ button.bg-brand-btn-primary:hover {
    ======================================== */
 
 .site-footer {
-    --footer-bg: #0F1A2A;
-    --footer-text: #94A3B8;
+    --footer-bg: #47622A;
+    /* GREEN FOOTER */
+    --footer-text: #F9FAFB;
     --footer-heading: #FFFFFF;
-    --footer-link: #CBD5E1;
-    --footer-link-hover: #4A90B8;
-    --footer-accent: #4A90B8;
+    --footer-link: #E5E7EB;
+    --footer-link-hover: #000000;
+    --footer-accent: #799851;
     --footer-border: rgba(255, 255, 255, 0.1);
 }
 
@@ -3375,7 +3366,7 @@ button.bg-brand-btn-primary:hover {
     width: 40px;
     height: 40px;
     border-radius: 10px;
-    background: linear-gradient(135deg, #1E3A5F, #4A90B8);
+    background: linear-gradient(135deg, #47622A, #799851);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3768,16 +3759,16 @@ html.dark .backdrop {
    Professional Pharmaceutical/Industrial Design
    ============================================= */
 
+/* HERO SECTION - REDESIGNED */
 .industrial-hero {
     background-color: #FFFFFF;
-    padding-top: 200px;
-    /* User-specified: increased for navbar clearance */
+    padding-top: 120px;
     padding-bottom: 60px;
-    /* User-specified: 60px */
     margin: 0;
     width: 100%;
-    min-height: auto;
-    /* Let content determine height */
+    position: relative;
+    z-index: 0;
+    /* Protected: Ensure it stays below navbar */
 }
 
 .industrial-hero-container {
@@ -3785,76 +3776,60 @@ html.dark .backdrop {
     margin: 0 auto;
     padding: 0 24px;
     display: flex;
-    align-items: flex-start;
-    /* Align to top for stability */
+    align-items: center;
+    /* Center vertically */
     justify-content: space-between;
-    gap: 48px;
+    gap: 60px;
+    /* Increased gap for modern look */
     width: 100%;
 }
 
 /* LEFT CONTENT (55%) - Stable width */
+/* LEFT CONTENT */
 .industrial-hero-content {
-    flex: 0 0 55%;
-    max-width: 55%;
-    flex-shrink: 0;
-    /* Prevent collapse */
+    flex: 1;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    align-items: flex-start;
+    gap: 24px;
 }
 
-/* Main Heading - 48px, #0F172A, Bold */
-.industrial-hero-heading {
-    font-size: 48px;
-    font-weight: 700;
-    line-height: 1.2;
-    color: #0F172A;
-    margin: 0;
-}
-
-/* Sub-heading - 20px, #6B7280, Medium */
-.industrial-hero-subheading {
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 1.5;
-    color: #6B7280;
-    margin: 0;
-}
-
-/* Feature Points Container */
-.industrial-hero-features {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin: 0;
-}
-
-/* Each Feature Point - 40px height */
-.industrial-hero-feature {
-    display: flex;
+/* NEW: Pill Badge */
+.industrial-hero-pill-badge {
+    display: inline-flex;
     align-items: center;
-    gap: 12px;
-    height: 40px;
+    padding: 6px 16px;
+    background-color: #ECFDF5;
+    /* Light Green */
+    color: #047857;
+    /* Emerald 700 */
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
 }
 
-/* Feature Icon - #799851 Palm Leaf */
-.industrial-hero-feature-icon {
-    width: 24px;
-    height: 24px;
-    color: #799851;
-    flex-shrink: 0;
-}
-
-.industrial-hero-feature-icon svg {
-    width: 100%;
-    height: 100%;
-}
-
-/* Feature Text - 18px, #0F172A */
-.industrial-hero-feature span {
-    font-size: 18px;
-    font-weight: 500;
+/* Main Heading */
+.industrial-hero-heading {
+    font-size: 56px;
+    /* Larger */
+    font-weight: 800;
+    line-height: 1.1;
     color: #0F172A;
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+/* Subtext */
+.industrial-hero-subheading {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #64748B;
+    max-width: 90%;
+    margin: 0;
 }
 
 /* CTA Buttons Container */
@@ -3865,130 +3840,128 @@ html.dark .backdrop {
     margin: 0;
 }
 
-/* Primary Button - #47622A background, white text */
+/* Primary Button - #10B981 Green Solid */
 .industrial-btn-primary {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
     height: 52px;
-    padding: 0 24px;
-    background-color: #47622A;
+    padding: 0 32px;
+    background-color: #10B981;
+    /* Green Solid */
     color: #FFFFFF;
     font-size: 16px;
     font-weight: 600;
     text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
 }
 
 .industrial-btn-primary:hover {
-    background-color: #374426;
+    background-color: #059669;
+    /* Darker Green */
+    transform: translateY(-1px);
+    box-shadow: 0 6px 8px -1px rgba(16, 185, 129, 0.3);
 }
 
 .industrial-btn-primary svg {
-    width: 20px;
-    height: 20px;
+    /* Removed icon support for simplicity/modern look described */
+    display: none;
 }
 
-/* Secondary Button - Border #47622A, transparent bg */
+/* Secondary Button - Keep Outline but modernize */
 .industrial-btn-secondary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     height: 52px;
-    padding: 0 24px;
+    padding: 0 32px;
     background-color: transparent;
-    color: #47622A;
+    color: #0F172A;
     font-size: 16px;
     font-weight: 600;
     text-decoration: none;
-    border: 2px solid #47622A;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    border: 2px solid #E2E8F0;
+    border-radius: 6px;
+    transition: all 0.3s ease;
 }
 
 .industrial-btn-secondary:hover {
-    background-color: #F3F4F6;
+    border-color: #CBD5E1;
+    background-color: #F8FAFC;
+    color: #000000;
 }
 
-/* RIGHT IMAGE (40%) - Stable width */
+/* RIGHT IMAGE */
 .industrial-hero-image {
-    flex: 0 0 40%;
-    max-width: 40%;
-    flex-shrink: 0;
-    /* Prevent collapse */
-    padding: 0;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
 }
 
+/* Blob/Gradient Background */
 .industrial-hero-image-wrapper {
     position: relative;
     width: 100%;
-    padding: 0;
+    max-width: 500px;
+    z-index: 1;
 }
 
-/* Image Placeholder */
+.industrial-hero-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 110%;
+    height: 110%;
+    background: radial-gradient(circle at center, rgba(16, 185, 129, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+    z-index: -1;
+    pointer-events: none;
+    border-radius: 50%;
+    filter: blur(20px);
+}
+
+/* Image Placeholder - Refined */
 .industrial-hero-placeholder {
     width: 100%;
     aspect-ratio: 4/3;
-    background-color: #F3F4F6;
-    border: 1px solid #E5E7EB;
-    border-radius: 8px;
+    background-color: #F8FAFC;
+    border-radius: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    border: 1px solid #F1F5F9;
 }
 
 .industrial-hero-placeholder svg {
     width: 80px;
     height: 80px;
-    color: #9CA3AF;
+    color: #CBD5E1;
 }
 
 .industrial-hero-placeholder span {
     font-size: 14px;
-    color: #6B7280;
+    color: #64748B;
     font-weight: 500;
-}
-
-/* Certification Badge */
-.industrial-hero-badge {
-    position: absolute;
-    bottom: -16px;
-    left: 24px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background-color: #FFFFFF;
-    padding: 12px 16px;
-    border-radius: 8px;
-    border: 1px solid #E5E7EB;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.industrial-hero-badge svg {
-    width: 24px;
-    height: 24px;
-    color: #F4A261;
-}
-
-.industrial-hero-badge span {
-    font-size: 14px;
-    font-weight: 600;
-    color: #0F172A;
 }
 
 /* Logo Loop Section */
 .industrial-hero-logos {
-    margin-top: 3rem;
-    padding-top: 2rem;
+    margin-top: 0;
+    padding-top: 12px;
+    padding-bottom: 12px;
     border-top: 1px solid var(--brand-border-soft, rgba(0, 0, 0, 0.1));
 }
 
 .industrial-hero-logos p {
     color: var(--brand-text-muted, #64748b);
+    margin: 0;
 }
 
 .dark .industrial-hero-logos {
@@ -4135,8 +4108,8 @@ html.dark .backdrop {
 a.force-dark-text,
 span.force-dark-text,
 div.force-dark-text {
-    color: #111827 !important;
-    /* Gray-900 */
+    color: #000000 !important;
+    /* Black */
 }
 
 /* Ensure hover state remains orange */
@@ -4144,6 +4117,31 @@ div.force-dark-text {
 a.force-dark-text:hover,
 span.force-dark-text:hover,
 div.force-dark-text:hover {
-    color: #e85d2d !important;
-    /* Brand Orange */
+    color: var(--primary-green) !important;
+    /* Brand Green */
+}
+
+/* --- FINAL FIX FOR ACTIVE PILL --- */
+/* Isse apni Navbar.css ya MegaMenu.css ke end mein paste karein */
+
+.nav-item.active,
+.nav-item.active>.nav-link {
+    background-color: var(--primary-green) !important;
+    /* Moss Green */
+    color: #FFFFFF !important;
+    /* White text */
+    border-radius: 9999px !important;
+    /* Perfect Pill Shape */
+    font-weight: 700 !important;
+    /* Thoda aur Bold */
+    padding: 10px 24px !important;
+    /* Thoda bada size */
+    box-shadow: 0 4px 10px rgba(71, 98, 42, 0.4) !important;
+    /* Green Glow */
+}
+
+/* Hover par color change na ho jab active ho */
+.nav-item.active:hover {
+    background-color: #000000 !important;
+    /* Black on hover */
 }
