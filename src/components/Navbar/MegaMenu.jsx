@@ -132,10 +132,7 @@ const MegaMenu = ({ activeMenu, isVisible, onMouseEnter, onMouseLeave }) => {
 
                         {/* COL 2: SUB-MENU (Links for Active Category) */}
                         <div className="mm-submenu">
-                            <div className="mm-submenu-header">
-                                <h3 className="mm-category-heading">{activeCategoryTitle}</h3>
-                                <p className="mm-category-desc">{activeCategoryData?.description}</p>
-                            </div>
+                            {/* Header removed as per request */}
 
                             <ul className="mm-link-list custom-scrollbar">
                                 {activeCategoryData?.items?.map((item, idx) => (

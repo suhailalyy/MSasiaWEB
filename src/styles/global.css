@@ -3961,7 +3961,8 @@ html.dark .backdrop {
 
 .industrial-hero-logos p {
     color: var(--brand-text-muted, #64748b);
-    margin: 0;
+    margin: 0 0 24px 0;
+    /* Added spacing (mb-6 equivalent) */
 }
 
 .dark .industrial-hero-logos {

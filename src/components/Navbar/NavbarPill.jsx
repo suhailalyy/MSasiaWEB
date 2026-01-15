@@ -116,9 +116,9 @@ function NavbarPill({
                     <nav
                         id="navbar-pill-desktop"
                         className={`absolute left-1/2 -translate-x-1/2 flex items-center ${isSearchExpanded ? 'gap-2 w-[600px] justify-between pl-3 pr-2' : 'gap-1'
-                            } rounded-full backdrop-blur-md border border-gray-200/40 shadow-sm transition-all duration-300 py-2 px-4`}
+                            } rounded-full backdrop-blur-xl border border-white/20 shadow-sm transition-all duration-300 h-[72px] px-4`}
                         style={{
-                            backgroundColor: 'rgba(255, 255, 255, 0.85)'
+                            backgroundColor: 'rgba(255, 255, 255, 0.4)'
                         }}
                     >
                         {isSearchExpanded ? (
@@ -172,9 +172,9 @@ function NavbarPill({
                                         <a
                                             key={item}
                                             href={hasDropdown ? '#' : '/blog'}
-                                            className={`flex items-center gap-1 px-5 py-2 text-sm font-medium rounded-full transition-all duration-300 whitespace-nowrap no-underline hover:no-underline ${isActive
-                                                ? 'bg-[#47622A] text-white shadow-[0_4px_6px_-1px_rgba(71,98,42,0.3)]'
-                                                : 'text-black hover:bg-gray-100 hover:text-[#47622A]'
+                                            className={`flex items-center gap-1 px-5 py-2 text-sm font-medium rounded-full transition-all duration-300 whitespace-nowrap no-underline hover:no-underline bg-transparent hover:bg-transparent ${isActive
+                                                ? '!text-[#799851]'
+                                                : 'text-black hover:text-[#799851]'
                                                 }`}
                                             onMouseEnter={(e) => hasDropdown && handleMenuEnter(e, item)}
                                             onMouseLeave={handleMenuLeave}

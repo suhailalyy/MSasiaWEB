@@ -1,9 +1,9 @@
 /* --- VARIABLES --- */
 :root {
-    --mm-bg: #FFFFFF;
-    /* White */
-    --mm-sidebar-bg: #F9FAFB;
-    /* Very Light Grey */
+    --mm-bg: rgba(255, 255, 255, 0.4);
+    /* Deep Glass White */
+    --mm-sidebar-bg: transparent;
+    /* Transparent for seamless glass */
     --mm-text-main: #111111;
     /* Dark Text */
     --mm-text-muted: #6B7280;
@@ -12,11 +12,12 @@
     /* Palm Leaf */
     --mm-accent-hover: #111111;
     /* Dark on Hover */
-    --mm-border: #E5E7EB;
-    /* Light Border */
-    --mm-card-bg: #FFFFFF;
-    --mm-hover-bg: #F3F4F6;
-    /* Light Hover */
+    --mm-border: rgba(255, 255, 255, 0.2);
+    /* Subtle White Border */
+    --mm-card-bg: rgba(255, 255, 255, 0.3);
+    /* Less opaque card */
+    --mm-hover-bg: rgba(243, 244, 246, 0.4);
+    /* Very light hover */
     --mm-placeholder-start: #F3F4F6;
     --mm-placeholder-end: #E5E7EB;
     --mm-shadow: rgba(0, 0, 0, 0.1);
@@ -25,10 +26,10 @@
 /* Dark Mode Overrides */
 .dark,
 :root[class~="dark"] {
-    --mm-bg: #000000;
-    /* Pitch Black */
-    --mm-sidebar-bg: #111111;
-    /* Dark Grey Alt */
+    --mm-bg: rgba(0, 0, 0, 0.4);
+    /* Deep Glass Black */
+    --mm-sidebar-bg: transparent;
+    /* Transparent */
     --mm-text-main: #FFFFFF;
     /* White Text */
     --mm-text-muted: #A1A1AA;
@@ -37,10 +38,10 @@
     /* Palm Leaf */
     --mm-accent-hover: #FFFFFF;
     /* White on Hover */
-    --mm-border: #333333;
-    /* Dark Border */
-    --mm-card-bg: #111111;
-    --mm-hover-bg: rgba(255, 255, 255, 0.05);
+    --mm-border: rgba(255, 255, 255, 0.1);
+    /* Subtle White Border */
+    --mm-card-bg: rgba(17, 17, 17, 0.3);
+    --mm-hover-bg: rgba(255, 255, 255, 0.1);
     /* Dark Hover */
     --mm-placeholder-start: #111111;
     --mm-placeholder-end: #000000;
@@ -83,11 +84,16 @@
     width: 100%;
     background-color: var(--mm-bg);
     border-bottom: 1px solid var(--mm-border);
+    border-top: 1px solid var(--mm-border);
+    /* Added top border for definition */
     box-shadow: 0 20px 50px var(--mm-shadow);
     z-index: 9999;
     font-family: 'Inter', sans-serif;
     /* Ensure modern font */
     transition: background-color 0.3s ease, border-color 0.3s ease;
+    backdrop-filter: blur(24px);
+    /* Increased Blur (xl) */
+    -webkit-backdrop-filter: blur(24px);
 }
 
 .mega-menu-wrapper {
