@@ -69,11 +69,13 @@ const CATEGORY_CONTENT_MAP = {
 
 const MegaMenu = ({ activeMenu, isVisible, onMouseEnter, onMouseLeave }) => {
     const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
+    const [hoveredLink, setHoveredLink] = useState(null);
 
-    // Reset to first category whenever the main menu changes
+    // Reset state whenever the main menu changes
     useEffect(() => {
         if (isVisible) {
             setActiveCategoryIndex(0);
+            setHoveredLink(null);
         }
     }, [activeMenu, isVisible]);
 
@@ -87,8 +89,12 @@ const MegaMenu = ({ activeMenu, isVisible, onMouseEnter, onMouseLeave }) => {
     const activeCategoryTitle = activeCategoryData?.title;
     const content = CATEGORY_CONTENT_MAP[activeCategoryTitle];
 
-    // Fallback image if one isn't defined
-    const featuredImage = content?.image || '/images/scene_industrial.png';
+    // Determine what to show in the promo card
+    // Priority: Hovered Link Data > Active Category Content > Fallback
+    const displayImage = hoveredLink?.image || content?.image || '/images/scene_industrial.png';
+    const displayHeading = hoveredLink?.label || content?.heading || 'Market Leader';
+    const displayDesc = hoveredLink?.desc || content?.description || `Discover why MS Asia is the preferred partner for ${activeCategoryTitle || 'Industry'} solutions.`;
+    const displayButton = hoveredLink ? 'View Details' : (content?.buttonText || 'Learn More');
 
     return (
         <>
@@ -119,11 +125,14 @@ const MegaMenu = ({ activeMenu, isVisible, onMouseEnter, onMouseLeave }) => {
                                     <li
                                         key={index}
                                         className={`mm-category-item ${index === activeCategoryIndex ? 'active' : ''}`}
-                                        onMouseEnter={() => setActiveCategoryIndex(index)}
+                                        onMouseEnter={() => {
+                                            setActiveCategoryIndex(index);
+                                            setHoveredLink(null); // Reset link preview when switching categories
+                                        }}
                                     >
                                         <span className="mm-category-text">{column.title}</span>
                                         <svg className="mm-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 5l7 7-7 7" />
                                         </svg>
                                     </li>
                                 ))}
@@ -132,37 +141,46 @@ const MegaMenu = ({ activeMenu, isVisible, onMouseEnter, onMouseLeave }) => {
 
                         {/* COL 2: SUB-MENU (Links for Active Category) */}
                         <div className="mm-submenu">
-                            {/* Header removed as per request */}
-
                             <ul className="mm-link-list custom-scrollbar">
                                 {activeCategoryData?.items?.map((item, idx) => (
                                     <li key={idx}>
-                                        {/* Changed Link to a tag because react-router-dom is not installed */}
-                                        <a href="#" className="mm-link-item">
-                                            <span className="mm-link-icon">›</span>
-                                            {item}
+                                        {/* Dynamic Hover Interaction added here */}
+                                        <a
+                                            href="#"
+                                            className="mm-link-item group"
+                                            onMouseEnter={() => setHoveredLink(item)}
+                                            onMouseLeave={() => setHoveredLink(null)}
+                                        >
+                                            {/* Reverted to Clean Layout: Title + Arrow only */}
+                                            <span>{item.label}</span>
+                                            <svg className="mm-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 5l7 7-7 7" />
+                                            </svg>
                                         </a>
                                     </li>
                                 ))}
                             </ul>
                         </div>
 
-                        {/* COL 3: FEATURED CARD (Promo) */}
+                        {/* COL 3: FEATURED CARD (Promo / Dynamic Preview) */}
                         <div className="mm-promo">
                             <div className="mm-promo-card">
                                 <div className="featured-image-placeholder">
                                     <img
-                                        src={featuredImage}
-                                        alt={`${activeCategoryTitle} Featured Visual`}
-                                        className="w-full h-full object-cover"
+                                        src={displayImage}
+                                        alt="Featured Visual"
+                                        className="w-full h-full object-cover transition-opacity duration-300"
+                                        onError={(e) => { e.target.onerror = null; e.target.src = '/images/scene_industrial.png'; }}
                                     />
-                                    <span className="mm-promo-tag">Featured</span>
+                                    <span className="mm-promo-tag">
+                                        {hoveredLink ? 'Preview' : 'Featured'}
+                                    </span>
                                 </div>
                                 <div className="mm-promo-content">
-                                    <h3>{content?.heading || 'Market Leader'}</h3>
-                                    <p>{content?.description || `Discover why MS Asia is the preferred partner for ${activeCategoryTitle || 'Industry'} solutions.`}</p>
+                                    <h3>{displayHeading}</h3>
+                                    <p>{displayDesc}</p>
                                     <button className="mm-promo-btn">
-                                        {content?.buttonText || 'Learn More'}
+                                        {displayButton}
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                         </svg>

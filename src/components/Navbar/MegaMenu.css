@@ -130,7 +130,9 @@
 
 .mega-menu-grid {
     display: grid;
-    grid-template-columns: 20% 25% 55%;
+    grid-template-columns: 28% 32% 40%;
+    /* Adjusted: Wider Sidebar, Wide Submenu for long text, Remainder for Promo */
+    /* Adjusted: Wider Sidebar (25%), Same Middle (25%), Smaller Promo (50%) */
     /* Precise user requested widths */
     /* Fixed Sidebar, Flexible Content, Fixed Promo */
     height: 100%;
@@ -166,10 +168,10 @@
 }
 
 .mm-category-item {
-    padding: 8px 15px;
-    /* Compact padding */
-    margin-bottom: 2px;
-    /* Reduced margin */
+    padding: 8px;
+    /* Uniform 8px padding */
+    margin-bottom: 0px;
+    /* Removed margin */
     cursor: pointer;
     border-radius: 8px;
     display: flex;
@@ -177,7 +179,10 @@
     justify-content: space-between;
     transition: all 0.2s ease;
     border-left: 3px solid transparent;
-    color: var(--mm-text-main);
+    color: #000000 !important;
+    /* Z Black - Forced */
+    opacity: 1 !important;
+    /* Ensure no transparency */
 }
 
 .mm-category-item:hover {
@@ -189,17 +194,22 @@
     background-color: rgba(121, 152, 81, 0.15);
     /* Green opacity bg */
     border-left-color: var(--mm-accent);
-    color: var(--mm-accent);
+    color: var(--mm-accent) !important;
+    /* Protect Active Color */
 }
 
 .mm-category-text {
-    font-weight: 600;
-    font-size: 14px;
+    font-weight: 400;
+    /* Normal weight to match Links */
+    font-size: 16px;
+    /* Ensure 16px matches Links */
 }
 
 .mm-arrow-icon {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
+    color: var(--mm-accent);
+    stroke-width: 3px;
     opacity: 0;
     transform: translateX(-5px);
     transition: all 0.2s;
@@ -210,10 +220,19 @@
     transform: translateX(0);
 }
 
+/* --- COLUMN 1: SIDEBAR --- */
+.mm-sidebar {
+    background-color: var(--mm-sidebar-bg);
+    border-right: 1px solid var(--mm-border);
+    padding: 32px;
+    /* p-8 Uniform Padding */
+    overflow-y: auto;
+}
+
 /* --- COLUMN 2: SUB-MENU --- */
 .mm-submenu {
-    padding: 24px;
-    /* Consistent Padding */
+    padding: 32px;
+    /* p-8 Uniform Padding */
     overflow-y: hidden;
     display: flex;
     flex-direction: column;
@@ -250,32 +269,50 @@
 }
 
 .mm-link-item {
-    display: block;
-    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    /* Uniform 8px padding */
     color: var(--mm-text-main);
-    font-size: 15px;
+    font-size: 16px;
     text-decoration: none;
     transition: color 0.2s;
     border-bottom: none;
-    display: flex;
-    align-items: center;
     gap: 10px;
+    white-space: nowrap;
+    /* Force single line globally */
 }
 
 .mm-link-item:hover {
     color: var(--mm-accent);
     padding-left: 5px;
+    padding-right: 5px;
     text-decoration: none;
-    /* Ensure no underline */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .mm-link-icon {
     color: var(--mm-accent);
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 0;
-    margin-top: -2px;
+    width: 20px;
+    height: 20px;
+    /* Standardized 20px size */
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
 }
+
+/* Removed forceful stroke-width override to allow inline stroke-3 to work properly for both */
 
 /* --- COLUMN 3: PROMO CARD --- */
 .mm-promo {

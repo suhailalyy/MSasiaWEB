@@ -172,7 +172,7 @@ function NavbarPill({
                                         <a
                                             key={item}
                                             href={hasDropdown ? '#' : '/blog'}
-                                            className={`flex items-center gap-1 px-5 py-2 text-sm font-medium rounded-full transition-all duration-300 whitespace-nowrap no-underline hover:no-underline bg-transparent hover:bg-transparent ${isActive
+                                            className={`flex items-center gap-1 px-5 py-2 text-base font-medium rounded-full transition-all duration-300 whitespace-nowrap no-underline hover:no-underline bg-transparent hover:bg-transparent ${isActive
                                                 ? '!text-[#799851]'
                                                 : 'text-black hover:text-[#799851]'
                                                 }`}
