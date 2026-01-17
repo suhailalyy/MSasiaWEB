@@ -4146,3 +4146,49 @@ div.force-dark-text:hover {
     background-color: #000000 !important;
     /* Black on hover */
 }
+
+/* ================================================================
+   ===== SEARCH BAR FIX (PASTE AT THE VERY BOTTOM) =====
+   ================================================================ */
+
+/* 1. Remove border & outline from the Search Input specially */
+/* This !important forces it to ignore your other 4000 lines */
+div.absolute input[type="text"] {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    margin: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    height: 100% !important;
+}
+
+/* 2. Fix Focus State (When you click inside) */
+div.absolute input[type="text"]:focus {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    ring: 0 !important;
+}
+
+/* 3. Ensure the Search Container (White Box) looks correct */
+/* Targets the div directly inside the absolute wrapper */
+div.absolute>div.rounded-full {
+    border: 1px solid #e5e7eb !important;
+    /* Clean gray border */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+    /* Good shadow */
+    display: flex !important;
+    align-items: center !important;
+    padding: 0.5rem !important;
+    /* p-2 equivalent */
+}
+
+/* 4. Fix the Green Button Alignment */
+div.absolute button {
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}

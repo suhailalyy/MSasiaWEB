@@ -130,11 +130,9 @@
 
 .mega-menu-grid {
     display: grid;
-    grid-template-columns: 28% 32% 40%;
-    /* Adjusted: Wider Sidebar, Wide Submenu for long text, Remainder for Promo */
-    /* Adjusted: Wider Sidebar (25%), Same Middle (25%), Smaller Promo (50%) */
-    /* Precise user requested widths */
-    /* Fixed Sidebar, Flexible Content, Fixed Promo */
+    grid-template-columns: auto auto 1fr;
+    /* User requested: Sidebar (auto), Submenu (auto), Promo (1fr) */
+    /* This ensures tight text columns and a maximized image area */
     height: 100%;
 }
 
@@ -147,6 +145,8 @@
     display: flex;
     flex-direction: column;
     transition: background-color 0.3s ease, border-color 0.3s ease;
+    overflow-y: auto;
+    /* Consolidated from duplicate block */
 }
 
 .mm-section-title {
@@ -183,6 +183,8 @@
     /* Z Black - Forced */
     opacity: 1 !important;
     /* Ensure no transparency */
+    white-space: nowrap;
+    /* Ensure text doesn't wrap for auto-sizing */
 }
 
 .mm-category-item:hover {
@@ -220,14 +222,7 @@
     transform: translateX(0);
 }
 
-/* --- COLUMN 1: SIDEBAR --- */
-.mm-sidebar {
-    background-color: var(--mm-sidebar-bg);
-    border-right: 1px solid var(--mm-border);
-    padding: 32px;
-    /* p-8 Uniform Padding */
-    overflow-y: auto;
-}
+/* --- COLUMN 1: SIDEBAR (Consolidated above) --- */
 
 /* --- COLUMN 2: SUB-MENU --- */
 .mm-submenu {

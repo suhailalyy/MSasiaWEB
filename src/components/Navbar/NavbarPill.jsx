@@ -5,11 +5,6 @@ import { NAV_MENU_DATA } from './NavbarData';
 import MegaMenu from './MegaMenu';
 import './MegaMenu.css';
 
-
-
-
-
-
 function NavbarPill({
     isScrolled,
     isMobileScrolled,
@@ -49,27 +44,8 @@ function NavbarPill({
         }, 150);
     };
 
-    const handleCategoryEnter = (index) => {
-        if (closeTimeoutRef.current) {
-            clearTimeout(closeTimeoutRef.current);
-            closeTimeoutRef.current = null;
-        }
-        setActiveCategory(index);
-    };
-
-    const handleDropdownEnter = () => {
-        if (closeTimeoutRef.current) {
-            clearTimeout(closeTimeoutRef.current);
-            closeTimeoutRef.current = null;
-        }
-    };
-
     // Nav items configuration
     const dropdownItems = ['What We Do', 'Industries We Serve', 'Company'];
-
-    // Get current menu data
-    const currentMenuData = activeMenu ? NAV_MENU_DATA[activeMenu] : null;
-    const isCompanyMenu = activeMenu === 'Company';
 
     return (
         <>
@@ -115,40 +91,12 @@ function NavbarPill({
                     {/* CENTER: Navigation Pill */}
                     <nav
                         id="navbar-pill-desktop"
-                        className={`absolute left-1/2 -translate-x-1/2 flex items-center ${isSearchExpanded ? 'gap-2 w-[600px] justify-between pl-3 pr-2' : 'gap-1'
-                            } rounded-full backdrop-blur-xl border border-white/20 shadow-sm transition-all duration-300 h-[72px] px-4`}
-                        style={{
-                            backgroundColor: 'rgba(255, 255, 255, 0.4)'
-                        }}
+                        className={`absolute left-1/2 -translate-x-1/2 flex items-center rounded-full backdrop-blur-xl border border-white/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] h-[72px] transition-all duration-300 ${isSearchExpanded
+                            ? 'w-[550px] bg-white p-2 justify-between'
+                            : 'w-auto px-4 gap-1 bg-white/40'
+                            }`}
                     >
-                        {isSearchExpanded ? (
-                            /* ===== SEARCH MODE ===== */
-                            <>
-                                <div className="flex items-center justify-center h-full pl-2">
-                                    <svg className="w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                    </svg>
-                                </div>
-                                <input
-                                    autoFocus
-                                    type="text"
-                                    placeholder="Search Website..."
-                                    className="flex-1 bg-transparent !border-none !outline-none !shadow-none !ring-0 text-gray-700 placeholder-gray-400 text-base font-medium w-full mx-3"
-                                    style={{ border: 'none', outline: 'none', boxShadow: 'none', padding: 0, lineHeight: 'normal' }}
-                                />
-                                <button
-                                    onClick={toggleSearch}
-                                    className="flex-shrink-0 w-8 h-8 min-w-[32px] min-h-[32px] flex items-center justify-center rounded-full bg-[#47622A] text-white hover:bg-[#374426] transition-all duration-200 shadow-md transform hover:scale-105"
-                                    type="button"
-                                    aria-label="Close search"
-                                >
-                                    <svg className="w-4 h-4 block" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ display: 'block' }}>
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </button>
-                            </>
-                        ) : (
-                            /* ===== MENU MODE ===== */
+                        {!isSearchExpanded ? (
                             <>
                                 {/* Internal Logo on scroll */}
                                 <a
@@ -163,7 +111,7 @@ function NavbarPill({
                                     </div>
                                 </a>
 
-                                {/* NAV ITEMS - No dropdown inside, just triggers */}
+                                {/* NAV ITEMS */}
                                 {['What We Do', 'Industries We Serve', 'Company', 'Blog'].map((item) => {
                                     const hasDropdown = dropdownItems.includes(item);
                                     const isActive = activeMenu === item;
@@ -183,24 +131,30 @@ function NavbarPill({
                                             {item}
                                             {hasDropdown && (
                                                 <svg
-                                                    className={`w-3.5 h-3.5 transition-transform duration-200 ${isActive ? 'rotate-180' : ''}`}
+                                                    className={`w-4 h-4 transition-transform duration-200 ${isActive ? 'rotate-180' : ''}`}
                                                     fill="none"
                                                     stroke="currentColor"
                                                     viewBox="0 0 24 24"
                                                 >
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 9l-7 7-7-7" />
                                                 </svg>
                                             )}
                                         </a>
                                     );
                                 })}
 
-                                {/* Search Icon */}
+                                {/* Vertical Divider */}
+                                <div className="h-5 w-[1.5px] bg-gray-300 mx-3"></div>
+
+                                {/* === SEARCH TRIGGER ICON (FIXED PLACEMENT) === */}
+                                {/* === SEARCH TRIGGER ICON (FIXED PLACEMENT) === */}
                                 <button
                                     onClick={toggleSearch}
-                                    className="flex items-center justify-center p-1 bg-transparent hover:bg-transparent text-gray-400 hover:text-gray-600 transition-colors border-none outline-none shadow-none"
+                                    className="mr-3 text-gray-500 hover:text-gray-800 transition-colors outline-none !bg-transparent !p-0 !border-none !shadow-none hover:!bg-transparent focus:!bg-transparent"
+                                    style={{ backgroundColor: 'transparent', boxShadow: 'none' }}
+                                    aria-label="Open Search"
                                 >
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                     </svg>
                                 </button>
@@ -208,26 +162,56 @@ function NavbarPill({
                                 {/* Internal Contact on scroll */}
                                 <a
                                     href="#contact"
-                                    className={`flex items-center gap-1.5 bg-[#47622A] hover:bg-[#374426] text-white rounded-full text-sm font-medium transition-all duration-300 overflow-hidden ${isScrolled ? 'px-4 py-2 opacity-100 ml-1' : 'w-0 px-0 py-2 opacity-0 ml-0'
+                                    className={`flex items-center gap-1.5 bg-[#47622A] text-white border border-transparent hover:bg-white hover:text-[#47622A] hover:border-[#47622A] rounded-full text-sm font-medium transition-all duration-300 overflow-hidden no-underline hover:no-underline ${isScrolled ? 'px-4 py-2 opacity-100 ml-1' : 'w-0 px-0 py-2 opacity-0 ml-0'
                                         }`}
                                 >
                                     <span className="whitespace-nowrap">Contact Us</span>
                                 </a>
                             </>
+                        ) : (
+                            <>
+                                {/* === IN-PLACE SEARCH UI === */}
+
+                                {/* LEFT: Search Icon (No Green Background) */}
+                                <div className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-transparent text-gray-500 animate-fadeIn ml-1">
+                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                    </svg>
+                                </div>
+
+                                {/* MIDDLE: Input Field (No Borders) */}
+                                <div className="flex-1 h-full flex items-center justify-center">
+                                    <input
+                                        type="text"
+                                        placeholder="Search..."
+                                        className="w-full bg-transparent text-lg text-left text-gray-700 outline-none border-none ring-0 focus:ring-0 placeholder:text-gray-400 mt-1 pt-1 mb-1 pb-0 pl-2"
+                                        autoFocus
+                                    />
+                                </div>
+
+                                {/* RIGHT: Close Button */}
+                                <button
+                                    onClick={toggleSearch}
+                                    style={{ backgroundColor: 'transparent', boxShadow: 'none', border: 'none' }}
+                                    className="mr-2 !bg-transparent !shadow-none !border-none !outline-none text-gray-400 hover:text-red-500 transition-colors animate-fadeIn"
+                                >
+                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </>
                         )}
                     </nav>
 
                     {/* RIGHT: External Contact Button */}
-                    <div className={`flex items-center gap-3 transition-all duration-300 mr-16 ${isScrolled && !isSearchExpanded
-                        ? 'opacity-0 translate-x-4'
-                        : !isSearchExpanded
-                            ? 'opacity-100 translate-x-0'
-                            : 'opacity-0 translate-x-4 pointer-events-none'
+                    <div className={`flex items-center gap-3 transition-all duration-300 mr-16 ${isScrolled
+                        ? 'opacity-0 translate-x-4 pointer-events-none'
+                        : 'opacity-100 translate-x-0'
                         }`}>
                         <a
                             href="#contact"
                             id="external-contact"
-                            className="flex items-center bg-[#47622A] hover:bg-[#374426] text-white rounded-full px-5 py-2.5 text-sm font-medium shadow-md transition-all"
+                            className="flex items-center bg-[#47622A] text-white border border-transparent hover:bg-white hover:text-[#47622A] hover:border-[#47622A] rounded-full px-5 py-2.5 text-sm font-medium shadow-md transition-all no-underline hover:no-underline"
                         >
                             Contact Us
                         </a>
@@ -251,7 +235,7 @@ function NavbarPill({
                 document.body
             )}
 
-            {/* ===== MOBILE NAVBAR ===== */}
+            {/* ===== MOBILE NAVBAR (UNCHANGED) ===== */}
             <header
                 className="flex md:hidden fixed top-0 left-0 w-full z-40 pointer-events-none"
                 style={{ background: 'transparent', boxShadow: 'none' }}
@@ -259,10 +243,12 @@ function NavbarPill({
                 <div className="w-full flex items-center justify-center py-3 px-4">
                     <nav
                         id="navbar-pill-mobile"
-                        className="pointer-events-auto flex items-center gap-2 rounded-full backdrop-blur-md border border-gray-200/40 shadow-sm"
+                        className="pointer-events-auto flex items-center gap-2 rounded-full backdrop-blur-md"
                         style={{
                             padding: '6px 10px',
-                            backgroundColor: 'rgba(255, 255, 255, 0.7)'
+                            backgroundColor: 'rgba(255, 255, 255, 0.7)',
+                            boxShadow: '0 8px 30px rgb(0,0,0,0.04)',
+                            border: '1px solid rgba(255, 255, 255, 0.2)'
                         }}
                     >
                         {/* Mobile Logo */}
@@ -312,6 +298,7 @@ function NavbarPill({
                     </nav>
                 </div>
             </header>
+
             {/* ===== MOBILE MENU OVERLAY ===== */}
             {isMobileMenuOpen && ReactDOM.createPortal(
                 <div className="fixed inset-0 z-[99999] bg-[#0f141f] text-white overflow-y-auto animate-fadeIn">
