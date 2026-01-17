@@ -1,6 +1,7 @@
 /* --- VARIABLES --- */
 :root {
-    --mm-bg: rgba(255, 255, 255, 0.4);
+    --mm-bg: #ffffff;
+    /* Pure White */
     /* Deep Glass White */
     --mm-sidebar-bg: transparent;
     /* Transparent for seamless glass */
@@ -89,6 +90,8 @@
     box-shadow: 0 20px 50px var(--mm-shadow);
     z-index: 9999;
     font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    /* Prevent unwanted bottom scrollbar */
     /* Ensure modern font */
     transition: background-color 0.3s ease, border-color 0.3s ease;
     backdrop-filter: blur(24px);
@@ -111,7 +114,7 @@
     width: 100vw;
     height: 100vh;
     backdrop-filter: blur(8px);
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: transparent;
     z-index: 9997;
     animation: fadeIn 0.3s ease-out forwards;
     pointer-events: none;
@@ -130,9 +133,8 @@
 
 .mega-menu-grid {
     display: grid;
-    grid-template-columns: auto auto 1fr;
-    /* User requested: Sidebar (auto), Submenu (auto), Promo (1fr) */
-    /* This ensures tight text columns and a maximized image area */
+    grid-template-columns: 260px 420px 1fr;
+    /* Increased middle column to 420px to fit long text, reducing promo space */
     height: 100%;
 }
 
@@ -260,7 +262,8 @@
     overflow-y: auto;
     padding-right: 10px;
     /* Space for scrollbar */
-    /* Reverted to single column per user request */
+    overflow-x: hidden;
+    /* User request: "niche scroll bar nahi chahiye" */
 }
 
 .mm-link-item {
@@ -281,8 +284,8 @@
 
 .mm-link-item:hover {
     color: var(--mm-accent);
-    padding-left: 5px;
-    padding-right: 5px;
+    transform: translateX(5px);
+    /* Use transform instead of padding to prevent layout shift */
     text-decoration: none;
 }
 

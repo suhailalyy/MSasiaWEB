@@ -17,6 +17,8 @@ function NavbarPill({
 }) {
     // Mega Menu State
     const [activeMenu, setActiveMenu] = useState(null);
+    const [isInternalHovered, setIsInternalHovered] = useState(false);
+    const [isExternalHovered, setIsExternalHovered] = useState(false);
     const [activeCategory, setActiveCategory] = useState(null);
     const [menuLeft, setMenuLeft] = useState(0); // Dynamic center position
     const closeTimeoutRef = useRef(null);
@@ -49,32 +51,18 @@ function NavbarPill({
 
     return (
         <>
-            {/* ===== FIXED THEME TOGGLE (GLOBAL) ===== */}
-            <button
-                onClick={toggleTheme}
-                className="fixed top-6 right-5 z-[1000001] p-2.5 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-md border border-gray-200/50 dark:border-gray-700 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group"
-                aria-label="Toggle Dark Mode"
-            >
-                {isDark ? (
-                    <svg className="w-5 h-5 text-yellow-500 group-hover:rotate-90 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
-                ) : (
-                    <svg className="w-5 h-5 text-gray-700 dark:text-gray-200 group-hover:-rotate-90 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                    </svg>
-                )}
-            </button>
+            {/* ===== FIXED THEME TOGGLE (MOVED INSIDE HEADER) ===== */}
 
             {/* ===== DESKTOP NAVBAR ===== */}
             <header className="hidden md:block fixed top-5 left-0 w-full z-[1000000]">
-                <div className="w-full relative flex items-center justify-between py-2 px-8">
+                <div className="w-full relative flex items-center justify-between px-8 h-[72px]">
 
                     {/* LEFT: External Logo */}
                     <a
                         href="/"
                         id="external-logo"
-                        className={`flex items-center transition-all duration-300 -translate-y-0.5 ${isScrolled && !isSearchExpanded
+                        style={{ position: 'relative', top: '-8px' }}
+                        className={`flex items-center transition-all duration-300 ${isScrolled && !isSearchExpanded
                             ? 'opacity-0 -translate-x-4'
                             : !isSearchExpanded
                                 ? 'opacity-100 translate-x-0'
@@ -91,7 +79,7 @@ function NavbarPill({
                     {/* CENTER: Navigation Pill */}
                     <nav
                         id="navbar-pill-desktop"
-                        className={`absolute left-1/2 -translate-x-1/2 flex items-center rounded-full backdrop-blur-xl border border-white/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] h-[72px] transition-all duration-300 ${isSearchExpanded
+                        className={`absolute left-1/2 -translate-x-1/2 flex items-center rounded-full backdrop-blur-xl h-[72px] transition-all duration-300 ${isSearchExpanded
                             ? 'w-[550px] bg-white p-2 justify-between'
                             : 'w-auto px-4 gap-1 bg-white/40'
                             }`}
@@ -154,7 +142,7 @@ function NavbarPill({
                                     style={{ backgroundColor: 'transparent', boxShadow: 'none' }}
                                     aria-label="Open Search"
                                 >
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                     </svg>
                                 </button>
@@ -162,10 +150,17 @@ function NavbarPill({
                                 {/* Internal Contact on scroll */}
                                 <a
                                     href="#contact"
-                                    className={`flex items-center gap-1.5 bg-[#47622A] text-white border border-transparent hover:bg-white hover:text-[#47622A] hover:border-[#47622A] rounded-full text-sm font-medium transition-all duration-300 overflow-hidden no-underline hover:no-underline ${isScrolled ? 'px-4 py-2 opacity-100 ml-1' : 'w-0 px-0 py-2 opacity-0 ml-0'
+                                    onMouseEnter={() => setIsInternalHovered(true)}
+                                    onMouseLeave={() => setIsInternalHovered(false)}
+                                    style={{
+                                        backgroundColor: isInternalHovered ? '#ffffff' : '#47622A',
+                                        color: isInternalHovered ? '#47622A' : '#ffffff',
+                                        borderColor: isInternalHovered ? '#47622A' : 'transparent'
+                                    }}
+                                    className={`flex items-center justify-center gap-1.5 border hover:border-[#47622A] rounded-full text-sm font-medium transition-all duration-300 overflow-hidden no-underline hover:no-underline box-border ${isScrolled ? 'px-4 h-10 w-auto opacity-100 ml-1' : 'w-0 px-0 h-10 opacity-0 ml-0 overflow-hidden'
                                         }`}
                                 >
-                                    <span className="whitespace-nowrap">Contact Us</span>
+                                    <span className="whitespace-nowrap" style={{ color: isInternalHovered ? '#47622A' : '#ffffff' }}>Contact Us</span>
                                 </a>
                             </>
                         ) : (
@@ -203,18 +198,46 @@ function NavbarPill({
                         )}
                     </nav>
 
-                    {/* RIGHT: External Contact Button */}
-                    <div className={`flex items-center gap-3 transition-all duration-300 mr-16 ${isScrolled
-                        ? 'opacity-0 translate-x-4 pointer-events-none'
-                        : 'opacity-100 translate-x-0'
-                        }`}>
-                        <a
-                            href="#contact"
-                            id="external-contact"
-                            className="flex items-center bg-[#47622A] text-white border border-transparent hover:bg-white hover:text-[#47622A] hover:border-[#47622A] rounded-full px-5 py-2.5 text-sm font-medium shadow-md transition-all no-underline hover:no-underline"
+                    {/* RIGHT: External Contact Button & Theme Toggle */}
+                    <div className="flex items-center gap-4">
+                        {/* External Contact (Fades on Scroll) */}
+                        <div className={`transition-all duration-300 ${isScrolled
+                            ? 'opacity-0 translate-x-4 pointer-events-none'
+                            : 'opacity-100 translate-x-0'
+                            }`}>
+                            <a
+                                href="#contact"
+                                id="external-contact"
+                                id="external-contact"
+                                onMouseEnter={() => setIsExternalHovered(true)}
+                                onMouseLeave={() => setIsExternalHovered(false)}
+                                style={{
+                                    backgroundColor: isExternalHovered ? '#ffffff' : '#47622A',
+                                    color: isExternalHovered ? '#47622A' : '#ffffff',
+                                    borderColor: isExternalHovered ? '#47622A' : 'transparent'
+                                }}
+                                className="flex items-center justify-center border hover:border-[#47622A] rounded-full px-5 h-10 text-sm font-medium shadow-md transition-all no-underline hover:no-underline box-border"
+                            >
+                                <span style={{ color: isExternalHovered ? '#47622A' : '#ffffff' }}>Contact Us</span>
+                            </a>
+                        </div>
+
+                        {/* Theme Toggle (Always Visible) */}
+                        <button
+                            onClick={toggleTheme}
+                            className="w-10 h-10 flex items-center justify-center rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-md border border-gray-200/50 dark:border-gray-700 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group p-0"
+                            aria-label="Toggle Dark Mode"
                         >
-                            Contact Us
-                        </a>
+                            {isDark ? (
+                                <svg className="w-5 h-5 text-yellow-500 group-hover:rotate-90 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                                </svg>
+                            ) : (
+                                <svg className="w-5 h-5 text-gray-700 dark:text-gray-200 group-hover:-rotate-90 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                                </svg>
+                            )}
+                        </button>
                     </div>
                 </div>
             </header>
