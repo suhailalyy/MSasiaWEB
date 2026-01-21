@@ -142,8 +142,8 @@
 .mm-sidebar {
     background-color: var(--mm-sidebar-bg);
     border-right: 1px solid var(--mm-border);
-    padding: 24px;
-    /* Consistent Padding */
+    padding: 16px;
+    /* Standardized 16px Padding */
     display: flex;
     flex-direction: column;
     transition: background-color 0.3s ease, border-color 0.3s ease;
@@ -157,7 +157,7 @@
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--mm-text-muted);
-    padding: 0 25px;
+    padding: 0 16px;
     margin-bottom: 15px;
 }
 
@@ -228,8 +228,8 @@
 
 /* --- COLUMN 2: SUB-MENU --- */
 .mm-submenu {
-    padding: 32px;
-    /* p-8 Uniform Padding */
+    padding: 16px;
+    /* Standardized 16px Padding */
     overflow-y: hidden;
     display: flex;
     flex-direction: column;
@@ -314,8 +314,8 @@
 
 /* --- COLUMN 3: PROMO CARD --- */
 .mm-promo {
-    padding: 24px;
-    /* Consistent Padding */
+    padding: 16px;
+    /* Standardized 16px Padding */
     background: radial-gradient(circle at top right, rgba(121, 152, 81, 0.1), transparent 70%);
     display: flex;
     align-items: flex-start;
@@ -372,8 +372,8 @@
 }
 
 .mm-promo-content {
-    padding: 25px 20px 20px 20px;
-    /* Increased top padding */
+    padding: 16px;
+    /* Standardized 16px Padding */
     flex: 1;
     /* Allow content to grow/fill space */
     display: flex;
