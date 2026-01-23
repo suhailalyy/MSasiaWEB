@@ -14,8 +14,18 @@ function IndustrialHero() {
     ]
 
     return (
-        <section className="industrial-hero">
-            <div className="industrial-hero-container">
+        /* CHANGE: Added Tailwind responsive padding classes with '!' to override CSS.
+           - !px-4 sm:!px-6 lg:!px-8 : Matches the video's responsive horizontal spacing.
+           - !pt-32 etc : Controls top padding responsively (Mobile vs Laptop).
+           - preserved 'industrial-hero' class to keep your Background Color intact.
+        */
+        <section className="industrial-hero !px-4 sm:!px-6 lg:!px-8 !pt-28 !pb-0 sm:!pt-36 sm:!pb-0 lg:!pt-44 lg:!pb-0 relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-white dark:from-gray-900 dark:via-gray-950 dark:to-black">
+            {/* Ambient Background Glow for Glass Effect Visibility */}
+            <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-br from-[#799851]/10 via-transparent to-transparent pointer-events-none dark:opacity-20" />
+
+            {/* Added max-w-7xl and mx-auto to center content professionally on large screens */}
+            <div className="industrial-hero-container max-w-7xl mx-auto w-full">
+
                 {/* LEFT CONTENT (60%) */}
                 <div className="industrial-hero-content">
                     {/* New Pill Badge */}
@@ -61,7 +71,7 @@ function IndustrialHero() {
             </div>
 
             {/* Logo Loop Section - Trusted Partners */}
-            <div className="industrial-hero-logos">
+            <div className="industrial-hero-logos mt-12 sm:mt-16">
                 <p className="text-center text-sm text-brand-text-muted mb-6 font-medium tracking-wide uppercase">
                     Trusted By Industry Leaders & Certified Partners
                 </p>
@@ -81,4 +91,3 @@ function IndustrialHero() {
 }
 
 export default IndustrialHero
-

@@ -1,8 +1,7 @@
 /* --- VARIABLES --- */
 :root {
-    --mm-bg: #ffffff;
-    /* Pure White */
-    /* Deep Glass White */
+    --mm-bg: rgba(255, 255, 255, 0.6);
+    /* Lighter, cleaner glass */
     --mm-sidebar-bg: transparent;
     /* Transparent for seamless glass */
     --mm-text-main: #111111;
@@ -13,15 +12,16 @@
     /* Palm Leaf */
     --mm-accent-hover: #111111;
     /* Dark on Hover */
-    --mm-border: rgba(255, 255, 255, 0.2);
-    /* Subtle White Border */
+    --mm-border: rgba(255, 255, 255, 0.65);
+    /* Crisper White Border */
     --mm-card-bg: rgba(255, 255, 255, 0.3);
-    /* Less opaque card */
-    --mm-hover-bg: rgba(243, 244, 246, 0.4);
-    /* Very light hover */
+    /* Glass card */
+    --mm-hover-bg: rgba(255, 255, 255, 0.4);
+    /* High contrast hover */
     --mm-placeholder-start: #F3F4F6;
     --mm-placeholder-end: #E5E7EB;
     --mm-shadow: rgba(0, 0, 0, 0.1);
+    --mm-glass-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
 
 /* Dark Mode Overrides */
@@ -79,30 +79,29 @@
 
 .mega-menu-container {
     position: fixed;
-    top: 90px;
+    top: 105px;
     /* Adjust based on navbar height */
     left: 0;
     width: 100%;
     background-color: var(--mm-bg);
     border-bottom: 1px solid var(--mm-border);
-    border-top: 1px solid var(--mm-border);
-    /* Added top border for definition */
-    box-shadow: 0 20px 50px var(--mm-shadow);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    /* Frosted top edge */
+    box-shadow: var(--mm-glass-shadow), 0 20px 50px var(--mm-shadow);
     z-index: 9999;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
     /* Prevent unwanted bottom scrollbar */
-    /* Ensure modern font */
     transition: background-color 0.3s ease, border-color 0.3s ease;
-    backdrop-filter: blur(24px);
-    /* Increased Blur (xl) */
-    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(40px) saturate(200%) contrast(1.05);
+    /* Extremely strong blur for premium feel */
+    -webkit-backdrop-filter: blur(40px) saturate(200%) contrast(1.05);
 }
 
 .mega-menu-wrapper {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0;
+    padding: 12px 0 0 0;
     height: 500px;
     /* Fixed height for consistency */
 }
@@ -260,8 +259,6 @@
     padding: 0;
     margin: 0;
     overflow-y: auto;
-    padding-right: 10px;
-    /* Space for scrollbar */
     overflow-x: hidden;
     /* User request: "niche scroll bar nahi chahiye" */
 }
