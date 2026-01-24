@@ -47,8 +47,9 @@ function NavbarPill({
     return (
         <>
             {/* ===== DESKTOP NAVBAR ===== */}
-            <header className="hidden md:block fixed top-5 left-0 w-full z-[1000000]">
-                {/* Responsive Padding & Height: px-4 -> sm:px-6 -> lg:px-8 */}
+            <header className="hidden md:block fixed top-5 left-0 w-full z-[1000000] [&_*]:!border-0 [&_*]:!shadow-none [&_*]:!outline-none [&_*]:!ring-0">
+
+                {/* Inner Div */}
                 <div className="w-full relative flex items-center justify-between px-4 md:px-6 h-[56px] md:h-[64px] lg:h-[80px]">
 
                     {/* LEFT: External Logo */}
@@ -56,14 +57,14 @@ function NavbarPill({
                         href="/"
                         id="external-logo"
                         className={`flex items-center self-center transition-all duration-300 ${isScrolled && !isSearchExpanded
-                            ? 'opacity-0 -translate-x-4'
+                            ? 'opacity-0 -translate-x-4 pointer-events-none'
                             : !isSearchExpanded
                                 ? 'opacity-100 translate-x-0'
                                 : 'opacity-0 -translate-x-4 pointer-events-none'
                             }`}
                     >
                         {/* Logo Scales on Large Screens (lg:w-12) */}
-                        <div className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-xl bg-gradient-to-tr from-[#47622A] to-[#799851] flex items-center justify-center flex-shrink-0 shadow-sm -mt-3">
+                        <div className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-xl bg-gradient-to-tr from-[#47622A] to-[#799851] flex items-center justify-center flex-shrink-0 shadow-sm -mt-[16px]">
                             <svg className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.76 0 3.41-.46 4.84-1.26C14.08 19.2 12 16.79 12 14c0-3.31 2.69-6 6-6 .68 0 1.34.11 1.95.32C18.46 4.93 15.48 2 12 2z" />
                             </svg>
@@ -78,11 +79,12 @@ function NavbarPill({
                             : 'w-auto px-2 md:px-3 lg:px-6 gap-0.5 md:gap-1 lg:gap-2'
                             }`}
                         style={{
-                            background: 'rgba(255, 255, 255, 0.15)', /* More transparent */
-                            backdropFilter: 'blur(30px) saturate(200%) contrast(1.1)', /* Heavier blur & pop */
+                            background: 'transparent', /* Fully transparent - no visible edge */
+                            backdropFilter: 'blur(30px) saturate(200%) contrast(1.1)', /* Keep blur effect */
                             WebkitBackdropFilter: 'blur(30px) saturate(200%) contrast(1.1)',
-                            border: '1px solid rgba(255, 255, 255, 0.5)', /* Crisper border */
-                            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.3)'
+                            border: '0', /* No border */
+                            outline: 'none', /* No outline */
+                            boxShadow: 'none' /* No shadow */
                         }}
                     >
                         {!isSearchExpanded ? (
@@ -132,16 +134,14 @@ function NavbarPill({
                                     );
                                 })}
 
-                                {/* Vertical Divider */}
-                                <div className="h-4 md:h-5 lg:h-6 w-[1px] md:w-[1.5px] bg-gray-300/50 mx-1 md:mx-2 lg:mx-4"></div>
-
                                 {/* SEARCH TRIGGER ICON */}
                                 <button
                                     onClick={toggleSearch}
                                     className="p-1 text-gray-500 hover:text-gray-800 transition-colors outline-none !bg-transparent !border-none !shadow-none hover:!bg-transparent"
+                                    style={{ transform: 'none' }}
                                     aria-label="Open Search"
                                 >
-                                    <svg className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                    <svg className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" style={{ transform: 'none' }}>
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                     </svg>
                                 </button>

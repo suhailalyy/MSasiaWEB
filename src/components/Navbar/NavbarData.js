@@ -72,48 +72,32 @@ export const NAV_MENU_DATA = {
                 description: "Healthcare waste management solutions",
                 items: [
                     { label: "Clinics & Urgent Care Centers", desc: "Flexible pickup schedules and compliance support for outpatient clinics and urgent care facilities.", image: genericDesc },
-                    { label: "Dental Clinics", desc: "Safe disposal of sharps, amalgam, and hazardous dental waste in compliance with environmental laws.", image: genericDesc },
-                    { label: "Dialysis Centers", desc: "Specialized handling of biohazardous waste and sharps generated in dialysis treatment centers.", image: genericDesc },
-                    { label: "Enterprise Healthcare", desc: genericDesc },
-                    { label: "Home Health Organizations", desc: genericDesc },
                     { label: "Hospitals & Health Systems", desc: "Comprehensive waste management streams tailored for large-scale medical facilities and hospitals.", image: genericDesc },
-                    { label: "National & Corporate Healthcare", desc: genericDesc },
-                    { label: "Non-Acute Hospital Affiliates", desc: genericDesc },
-                    { label: "Nursing & Long-Term Care Facilities", desc: genericDesc },
-                    { label: "Physician Offices", desc: genericDesc },
-                    { label: "Practices & Care Providers", desc: genericDesc },
-                    { label: "Surgery Centers", desc: genericDesc },
-                    { label: "Veterinary Clinics & Hospitals", desc: genericDesc }
+                    { label: "Nursing & Long-Term Care Facilities", desc: "Specialized waste services for nursing homes and extended care centers.", image: genericDesc },
+                    { label: "Dental & Veterinary Clinics", desc: "Safe disposal of sharps, amalgam, and hazardous dental/veterinary waste.", image: genericDesc },
+                    { label: "Dialysis & Surgery Centers", desc: "Specialized handling of biohazardous waste and sharps from treatment centers.", image: genericDesc }
                 ]
             },
             {
-                title: "Pharmacy, Labs & Research",
-                description: "Pharma and lab waste disposal",
+                title: "Industrial & Public",
+                description: "Industrial and public sector waste solutions",
                 items: [
-                    { label: "Blood Banks", desc: "Strictly regulated disposal services for biological waste and expired blood products ensuring total safety.", image: genericDesc },
-                    { label: "Compounding Pharmacies", desc: genericDesc },
-                    { label: "Laboratory & Research Organizations", desc: "Expert management of chemical, pathological, and microbiological waste for research and diagnostic labs.", image: genericDesc },
-                    { label: "Retail Pharmacies", desc: genericDesc }
+                    { label: "Airports & Seaports", desc: "Waste management solutions for transportation hubs and logistics centers.", image: genericDesc },
+                    { label: "Chemical & Manufacturing", desc: "Safe handling of industrial chemicals and manufacturing byproducts.", image: genericDesc },
+                    { label: "Government & Military", desc: "Compliant waste disposal services for government agencies and defense facilities.", image: genericDesc },
+                    { label: "Railroad & Transportation", desc: "Specialized waste services for rail and transportation infrastructure.", image: genericDesc },
+                    { label: "Utilities & Energy", desc: "Waste management for power generation and utility companies.", image: genericDesc }
                 ]
             },
             {
                 title: "Other Industries",
                 description: "Industry-specific waste solutions",
                 items: [
-                    { label: "Airports & Seaports", desc: genericDesc },
-                    { label: "Chemical & Specialty Chemical", desc: genericDesc },
-                    { label: "Education / Educational Institutions", desc: genericDesc },
-                    { label: "Energy", desc: genericDesc },
-                    { label: "Engineering & Consulting", desc: genericDesc },
-                    { label: "General Manufacturing", desc: genericDesc },
-                    { label: "Government & Military", desc: genericDesc },
-                    { label: "Pharmaceutical & Biotechnology", desc: genericDesc },
-                    { label: "Railroad Services", desc: genericDesc },
-                    { label: "Refinery", desc: genericDesc },
-                    { label: "Small Businesses", desc: genericDesc },
-                    { label: "Steel & Primary Metals", desc: genericDesc },
-                    { label: "Transportation", desc: genericDesc },
-                    { label: "Utilities", desc: genericDesc }
+                    { label: "Education & Research", desc: "Waste solutions for schools, universities, and research institutions.", image: genericDesc },
+                    { label: "Pharmaceutical & Biotechnology", desc: "Compliant disposal of pharmaceutical and biotech waste.", image: genericDesc },
+                    { label: "Retail & Commercial", desc: "Waste management for retail stores and commercial establishments.", image: genericDesc },
+                    { label: "Small Businesses", desc: "Affordable waste solutions tailored for small business needs.", image: genericDesc },
+                    { label: "Labs & Blood Banks", desc: "Expert management of laboratory and biological waste.", image: genericDesc }
                 ]
             }
         ]
