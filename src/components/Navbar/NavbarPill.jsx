@@ -16,11 +16,21 @@ function NavbarPill({
 }) {
     // Mega Menu State
     const [activeMenu, setActiveMenu] = useState(null);
+    const [mobileActiveL1, setMobileActiveL1] = useState(null); // Isolated Mobile L1 State
+    const [activeSubMenu, setActiveSubMenu] = useState(null); // Level 2 Accordion State
     const [isInternalHovered, setIsInternalHovered] = useState(false);
     const [isExternalHovered, setIsExternalHovered] = useState(false);
     const [activeCategory, setActiveCategory] = useState(null);
     const [menuLeft, setMenuLeft] = useState(0);
     const closeTimeoutRef = useRef(null);
+
+    // Smooth Scroll to Top for Logo
+    const handleHomeClick = (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Close mobile menu if it's open
+        if (isMobileMenuOpen) toggleMobileMenu();
+    };
 
     const handleMenuEnter = (e, menuName) => {
         if (closeTimeoutRef.current) {
@@ -79,12 +89,12 @@ function NavbarPill({
                             : 'w-auto px-2 md:px-3 lg:px-6 gap-0.5 md:gap-1 lg:gap-2'
                             }`}
                         style={{
-                            background: 'transparent', /* Fully transparent - no visible edge */
-                            backdropFilter: 'blur(30px) saturate(200%) contrast(1.1)', /* Keep blur effect */
-                            WebkitBackdropFilter: 'blur(30px) saturate(200%) contrast(1.1)',
-                            border: '0', /* No border */
-                            outline: 'none', /* No outline */
-                            boxShadow: 'none' /* No shadow */
+                            background: isScrolled ? 'rgba(255, 255, 255, 0.05)' : 'transparent',
+                            backdropFilter: isScrolled ? 'blur(30px) saturate(200%) contrast(1.1)' : 'none',
+                            WebkitBackdropFilter: isScrolled ? 'blur(30px) saturate(200%) contrast(1.1)' : 'none',
+                            border: 'none',
+                            outline: 'none',
+                            boxShadow: isScrolled ? '0 4px 30px rgba(0, 0, 0, 0.02)' : 'none'
                         }}
                     >
                         {!isSearchExpanded ? (
@@ -257,64 +267,90 @@ function NavbarPill({
 
             {/* ===== MOBILE NAVBAR (UNCHANGED BUT RESPONSIVE) ===== */}
             <header
-                className="flex md:hidden fixed top-0 left-0 w-full z-40 pointer-events-none"
+                className="flex md:hidden fixed top-0 left-0 w-full z-40 pointer-events-none transition-all duration-300"
                 style={{ background: 'transparent', boxShadow: 'none' }}
             >
-                <div className="w-full flex items-center justify-center py-2 sm:py-3 px-3 sm:px-4">
+                <div className="w-full flex items-center justify-center py-2 sm:py-3 px-2 transition-all duration-300">
                     <nav
                         id="navbar-pill-mobile"
-                        className="pointer-events-auto flex items-center gap-2 rounded-full backdrop-blur-md"
+                        className="pointer-events-auto flex items-center justify-between gap-2 rounded-full backdrop-blur-xl transition-all duration-300"
                         style={{
-                            padding: '6px 10px',
-                            backgroundColor: 'rgba(255, 255, 255, 0.7)',
-                            boxShadow: '0 8px 30px rgb(0,0,0,0.04)',
-                            border: '1px solid rgba(255, 255, 255, 0.2)'
+                            width: '95%',
+                            maxWidth: '440px',
+                            minHeight: '62px',
+                            padding: '10px',
+                            backgroundColor: isMobileScrolled ? 'rgba(255, 255, 255, 0.15)' : 'transparent',
+                            backdropFilter: isMobileScrolled ? 'blur(20px) saturate(180%)' : 'none',
+                            boxShadow: 'none',
+                            border: 'none',
+                            outline: 'none'
                         }}
                     >
-                        {/* Mobile Logo */}
-                        <a href="/" className="flex items-center">
-                            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#47622A] to-[#799851] flex items-center justify-center">
-                                <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.76 0 3.41-.46 4.84-1.26C14.08 19.2 12 16.79 12 14c0-3.31 2.69-6 6-6 .68 0 1.34.11 1.95.32C18.46 4.93 15.48 2 12 2z" />
-                                </svg>
+                        {!isSearchExpanded ? (
+                            <>
+                                <div className="flex items-center gap-3">
+                                    {/* Mobile Menu Button - Text Version */}
+                                    <button
+                                        onClick={toggleMobileMenu}
+                                        className="group flex items-center justify-center w-auto px-4 h-11 rounded-full bg-[#47622A] shadow-md border border-[#3e5524] active:scale-95 transition-all"
+                                        aria-label="Toggle Menu"
+                                    >
+                                        <span className="text-white font-bold text-sm tracking-wide">
+                                            {isMobileMenuOpen ? 'CLOSE' : 'MENU'}
+                                        </span>
+                                    </button>
+                                </div>
+
+                                {/* CENTER: Mobile Logo */}
+                                <a
+                                    href="/"
+                                    onClick={handleHomeClick}
+                                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 transition-transform duration-300"
+                                >
+                                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-[#47622A] to-[#799851] flex items-center justify-center shadow-sm">
+                                        <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.76 0 3.41-.46 4.84-1.26C14.08 19.2 12 16.79 12 14c0-3.31 2.69-6 6-6 .68 0 1.34.11 1.95.32C18.46 4.93 15.48 2 12 2z" />
+                                        </svg>
+                                    </div>
+                                </a>
+
+                                {/* Mobile Contact - Right Aligned */}
+                                <div className="flex items-center gap-2">
+                                    <a
+                                        href="#contact"
+                                        className="flex items-center justify-center gap-1.5 px-5 h-11 rounded-full bg-[#47622A] text-white font-bold text-sm transition-transform active:scale-95 whitespace-nowrap shadow-md border border-[#3e5524]"
+                                    >
+                                        <span>Contact</span>
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </>
+                        ) : (
+                            /* === MOBILE SEARCH UI === */
+                            <div className="w-full flex items-center h-full animate-fadeIn px-[10px] bg-white/10 rounded-full">
+                                <div className="flex-none flex items-center text-[#47622A]">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                    </svg>
+                                </div>
+                                <input
+                                    type="text"
+                                    placeholder="Search..."
+                                    className="flex-1 bg-transparent text-base text-gray-700 outline-none border-none ring-0 focus:ring-0 placeholder:text-gray-400 mx-[10px] h-full"
+                                    autoFocus
+                                />
+                                <button
+                                    onClick={toggleSearch}
+                                    className="flex-none p-1 text-gray-400 hover:text-red-500 transition-colors !bg-transparent !border-none !shadow-none outline-none"
+                                >
+                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
                             </div>
-                        </a>
-
-                        {/* Mobile Menu Button */}
-                        <button
-                            onClick={toggleMobileMenu}
-                            className="flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-full bg-[#47622A] text-white text-xs font-medium"
-                        >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                {isMobileMenuOpen ? (
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                                ) : (
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                                )}
-                            </svg>
-                            <span>{isMobileMenuOpen ? 'Close' : 'Menu'}</span>
-                        </button>
-
-                        {/* Mobile Search */}
-                        <button
-                            onClick={toggleSearch}
-                            className="flex items-center justify-center p-1 bg-transparent text-gray-400 hover:text-gray-500 transition-colors border-none outline-none shadow-none"
-                        >
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
-                        </button>
-
-                        {/* Mobile Contact */}
-                        <a
-                            href="#contact"
-                            className="flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-full bg-[#47622A] text-white text-xs font-medium"
-                        >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                            <span>Contact</span>
-                        </a>
+                        )}
                     </nav>
                 </div>
             </header>
@@ -322,100 +358,189 @@ function NavbarPill({
             {/* ===== MOBILE MENU OVERLAY ===== */}
             {
                 isMobileMenuOpen && ReactDOM.createPortal(
-                    <div className="fixed inset-0 z-[99999] bg-[#0f141f] text-white overflow-y-auto animate-fadeIn">
+                    <div className="fixed inset-0 z-[99999] bg-white text-gray-900 overflow-y-auto animate-fadeIn"> {/* White BG */}
                         <div className="flex flex-col min-h-screen">
-                            {/* Mobile Header */}
-                            <div className="flex items-center justify-between p-4 sm:p-5 lg:p-6 border-b border-gray-800 bg-[#111827]">
-                                <div className="flex items-center gap-2">
-                                    <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#47622A] to-[#799851] flex items-center justify-center">
-                                        <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.76 0 3.41-.46 4.84-1.26C14.08 19.2 12 16.79 12 14c0-3.31 2.69-6 6-6 .68 0 1.34.11 1.95.32C18.46 4.93 15.48 2 12 2z" />
-                                        </svg>
+                            {/* Mobile Header (Inside Menu) */}
+                            <div className="flex items-center justify-between p-[10px] border-b border-gray-100 bg-white/95 backdrop-blur-sm sticky top-0 z-50 overflow-hidden">
+                                {!isSearchExpanded ? (
+                                    <>
+                                        {/* LEFT: Logo */}
+                                        <a
+                                            href="/"
+                                            onClick={handleHomeClick}
+                                            className="flex items-center gap-2 relative z-10 transition-all duration-300"
+                                        >
+                                            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-[#47622A] to-[#799851] flex items-center justify-center shadow-sm">
+                                                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.76 0 3.41-.46 4.84-1.26C14.08 19.2 12 16.79 12 14c0-3.31 2.69-6 6-6 .68 0 1.34.11 1.95.32C18.46 4.93 15.48 2 12 2z" />
+                                                </svg>
+                                            </div>
+                                            <span className="font-bold text-lg sm:text-xl tracking-tight text-[#111827] whitespace-nowrap">MS Asia</span>
+                                        </a>
+
+                                        {/* MIDDLE: Search Icon - Absolute Centered */}
+                                        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+                                            <button
+                                                onClick={toggleSearch}
+                                                className="p-2 text-gray-500 hover:text-[#47622A] active:scale-90 transition-all rounded-full hover:bg-gray-100/50 !bg-transparent !border-none !shadow-none outline-none"
+                                                aria-label="Open Search"
+                                            >
+                                                <svg className="w-6 h-6 lg:w-7 lg:h-7" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                                </svg>
+                                            </button>
+                                        </div>
+
+                                        {/* RIGHT: Close Button */}
+                                        <div className="flex items-center relative z-10">
+                                            <button
+                                                onClick={toggleMobileMenu}
+                                                className="flex items-center justify-center gap-1.5 px-3 h-9 rounded-full bg-white border border-gray-200 shadow-sm active:scale-95 transition-all hover:bg-gray-50"
+                                                aria-label="Close Menu"
+                                            >
+                                                <span className="font-bold text-[10px] sm:text-xs text-black tracking-wider">CLOSE</span>
+                                                <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6 18L18 6M6 6l12 12" stroke="black" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </>
+                                ) : (
+                                    /* === DRAWER SEARCH UI === */
+                                    <div className="w-full flex items-center animate-fadeIn px-[10px] h-full absolute inset-0">
+                                        <div className="flex-none flex items-center justify-center p-[10px] text-[#47622A]">
+                                            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                            </svg>
+                                        </div>
+                                        <input
+                                            type="text"
+                                            placeholder="Search MS Asia..."
+                                            className="flex-1 bg-transparent text-lg text-gray-800 outline-none border-none ring-0 focus:ring-0 placeholder:text-gray-400 mx-2 h-full pt-0.5"
+                                            autoFocus
+                                        />
+                                        <button
+                                            onClick={toggleSearch}
+                                            className="flex-none p-[10px] text-gray-400 hover:text-red-500 transition-colors !bg-transparent !border-none !shadow-none outline-none flex items-center justify-center"
+                                        >
+                                            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </button>
                                     </div>
-                                    <span className="font-bold text-base sm:text-lg lg:text-xl tracking-wide">MS Asia</span>
-                                </div>
-                                <button
-                                    onClick={toggleMobileMenu}
-                                    className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:text-white transition-colors"
-                                >
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </button>
+                                )}
                             </div>
 
-                            {/* Mobile Content */}
-                            <div className="flex-1 p-4 sm:p-5 lg:p-6 space-y-4 sm:space-y-5 lg:space-y-6">
-                                {['What We Do', 'Industries We Serve', 'Company', 'Blog'].map((item, idx) => {
-                                    const menuData = NAV_MENU_DATA[item];
-                                    const isLink = !menuData;
-                                    const href = item === 'Blog' ? '/blog' : '#';
+                            {/* Mobile Content - 3-Level Nested Accordion Logic */}
+                            <div className="flex-1 p-[10px] overflow-y-auto">
+                                <div className="space-y-0">
+                                    {['What We Do', 'Industries We Serve', 'Company', 'Blog'].map((item, idx) => {
+                                        const menuData = NAV_MENU_DATA[item];
+                                        // HARDCODED: Force Accordion mode for these specific items
+                                        const isAccordion = item === 'What We Do' || item === 'Industries We Serve' || item === 'Company';
+                                        const isLink = !isAccordion;
+                                        const href = item === 'Blog' ? '/blog' : '#';
+                                        const isL1Active = mobileActiveL1 === item; // Use Isolated State
 
-                                    return (
-                                        <div key={idx} className="border-b border-gray-800 pb-4 last:border-0">
-                                            {isLink ? (
-                                                <a
-                                                    href={href}
-                                                    className="flex items-center justify-between group cursor-pointer"
-                                                >
-                                                    <span className="text-base sm:text-lg lg:text-xl font-medium text-gray-300 group-hover:text-white transition-colors">
-                                                        {item}
-                                                    </span>
-                                                </a>
-                                            ) : (
-                                                <div
-                                                    className="flex items-center justify-between group cursor-pointer"
-                                                    onClick={() => setActiveMenu(activeMenu === item ? null : item)}
-                                                >
-                                                    <span className={`text-base sm:text-lg lg:text-xl font-medium transition-colors ${activeMenu === item ? 'text-[#47622A]' : 'text-gray-300 group-hover:text-white'}`}>
-                                                        {item}
-                                                    </span>
-                                                    <svg
-                                                        className={`w-5 h-5 transition-transform duration-300 text-gray-500 ${activeMenu === item ? 'rotate-180 text-[#47622A]' : ''}`}
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        viewBox="0 0 24 24"
+                                        return (
+                                            <div key={idx} className="border-b border-gray-100 last:border-0">
+                                                {isLink ? (
+                                                    // === LEVEL 1: DIRECT LINK ===
+                                                    <a
+                                                        href={href}
+                                                        className="flex items-center justify-between py-[10px] group cursor-pointer"
                                                     >
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                                                    </svg>
-                                                </div>
-                                            )}
-
-                                            {/* Mobile Submenu Accordion */}
-                                            {menuData && activeMenu === item && (
-                                                <div className="mt-3 sm:mt-4 pl-3 sm:pl-4 lg:pl-5 space-y-4 sm:space-y-5 lg:space-y-6 animate-fadeIn">
-                                                    {menuData.columns.map((col, colIdx) => (
-                                                        <div key={colIdx}>
-                                                            <h4 className="text-xs sm:text-sm lg:text-base font-bold text-gray-500 uppercase tracking-widest mb-2 sm:mb-3 flex items-center gap-2">
-                                                                <span className="w-1.5 h-1.5 rounded-full bg-[#47622A]"></span>
-                                                                {col.title}
-                                                            </h4>
-                                                            <ul className="space-y-2 sm:space-y-3 border-l border-gray-800 ml-0.5 pl-3 sm:pl-4">
-                                                                {col.items.map((subItem, sIdx) => (
-                                                                    <li key={sIdx}>
-                                                                        <a href="#" className="block text-gray-400 hover:text-white text-sm sm:text-[15px] lg:text-base py-0.5">
-                                                                            {subItem}
-                                                                        </a>
-                                                                    </li>
-                                                                ))}
-                                                            </ul>
+                                                        <span className="text-lg font-bold text-gray-800 group-hover:text-[#47622A] transition-colors">
+                                                            {item}
+                                                        </span>
+                                                        <svg className="w-5 h-5 text-gray-400 group-hover:text-[#47622A] transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                                                        </svg>
+                                                    </a>
+                                                ) : (
+                                                    // === LEVEL 1: ACCORDION PARENT ===
+                                                    <div
+                                                        className="py-0"
+                                                        onMouseEnter={() => setMobileActiveL1(item)}
+                                                    >
+                                                        <div
+                                                            className="flex items-center justify-between py-[10px] cursor-pointer group"
+                                                            onClick={() => {
+                                                                setMobileActiveL1(isL1Active ? null : item);
+                                                            }}
+                                                        >
+                                                            <span className={`text-lg font-bold transition-colors ${isL1Active ? 'text-[#47622A]' : 'text-gray-800'}`}>
+                                                                {item}
+                                                            </span>
+                                                            <div className={`transition-transform duration-300 ${isL1Active ? 'rotate-180' : ''}`}>
+                                                                <svg className={`w-5 h-5 ${isL1Active ? 'text-[#47622A]' : 'text-gray-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                                                </svg>
+                                                            </div>
                                                         </div>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </div>
-                                    );
-                                })}
 
-                                {/* Mobile Actions */}
-                                <div className="pt-4 sm:pt-5 lg:pt-6 space-y-3 sm:space-y-4">
-                                    <a href="#contact" className="flex items-center justify-center w-full py-2.5 sm:py-3 lg:py-4 bg-[#47622A] text-white rounded-xl text-sm sm:text-base lg:text-lg font-bold hover:bg-[#374426] transition-colors">
-                                        Contact Us
-                                    </a>
-                                    <div className="flex items-center justify-center gap-3 sm:gap-4 text-gray-500 text-xs sm:text-sm">
-                                        <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-                                        <span>•</span>
-                                        <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+                                                        {/* LEVEL 2: CATEGORIES (Sub-Menu) */}
+                                                        <div
+                                                            className={`overflow-hidden transition-all duration-300 ease-in-out ${isL1Active ? 'max-h-[2000px] opacity-100 pb-[10px]' : 'max-h-0 opacity-0'}`}
+                                                        >
+                                                            <div className="space-y-1">
+                                                                {(menuData?.columns || []).map((col, colIdx) => {
+                                                                    const isL2Active = activeSubMenu === col.title; // Level 2 Expanded?
+
+                                                                    return (
+                                                                        <div
+                                                                            key={colIdx}
+                                                                            className="rounded-lg overflow-hidden"
+                                                                            onMouseEnter={() => setActiveSubMenu(col.title)}
+                                                                        >
+                                                                            {/* Level 2 Header */}
+                                                                            <div
+                                                                                className={`flex items-center justify-between p-[10px] cursor-pointer transition-colors ${isL2Active ? 'bg-gray-100 text-[#47622A]' : 'bg-gray-50 text-gray-700 hover:bg-gray-100'}`}
+                                                                                onClick={() => setActiveSubMenu(isL2Active ? null : col.title)}
+                                                                            >
+                                                                                <span className="text-base font-semibold">
+                                                                                    {col.title}
+                                                                                </span>
+                                                                                {/* Clean Chevron Icon for Level 2 */}
+                                                                                <div className={`transition-transform duration-300 ${isL2Active ? 'rotate-180' : ''}`}>
+                                                                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                                                                    </svg>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            {/* LEVEL 3: SERVICES (Items) */}
+                                                                            <div
+                                                                                className={`overflow-hidden transition-all duration-300 ease-in-out bg-white ${isL2Active ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}
+                                                                            >
+                                                                                <ul className="space-y-0.5 list-none pl-[10px] m-0">
+                                                                                    {col.items.map((subItem, sIdx) => (
+                                                                                        <li key={sIdx} className="m-0 p-0">
+                                                                                            <a href="#" className="block p-[10px] text-base font-medium text-gray-600 hover:text-[#47622A] hover:bg-gray-50 rounded-lg transition-colors">
+                                                                                                {subItem.label || subItem}
+                                                                                            </a>
+                                                                                        </li>
+                                                                                    ))}
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    );
+                                                                })}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+
+                                {/* Call to Action & Footer */}
+                                <div className="mt-auto p-[10px]">
+                                    <div className="flex items-center justify-center gap-4 text-[10px] text-gray-400">
+                                        <a href="#" className="hover:text-gray-600">Privacy Policy</a>
+                                        <span className="w-1 h-1 rounded-full bg-gray-300"></span>
+                                        <a href="#" className="hover:text-gray-600">Terms of Service</a>
                                     </div>
                                 </div>
                             </div>

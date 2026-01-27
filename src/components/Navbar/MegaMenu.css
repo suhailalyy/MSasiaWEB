@@ -66,6 +66,24 @@
     animation: dropdownOpen 0.2s ease-out forwards;
 }
 
+@keyframes pulseSubtle {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(0.98);
+        opacity: 0.9;
+    }
+}
+
+.animate-pulse-subtle {
+    animation: pulseSubtle 2s ease-in-out infinite;
+}
+
 /* --- LAYOUT --- */
 .mega-menu-bridge {
     position: fixed;
@@ -143,8 +161,8 @@
 .mm-sidebar {
     background-color: var(--mm-sidebar-bg);
     border-right: none;
-    padding: 16px;
-    /* Equal 16px padding on all sides */
+    padding: 10px;
+    /* Equal 10px padding on all sides */
     display: flex;
     flex-direction: column;
     transition: background-color 0.3s ease, border-color 0.3s ease;
@@ -158,9 +176,9 @@
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--mm-text-muted);
-    padding: 8px 16px;
-    /* 8px top/bottom, 16px left/right */
-    margin-bottom: 8px;
+    padding: 8px 10px;
+    /* 8px top/bottom, 10px left/right */
+    margin-bottom: 5px;
 }
 
 .mm-category-list {
@@ -230,8 +248,8 @@
 
 /* --- COLUMN 2: SUB-MENU --- */
 .mm-submenu {
-    padding: 16px;
-    /* Standardized 16px Padding */
+    padding: 10px;
+    /* Standardized 10px Padding */
     overflow-y: hidden;
     display: flex;
     flex-direction: column;
@@ -314,8 +332,8 @@
 
 /* --- COLUMN 3: PROMO CARD --- */
 .mm-promo {
-    padding: 16px;
-    /* Standardized 16px Padding */
+    padding: 10px;
+    /* Standardized 10px Padding */
     background: radial-gradient(circle at top right, rgba(121, 152, 81, 0.1), transparent 70%);
     display: flex;
     align-items: flex-start;
@@ -372,8 +390,8 @@
 }
 
 .mm-promo-content {
-    padding: 16px;
-    /* Standardized 16px Padding */
+    padding: 10px;
+    /* Standardized 10px Padding */
     flex: 1;
     /* Allow content to grow/fill space */
     display: flex;
