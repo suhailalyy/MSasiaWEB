@@ -361,7 +361,7 @@ function NavbarPill({
                     <div className="fixed inset-0 z-[99999] bg-white text-gray-900 overflow-y-auto animate-fadeIn"> {/* White BG */}
                         <div className="flex flex-col min-h-screen">
                             {/* Mobile Header (Inside Menu) */}
-                            <div className="flex items-center justify-between p-[10px] border-b border-gray-100 bg-white/95 backdrop-blur-sm sticky top-0 z-50 overflow-hidden">
+                            <div className="flex items-center justify-between p-[10px] border-b border-gray-100 bg-white/95 backdrop-blur-sm sticky top-0 z-50 overflow-hidden min-h-[64px]">
                                 {!isSearchExpanded ? (
                                     <>
                                         {/* LEFT: Logo */}
@@ -370,12 +370,12 @@ function NavbarPill({
                                             onClick={handleHomeClick}
                                             className="flex items-center gap-2 relative z-10 transition-all duration-300"
                                         >
-                                            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-[#47622A] to-[#799851] flex items-center justify-center shadow-sm">
-                                                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#47622A] to-[#799851] flex items-center justify-center shadow-sm">
+                                                <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
                                                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.76 0 3.41-.46 4.84-1.26C14.08 19.2 12 16.79 12 14c0-3.31 2.69-6 6-6 .68 0 1.34.11 1.95.32C18.46 4.93 15.48 2 12 2z" />
                                                 </svg>
                                             </div>
-                                            <span className="font-bold text-lg sm:text-xl tracking-tight text-[#111827] whitespace-nowrap">MS Asia</span>
+                                            <span className="font-bold text-lg tracking-tight text-[#111827] whitespace-nowrap">MS Asia</span>
                                         </a>
 
                                         {/* MIDDLE: Search Icon - Absolute Centered */}
@@ -385,7 +385,7 @@ function NavbarPill({
                                                 className="p-2 text-gray-500 hover:text-[#47622A] active:scale-90 transition-all rounded-full hover:bg-gray-100/50 !bg-transparent !border-none !shadow-none outline-none"
                                                 aria-label="Open Search"
                                             >
-                                                <svg className="w-6 h-6 lg:w-7 lg:h-7" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                                 </svg>
                                             </button>
@@ -398,8 +398,8 @@ function NavbarPill({
                                                 className="flex items-center justify-center gap-1.5 px-3 h-9 rounded-full bg-white border border-gray-200 shadow-sm active:scale-95 transition-all hover:bg-gray-50"
                                                 aria-label="Close Menu"
                                             >
-                                                <span className="font-bold text-[10px] sm:text-xs text-black tracking-wider">CLOSE</span>
-                                                <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <span className="font-bold text-[10px] text-black tracking-wider">CLOSE</span>
+                                                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M6 18L18 6M6 6l12 12" stroke="black" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                                                 </svg>
                                             </button>
@@ -407,7 +407,7 @@ function NavbarPill({
                                     </>
                                 ) : (
                                     /* === DRAWER SEARCH UI === */
-                                    <div className="w-full flex items-center animate-fadeIn px-[10px] h-full absolute inset-0">
+                                    <div className="w-full h-full flex items-center animate-fadeIn px-[10px] absolute inset-0 bg-white/95 backdrop-blur-sm z-50">
                                         <div className="flex-none flex items-center justify-center p-[10px] text-[#47622A]">
                                             <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -416,7 +416,7 @@ function NavbarPill({
                                         <input
                                             type="text"
                                             placeholder="Search MS Asia..."
-                                            className="flex-1 bg-transparent text-lg text-gray-800 outline-none border-none ring-0 focus:ring-0 placeholder:text-gray-400 mx-2 h-full pt-0.5"
+                                            className="flex-1 bg-transparent text-lg text-gray-800 outline-none border-none ring-0 focus:ring-0 placeholder:text-gray-400 mx-2 h-full"
                                             autoFocus
                                         />
                                         <button
