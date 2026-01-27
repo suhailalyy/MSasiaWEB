@@ -80,15 +80,10 @@
 
 .mega-menu-container {
     position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
     top: 105px;
     /* Adjust based on navbar height */
     left: 0;
-    right: 0;
-    margin-inline: auto;
-    width: 1200px;
+    width: 100%;
     background-color: var(--mm-bg);
     border-bottom: none;
     border-top: none;
@@ -106,8 +101,9 @@
 }
 
 .mega-menu-wrapper {
-    width: 100%;
-    max-width: 1200px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 12px 0 0 0;
     height: 500px;
     /* Fixed height for consistency */
 }
@@ -147,8 +143,8 @@
 .mm-sidebar {
     background-color: var(--mm-sidebar-bg);
     border-right: none;
-    padding: 35px 16px 16px 16px;
-    /* Standardized 16px Padding */
+    padding: 16px;
+    /* Equal 16px padding on all sides */
     display: flex;
     flex-direction: column;
     transition: background-color 0.3s ease, border-color 0.3s ease;
@@ -162,8 +158,9 @@
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--mm-text-muted);
-    padding: 0 16px;
-    margin-bottom: 15px;
+    padding: 8px 16px;
+    /* 8px top/bottom, 16px left/right */
+    margin-bottom: 8px;
 }
 
 .mm-category-list {
