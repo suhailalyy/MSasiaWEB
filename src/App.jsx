@@ -1,10 +1,22 @@
 import { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import IndustrialHero from './components/Hero/IndustrialHero'
 import ScrapShowcase from './components/ScrapShowcase/ScrapShowcase'
 import WorkProcess from './components/WorkProcess'
 import ContactSection from './components/ContactSection/ContactSection'
 import Footer from './components/Footer/Footer'
+import DynamicServicePage from './components/Services/DynamicServicePage'
+
+// HomePage Component (Existing Content)
+const HomePage = () => (
+    <>
+        <IndustrialHero />
+        <ScrapShowcase />
+        <WorkProcess />
+        <ContactSection />
+    </>
+);
 
 function App() {
     const [isDark, setIsDark] = useState(false)
@@ -33,14 +45,14 @@ function App() {
     }
 
     return (
-        <>
+        <Router>
             <Navbar isDark={isDark} toggleTheme={toggleTheme} />
-            <IndustrialHero />
-            <ScrapShowcase />
-            <WorkProcess />
-            <ContactSection />
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/services/:slug" element={<DynamicServicePage />} />
+            </Routes>
             <Footer />
-        </>
+        </Router>
     )
 }
 

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom'; // REMOVED: Router not installed
+import { Link } from 'react-router-dom';
 import { NAV_MENU_DATA } from './NavbarData';
 import './MegaMenu.css';
 
 // Content content map for Mega Menu Interactivity
+// ... existing CATEGORY_CONTENT_MAP ...
 const CATEGORY_CONTENT_MAP = {
     'Electronics': {
         heading: 'E-Waste & IT Asset Disposal',
@@ -67,9 +68,14 @@ const CATEGORY_CONTENT_MAP = {
     }
 };
 
-const MegaMenu = ({ activeMenu, isVisible, onMouseEnter, onMouseLeave }) => {
+const MegaMenu = ({ activeMenu, isVisible, onMouseEnter, onMouseLeave, onClose }) => {
     const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
     const [hoveredLink, setHoveredLink] = useState(null);
+
+    // Helper to generate URL slug from label
+    const getSlug = (label) => {
+        return label.toLowerCase().replace(/ & /g, '-and-').replace(/ /g, '-').replace(/[^a-z0-9-]/g, '');
+    };
 
     // Reset state whenever the main menu changes
     useEffect(() => {
@@ -95,6 +101,9 @@ const MegaMenu = ({ activeMenu, isVisible, onMouseEnter, onMouseLeave }) => {
     const displayHeading = hoveredLink?.label || content?.heading || 'Market Leader';
     const displayDesc = hoveredLink?.desc || content?.description || `Discover why MS Asia is the preferred partner for ${activeCategoryTitle || 'Industry'} solutions.`;
     const displayButton = hoveredLink ? 'View Details' : (content?.buttonText || 'Learn More');
+
+    // Slug for promo button (uses hovered link slug or active category roughly)
+    const promoSlug = hoveredLink ? getSlug(hoveredLink.label) : (activeCategoryTitle ? getSlug(activeCategoryTitle) : '');
 
     return (
         <>
@@ -144,19 +153,18 @@ const MegaMenu = ({ activeMenu, isVisible, onMouseEnter, onMouseLeave }) => {
                             <ul className="mm-link-list custom-scrollbar">
                                 {activeCategoryData?.items?.map((item, idx) => (
                                     <li key={idx}>
-                                        {/* Dynamic Hover Interaction added here */}
-                                        <a
-                                            href="#"
+                                        <Link
+                                            to={`/services/${getSlug(item.label)}`}
                                             className="mm-link-item group"
                                             onMouseEnter={() => setHoveredLink(item)}
                                             onMouseLeave={() => setHoveredLink(null)}
+                                            onClick={onClose}
                                         >
-                                            {/* Reverted to Clean Layout: Title + Arrow only */}
                                             <span>{item.label}</span>
                                             <svg className="mm-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 5l7 7-7 7" />
                                             </svg>
-                                        </a>
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>
@@ -179,12 +187,16 @@ const MegaMenu = ({ activeMenu, isVisible, onMouseEnter, onMouseLeave }) => {
                                 <div className="mm-promo-content">
                                     <h3>{displayHeading}</h3>
                                     <p>{displayDesc}</p>
-                                    <button className="mm-promo-btn">
+                                    <Link
+                                        to={`/services/${promoSlug}`}
+                                        className="mm-promo-btn"
+                                        onClick={onClose}
+                                    >
                                         {displayButton}
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                         </svg>
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
