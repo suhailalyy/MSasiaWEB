@@ -121,7 +121,8 @@
 .mega-menu-wrapper {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 12px 0 0 0;
+    padding: 0;
+    /* Removed padding as sections have their own */
     height: 500px;
     /* Fixed height for consistency */
 }
@@ -179,20 +180,29 @@
 
 .mobile-drawer-content {
     position: fixed;
-    top: 0;
+    top: 78px;
+    /* Reduced to close gap with navbar */
+    /* Start below fixed navbar header */
     left: 0;
     bottom: 0;
-    width: 85%;
-    max-width: 360px;
-    background-color: white;
+    width: 100%;
+    /* Full width on phone */
+    background-color: var(--mm-bg);
+    /* Same as desktop mega menu */
+    backdrop-filter: blur(60px) saturate(200%) contrast(1.05);
+    /* Exact same as desktop mega menu */
+    -webkit-backdrop-filter: blur(60px) saturate(200%) contrast(1.05);
     z-index: 99999;
-    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+    /* Glass effect matching desktop mega menu */
 }
 
 .dark .mobile-drawer-content {
-    background-color: #111111;
+    /* --mm-bg variable auto-handles dark mode */
     color: white;
 }
 
@@ -207,7 +217,7 @@
 .mm-sidebar {
     background-color: var(--mm-sidebar-bg);
     border-right: none;
-    padding: 10px;
+    padding: 8px;
     /* Equal 10px padding on all sides */
     display: flex;
     flex-direction: column;
@@ -236,7 +246,7 @@
 }
 
 .mm-category-item {
-    padding: 6px 8px;
+    padding: 8px;
     /* Reduced vertical padding to fit 3 categories */
     margin-bottom: 0px;
     /* Removed margin */
@@ -294,7 +304,7 @@
 
 /* --- COLUMN 2: SUB-MENU --- */
 .mm-submenu {
-    padding: 10px;
+    padding: 8px;
     /* Standardized 10px Padding */
     overflow-y: hidden;
     display: flex;
@@ -334,7 +344,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 4px 8px;
+    padding: 8px;
     /* Reduced vertical padding to eliminate scrollbar */
     color: var(--mm-text-main);
     font-size: 16px;
@@ -378,7 +388,7 @@
 
 /* --- COLUMN 3: PROMO CARD --- */
 .mm-promo {
-    padding: 10px;
+    padding: 8px;
     /* Standardized 10px Padding */
     background: radial-gradient(circle at top right, rgba(121, 152, 81, 0.1), transparent 70%);
     display: flex;

@@ -25,12 +25,17 @@ function NavbarPill({
     const [menuLeft, setMenuLeft] = useState(0);
     const closeTimeoutRef = useRef(null);
 
-    // Smooth Scroll to Top for Logo
+    // Smooth Scroll to Top for Logo OR navigate to home
     const handleHomeClick = (e) => {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
         // Close mobile menu if it's open
         if (isMobileMenuOpen) toggleMobileMenu();
+
+        // If already on home page, just scroll to top
+        if (window.location.pathname === '/') {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        // Otherwise, let the link navigate to home normally
     };
 
     const handleMenuEnter = (e, menuName) => {
@@ -270,10 +275,16 @@ function NavbarPill({
                 document.body
             )}
 
-            {/* ===== MOBILE NAVBAR (UNCHANGED BUT RESPONSIVE) ===== */}
+            {/* ===== MOBILE NAVBAR - STAYS FIXED WHEN MENU OPENS ===== */}
             <header
-                className="flex md:hidden fixed top-0 left-0 w-full z-40 pointer-events-none transition-all duration-300"
-                style={{ background: 'transparent', boxShadow: 'none' }}
+                className="flex md:hidden fixed top-0 left-0 w-full z-[100000] pointer-events-none transition-all duration-300"
+                style={{
+                    background: isMobileMenuOpen ? 'rgba(255, 255, 255, 0.75)' : 'transparent',
+                    backdropFilter: isMobileMenuOpen ? 'blur(20px) saturate(180%)' : 'none',
+                    WebkitBackdropFilter: isMobileMenuOpen ? 'blur(20px) saturate(180%)' : 'none',
+                    boxShadow: isMobileMenuOpen ? '0 4px 30px rgba(0, 0, 0, 0.1)' : 'none',
+                    borderBottom: isMobileMenuOpen ? '1px solid rgba(255, 255, 255, 0.3)' : 'none'
+                }}
             >
                 <div className="w-full flex items-center justify-center py-2 sm:py-3 px-2 transition-all duration-300">
                     <nav
@@ -283,7 +294,7 @@ function NavbarPill({
                             width: '95%',
                             maxWidth: '440px',
                             minHeight: '62px',
-                            padding: '10px',
+                            padding: '12px',
                             backgroundColor: isMobileScrolled ? 'rgba(255, 255, 255, 0.15)' : 'transparent',
                             backdropFilter: isMobileScrolled ? 'blur(20px) saturate(180%)' : 'none',
                             boxShadow: 'none',
@@ -293,26 +304,40 @@ function NavbarPill({
                     >
                         {!isSearchExpanded ? (
                             <>
-                                <div className="flex items-center gap-3">
-                                    {/* Mobile Menu Button - Text Version */}
-                                    <button
-                                        onClick={toggleMobileMenu}
-                                        className="group flex items-center justify-center w-11 h-11 rounded-full bg-transparent active:scale-95 transition-all border-none outline-none shadow-none"
-                                        aria-label="Toggle Menu"
-                                    >
+                                {/* LEFT: Menu Button (Hamburger / X) */}
+                                <button
+                                    onClick={toggleMobileMenu}
+                                    className="flex items-center justify-center active:scale-95 transition-all flex-shrink-0"
+                                    style={{
+                                        background: 'transparent',
+                                        backgroundColor: 'transparent',
+                                        border: 'none',
+                                        outline: 'none',
+                                        boxShadow: 'none',
+                                        padding: 0,
+                                        WebkitAppearance: 'none',
+                                        appearance: 'none'
+                                    }}
+                                    aria-label="Toggle Menu"
+                                >
+                                    {isMobileMenuOpen ? (
+                                        /* X icon when menu is open - 24x24 */
+                                        <span style={{ fontSize: '24px', width: '24px', height: '24px', lineHeight: '24px' }} className="font-bold text-[#1a3d0c]">✕</span>
+                                    ) : (
+                                        /* Hamburger icon when menu is closed */
                                         <div className="flex flex-col gap-1.5">
                                             <span className="w-7 h-[2.5px] bg-[#47622A] rounded-full"></span>
                                             <span className="w-7 h-[2.5px] bg-[#47622A] rounded-full"></span>
                                             <span className="w-7 h-[2.5px] bg-[#47622A] rounded-full"></span>
                                         </div>
-                                    </button>
-                                </div>
+                                    )}
+                                </button>
 
                                 {/* CENTER: Mobile Logo */}
                                 <a
                                     href="/"
                                     onClick={handleHomeClick}
-                                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-2.5 transition-transform duration-300"
+                                    className="flex items-center gap-2.5 transition-transform duration-300"
                                 >
                                     <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-[#47622A] to-[#799851] flex items-center justify-center shadow-md">
                                         <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
@@ -322,28 +347,26 @@ function NavbarPill({
                                     <span className="font-bold text-xl tracking-tight text-[#111827] whitespace-nowrap">MS Asia</span>
                                 </a>
 
-                                {/* Mobile Search - Right Aligned */}
-                                <div className="flex items-center">
-                                    <button
-                                        onClick={toggleSearch}
-                                        className="flex items-center justify-center w-11 h-11 rounded-full bg-transparent p-0 active:scale-90 transition-all border-none outline-none shadow-none"
-                                        aria-label="Toggle Search"
+                                {/* RIGHT: Mobile Search */}
+                                <button
+                                    onClick={toggleSearch}
+                                    className="flex items-center justify-center w-11 h-11 rounded-full bg-transparent p-0 active:scale-90 transition-all border-none outline-none shadow-none"
+                                    aria-label="Toggle Search"
+                                >
+                                    <svg
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="#47622A"
+                                        strokeWidth="2.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
                                     >
-                                        <svg
-                                            width="24"
-                                            height="22"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="#47622A"
-                                            strokeWidth="2.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                        >
-                                            <circle cx="11" cy="11" r="8"></circle>
-                                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                        </svg>
-                                    </button>
-                                </div>
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    </svg>
+                                </button>
                             </>
                         ) : (
                             /* === MOBILE SEARCH UI === */
@@ -382,27 +405,10 @@ function NavbarPill({
                         onClick={() => toggleMobileMenu()}
                     />
 
-                    {/* Content Drawer - Slides in from left */}
-                    <div className="mobile-drawer-content animate-slideInLeft">
-                        {/* Mobile Header (Inside Menu) */}
-                        <div className="flex items-center justify-start p-[15px] border-b border-gray-100 dark:border-gray-800 bg-white dark:bg-[#111] sticky top-0 z-50 overflow-hidden min-h-[64px]">
-                            {/* Logo & Name */}
-                            <a
-                                href="/"
-                                onClick={(e) => { handleHomeClick(e); toggleMobileMenu(); }}
-                                className="flex items-center gap-2.5"
-                            >
-                                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#47622A] to-[#799851] flex items-center justify-center shadow-sm">
-                                    <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.76 0 3.41-.46 4.84-1.26C14.08 19.2 12 16.79 12 14c0-3.31 2.69-6 6-6 .68 0 1.34.11 1.95.32C18.46 4.93 15.48 2 12 2z" />
-                                    </svg>
-                                </div>
-                                <span className="font-bold text-lg tracking-tight text-[#111827] dark:text-white whitespace-nowrap">MS Asia</span>
-                            </a>
-                        </div>
-
-                        {/* Mobile Content - 3-Level Nested Accordion Logic */}
-                        <div className="flex-1 p-[15px] overflow-y-auto custom-scrollbar">
+                    {/* Content Drawer - Slides in from left, starts BELOW fixed header */}
+                    <div className="mobile-drawer-content animate-slideInLeft" style={{ top: '82px' }}>
+                        {/* Mobile Content - NO header here, header stays in place above */}
+                        <div className="flex-1 p-[12px] overflow-y-auto custom-scrollbar">
                             <div className="space-y-1">
                                 {['What We Do', 'Industries We Serve', 'Company', 'Blog'].map((item, idx) => {
                                     const menuData = NAV_MENU_DATA[item];
@@ -472,7 +478,7 @@ function NavbarPill({
                                                                         <div
                                                                             className={`overflow-hidden transition-all duration-300 ease-in-out bg-transparent ${isL2Active ? 'max-h-[1000px] opacity-100 mt-1' : 'max-h-0 opacity-0'}`}
                                                                         >
-                                                                            <ul className="space-y-0.5 list-none pl-3 m-0 border-l-2 border-gray-100 dark:border-gray-800 ml-2">
+                                                                            <ul className="list-none p-0 m-0 border-l-2 border-gray-100 dark:border-gray-800">
                                                                                 {col.items.map((subItem, sIdx) => {
                                                                                     const label = subItem.label || subItem;
                                                                                     const slug = label.toLowerCase().replace(/ & /g, '-and-').replace(/ /g, '-').replace(/[^a-z0-9-]/g, '');
@@ -481,7 +487,7 @@ function NavbarPill({
                                                                                             <Link
                                                                                                 to={`/services/${slug}`}
                                                                                                 onClick={() => toggleMobileMenu()}
-                                                                                                className="block py-[8px] px-2 text-[14.5px] font-medium text-gray-600 dark:text-gray-400 hover:text-[#47622A] dark:hover:text-[#799851] rounded-lg transition-colors"
+                                                                                                className="block py-[12px] px-[12px] text-[14.5px] font-medium text-gray-600 dark:text-gray-400 hover:text-[#47622A] dark:hover:text-[#799851] rounded-lg transition-colors"
                                                                                             >
                                                                                                 {label}
                                                                                             </Link>
@@ -503,13 +509,13 @@ function NavbarPill({
                             </div>
 
                             {/* Call to Action & Footer */}
-                            <div className="mt-8 pt-6 border-t border-gray-100 dark:border-gray-800">
-                                <div className="space-y-3 mb-6">
-                                    <button className="w-full bg-[#47622A] text-white font-bold py-3.5 rounded-xl shadow-md active:scale-[0.98] transition-all">
-                                        Request a Quote
+                            <div className="border-t border-gray-100 dark:border-gray-800">
+                                <div className="py-[12px]">
+                                    <button className="bg-[#47622A] text-white font-semibold px-5 py-2.5 rounded-lg transition-colors duration-200 text-sm focus:outline-none focus:bg-[#47622A] active:bg-[#47622A] hover:bg-[#5a7a35] transform-none active:transform-none">
+                                        Contact Us
                                     </button>
                                 </div>
-                                <div className="flex items-center justify-center gap-4 text-[12px] text-gray-400 font-medium">
+                                <div className="flex items-center gap-4 text-[12px] text-gray-400 font-medium py-[12px]">
                                     <a href="#" className="hover:text-[#47622A] transition-colors">Privacy</a>
                                     <span className="w-1 h-1 rounded-full bg-gray-300"></span>
                                     <a href="#" className="hover:text-[#47622A] transition-colors">Terms</a>
