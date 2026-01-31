@@ -139,7 +139,7 @@ const MegaMenu = ({ activeMenu, isVisible, onMouseEnter, onMouseLeave, onClose }
                                             setHoveredLink(null); // Reset link preview when switching categories
                                         }}
                                     >
-                                        <span className="mm-category-text">{column.title}</span>
+                                        <h3 className="m-0 p-0 text-sm font-medium mm-category-text">{column.title}</h3>
                                         <svg className="mm-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 5l7 7-7 7" />
                                         </svg>
@@ -160,7 +160,7 @@ const MegaMenu = ({ activeMenu, isVisible, onMouseEnter, onMouseLeave, onClose }
                                             onMouseLeave={() => setHoveredLink(null)}
                                             onClick={onClose}
                                         >
-                                            <span>{item.label}</span>
+                                            <h4 className="m-0 p-0 text-sm font-normal">{item.label}</h4>
                                             <svg className="mm-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 5l7 7-7 7" />
                                             </svg>

@@ -147,7 +147,7 @@ function NavbarPill({
                                             onMouseLeave={handleMenuLeave}
                                             onClick={(e) => hasDropdown && e.preventDefault()}
                                         >
-                                            {item}
+                                            <h2 className="m-0 p-0 text-base font-medium inline">{item}</h2>
                                             {hasDropdown && (
                                                 <svg
                                                     className={`w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 transition-transform duration-200 ${isActive ? 'rotate-180' : ''}`}
@@ -287,23 +287,20 @@ function NavbarPill({
                 document.body
             )}
 
-            {/* ===== MOBILE NAVBAR - NOTCH APPEARS ON SCROLL ===== */}
+            {/* ===== MOBILE NAVBAR - FIXED AT TOP ===== */}
             <nav
                 id="navbar-pill-mobile"
-                className={`md:hidden fixed z-[100000] pointer-events-auto flex items-center justify-between gap-2 backdrop-blur-xl ${isMobileScrolled && !isMobileMenuOpen
-                    ? 'top-2 left-4 right-4 rounded-full'
-                    : 'top-0 left-0 right-0 rounded-none'
-                    }`}
+                className="md:hidden fixed z-[100000] pointer-events-auto flex items-center justify-between gap-2 left-0 right-0 rounded-none"
                 style={{
-                    minHeight: '70px',
-                    padding: '12px 0',
-                    background: isMobileMenuOpen
-                        ? 'rgba(255, 255, 255, 0.75)'
-                        : (isMobileScrolled ? 'rgba(255, 255, 255, 0.15)' : 'transparent'),
-                    backdropFilter: (isMobileMenuOpen || isMobileScrolled) ? 'blur(20px) saturate(180%)' : 'none',
-                    WebkitBackdropFilter: (isMobileMenuOpen || isMobileScrolled) ? 'blur(20px) saturate(180%)' : 'none',
-                    boxShadow: isMobileScrolled ? '0 4px 30px rgba(0, 0, 0, 0.1)' : 'none',
-                    borderBottom: isMobileMenuOpen ? '1px solid rgba(255, 255, 255, 0.3)' : '1px solid transparent',
+                    top: '-1px',
+                    minHeight: '72px',
+                    height: '72px',
+                    padding: '0 0',
+                    background: '#ffffff',
+                    backdropFilter: 'none',
+                    WebkitBackdropFilter: 'none',
+                    boxShadow: isMobileScrolled ? '0 2px 8px rgba(0, 0, 0, 0.06)' : 'none',
+                    borderBottom: 'none',
                     borderTop: 'none',
                     borderLeft: 'none',
                     borderRight: 'none',
@@ -316,29 +313,33 @@ function NavbarPill({
                         {/* LEFT: Menu Button (Hamburger / X) */}
                         <button
                             onClick={toggleMobileMenu}
-                            className="flex items-center justify-center active:scale-95 flex-shrink-0"
+                            className="flex items-center justify-center w-11 h-11 rounded-full p-0 active:scale-90 flex-shrink-0"
                             style={{
-                                background: 'transparent',
-                                backgroundColor: 'transparent',
+                                marginLeft: '8px',
+                                WebkitAppearance: 'none',
+                                appearance: 'none',
                                 border: 'none',
                                 outline: 'none',
                                 boxShadow: 'none',
-                                padding: '0 0 0 8px',
-                                WebkitAppearance: 'none',
-                                appearance: 'none'
+                                WebkitTapHighlightColor: 'transparent',
+                                background: 'transparent',
+                                backgroundColor: 'transparent'
                             }}
                             aria-label="Toggle Menu"
                         >
                             {isMobileMenuOpen ? (
-                                /* X icon when menu is open - 24x24 */
-                                <span style={{ fontSize: '24px', width: '24px', height: '24px', lineHeight: '24px' }} className="font-bold text-[#1a3d0c]">✕</span>
+                                /* X icon when menu is open - matches search icon size */
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#47622A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
                             ) : (
-                                /* Hamburger icon when menu is closed - 24x24 */
-                                <div className="flex flex-col justify-center items-center gap-[5px]" style={{ width: '24px', height: '24px' }}>
-                                    <span className="w-6 h-[2px] bg-[#47622A] rounded-full"></span>
-                                    <span className="w-6 h-[2px] bg-[#47622A] rounded-full"></span>
-                                    <span className="w-6 h-[2px] bg-[#47622A] rounded-full"></span>
-                                </div>
+                                /* Hamburger icon - matches search icon size */
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#47622A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                                </svg>
                             )}
                         </button>
 
@@ -363,6 +364,7 @@ function NavbarPill({
                         <button
                             onClick={toggleSearch}
                             className="flex items-center justify-center w-11 h-11 rounded-full bg-transparent p-0 active:scale-90 border-none outline-none shadow-none"
+                            style={{ marginRight: '8px' }}
                             aria-label="Toggle Search"
                         >
                             <svg
@@ -434,11 +436,11 @@ function NavbarPill({
                                                     href={href}
                                                     className="flex items-center justify-between py-[12px] group cursor-pointer"
                                                 >
-                                                    <span className="text-[16px] font-bold text-gray-800 dark:text-gray-200 group-hover:text-[#47622A] transition-colors">
+                                                    <h2 className="m-0 p-0 text-base font-bold text-gray-900 dark:text-gray-100 group-hover:text-[#3d5423] transition-colors">
                                                         {item}
-                                                    </span>
-                                                    <svg className="w-5 h-5 text-gray-400 group-hover:text-[#47622A] transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                                                    </h2>
+                                                    <svg className="w-5 h-5 text-gray-600 group-hover:text-[#47622A] transition-all" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                                                     </svg>
                                                 </a>
                                             ) : (
@@ -449,12 +451,12 @@ function NavbarPill({
                                                             setMobileActiveL1(isL1Active ? null : item);
                                                         }}
                                                     >
-                                                        <span className={`text-[16px] font-bold transition-colors ${isL1Active ? 'text-[#47622A]' : 'text-gray-800 dark:text-gray-200'}`}>
+                                                        <h2 className={`m-0 p-0 text-base font-bold transition-colors ${isL1Active ? 'text-[#3d5423]' : 'text-gray-900 dark:text-gray-100'}`}>
                                                             {item}
-                                                        </span>
+                                                        </h2>
                                                         <div className={`transition-transform duration-300 ${isL1Active ? 'rotate-180' : ''}`}>
-                                                            <svg className={`w-5 h-5 ${isL1Active ? 'text-[#47622A]' : 'text-gray-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                                            <svg className={`w-5 h-5 ${isL1Active ? 'text-[#47622A]' : 'text-gray-600'}`} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                                                             </svg>
                                                         </div>
                                                     </div>
@@ -472,15 +474,15 @@ function NavbarPill({
                                                                         className="rounded-xl overflow-hidden mb-1"
                                                                     >
                                                                         <div
-                                                                            className={`flex items-center justify-between p-[12px] cursor-pointer transition-all duration-300 ${isL2Active ? 'bg-[#799851]/10 text-[#47622A]' : 'bg-gray-50 dark:bg-gray-800/40 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'}`}
+                                                                            className={`flex items-center justify-between p-[12px] cursor-pointer transition-all duration-300 ${isL2Active ? 'bg-[#47622A]/20 text-[#2d4016]' : 'bg-gray-100 dark:bg-gray-800/50 text-gray-900 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800'}`}
                                                                             onClick={() => setActiveSubMenu(isL2Active ? null : col.title)}
                                                                         >
-                                                                            <span className="text-[15px] font-semibold">
+                                                                            <h3 className="m-0 p-0 text-[15px] font-bold">
                                                                                 {col.title}
-                                                                            </span>
+                                                                            </h3>
                                                                             <div className={`transition-transform duration-300 ${isL2Active ? 'rotate-180' : ''}`}>
-                                                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                                                                <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                                                                                 </svg>
                                                                             </div>
                                                                         </div>
@@ -497,9 +499,11 @@ function NavbarPill({
                                                                                             <Link
                                                                                                 to={`/services/${slug}`}
                                                                                                 onClick={() => toggleMobileMenu()}
-                                                                                                className="block py-[12px] px-[12px] text-[15px] font-medium text-gray-800 dark:text-gray-200 hover:text-[#47622A] dark:hover:text-[#799851] rounded-lg transition-colors"
+                                                                                                className="block py-[12px] px-[12px] rounded-lg transition-colors"
                                                                                             >
-                                                                                                {label}
+                                                                                                <h4 className="m-0 p-0 text-[15px] font-semibold text-gray-900 dark:text-gray-100 hover:text-[#3d5423] dark:hover:text-[#799851]">
+                                                                                                    {label}
+                                                                                                </h4>
                                                                                             </Link>
                                                                                         </li>
                                                                                     );

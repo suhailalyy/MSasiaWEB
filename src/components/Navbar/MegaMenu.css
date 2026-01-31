@@ -526,27 +526,64 @@
     background: var(--mm-accent);
 }
 
-/* --- MOBILE NAVBAR NOTCH ANIMATIONS --- */
+/* --- MOBILE NAVBAR STYLES --- */
 #navbar-pill-mobile {
-    transition:
-        top 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-        left 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-        right 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-        border-radius 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-        background 0.4s ease,
-        backdrop-filter 0.4s ease,
-        box-shadow 0.4s ease !important;
-    will-change: top, left, right, border-radius, background, box-shadow;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    perspective: 1000px;
-    /* enhance 3d space for smoother rendering */
+    /* No transitions needed - fixed position */
+    transition: box-shadow 0.2s ease;
 }
 
 #navbar-pill-mobile * {
-    /* Stabilize children during parent resize */
+    /* Stabilize children */
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    transform: translateZ(0);
+}
+
+/* Override global button styles for mobile navbar buttons */
+#navbar-pill-mobile button {
+    background: transparent !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+}
+
+#navbar-pill-mobile button:hover,
+#navbar-pill-mobile button:focus,
+#navbar-pill-mobile button:active {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+/* Override global heading styles inside Navbar and Mega Menu for SEO headings */
+#navbar-pill-mobile h2,
+#navbar-pill-mobile h3,
+#navbar-pill-mobile h4,
+.mobile-drawer-content h2,
+.mobile-drawer-content h3,
+.mobile-drawer-content h4 {
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
+    color: inherit;
+}
+
+.mega-menu-container h2,
+.mega-menu-container h3,
+.mega-menu-container h4 {
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
+    color: inherit;
+}
+
+/* Desktop navbar heading overrides */
+nav h2 {
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    display: inline;
 }
