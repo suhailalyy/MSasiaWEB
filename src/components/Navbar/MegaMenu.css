@@ -180,8 +180,8 @@
 
 .mobile-drawer-content {
     position: fixed;
-    top: 78px;
-    /* Reduced to close gap with navbar */
+    top: 70px;
+    /* Matches navbar minHeight to eliminate gap */
     /* Start below fixed navbar header */
     left: 0;
     bottom: 0;
@@ -200,6 +200,11 @@
     transition: background-color 0.3s ease;
     /* Glass effect matching desktop mega menu */
 }
+
+.mobile-drawer-content .custom-scrollbar {
+    scrollbar-gutter: stable;
+}
+
 
 .dark .mobile-drawer-content {
     /* --mm-bg variable auto-handles dark mode */
@@ -519,4 +524,29 @@
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: var(--mm-accent);
+}
+
+/* --- MOBILE NAVBAR NOTCH ANIMATIONS --- */
+#navbar-pill-mobile {
+    transition:
+        top 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        left 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        right 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        border-radius 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        background 0.4s ease,
+        backdrop-filter 0.4s ease,
+        box-shadow 0.4s ease !important;
+    will-change: top, left, right, border-radius, background, box-shadow;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    perspective: 1000px;
+    /* enhance 3d space for smoother rendering */
+}
+
+#navbar-pill-mobile * {
+    /* Stabilize children during parent resize */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
 }

@@ -58,6 +58,18 @@ function NavbarPill({
         }, 150);
     };
 
+    // Lock Body Scroll when Mobile Menu is Open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isMobileMenuOpen]);
+
     const dropdownItems = ['What We Do', 'Industries We Serve', 'Company'];
 
     return (
@@ -275,126 +287,124 @@ function NavbarPill({
                 document.body
             )}
 
-            {/* ===== MOBILE NAVBAR - STAYS FIXED WHEN MENU OPENS ===== */}
-            <header
-                className="flex md:hidden fixed top-0 left-0 w-full z-[100000] pointer-events-none transition-all duration-300"
+            {/* ===== MOBILE NAVBAR - NOTCH APPEARS ON SCROLL ===== */}
+            <nav
+                id="navbar-pill-mobile"
+                className={`md:hidden fixed z-[100000] pointer-events-auto flex items-center justify-between gap-2 backdrop-blur-xl ${isMobileScrolled && !isMobileMenuOpen
+                    ? 'top-2 left-4 right-4 rounded-full'
+                    : 'top-0 left-0 right-0 rounded-none'
+                    }`}
                 style={{
-                    background: isMobileMenuOpen ? 'rgba(255, 255, 255, 0.75)' : 'transparent',
-                    backdropFilter: isMobileMenuOpen ? 'blur(20px) saturate(180%)' : 'none',
-                    WebkitBackdropFilter: isMobileMenuOpen ? 'blur(20px) saturate(180%)' : 'none',
-                    boxShadow: isMobileMenuOpen ? '0 4px 30px rgba(0, 0, 0, 0.1)' : 'none',
-                    borderBottom: isMobileMenuOpen ? '1px solid rgba(255, 255, 255, 0.3)' : 'none'
+                    minHeight: '70px',
+                    padding: '12px 0',
+                    background: isMobileMenuOpen
+                        ? 'rgba(255, 255, 255, 0.75)'
+                        : (isMobileScrolled ? 'rgba(255, 255, 255, 0.15)' : 'transparent'),
+                    backdropFilter: (isMobileMenuOpen || isMobileScrolled) ? 'blur(20px) saturate(180%)' : 'none',
+                    WebkitBackdropFilter: (isMobileMenuOpen || isMobileScrolled) ? 'blur(20px) saturate(180%)' : 'none',
+                    boxShadow: isMobileScrolled ? '0 4px 30px rgba(0, 0, 0, 0.1)' : 'none',
+                    borderBottom: isMobileMenuOpen ? '1px solid rgba(255, 255, 255, 0.3)' : '1px solid transparent',
+                    borderTop: 'none',
+                    borderLeft: 'none',
+                    borderRight: 'none',
+                    outline: 'none',
+                    margin: 0,
                 }}
             >
-                <div className="w-full flex items-center justify-center py-2 sm:py-3 px-2 transition-all duration-300">
-                    <nav
-                        id="navbar-pill-mobile"
-                        className="pointer-events-auto flex items-center justify-between gap-2 rounded-full backdrop-blur-xl transition-all duration-300"
-                        style={{
-                            width: '95%',
-                            maxWidth: '440px',
-                            minHeight: '62px',
-                            padding: '12px',
-                            backgroundColor: isMobileScrolled ? 'rgba(255, 255, 255, 0.15)' : 'transparent',
-                            backdropFilter: isMobileScrolled ? 'blur(20px) saturate(180%)' : 'none',
-                            boxShadow: 'none',
-                            border: 'none',
-                            outline: 'none'
-                        }}
-                    >
-                        {!isSearchExpanded ? (
-                            <>
-                                {/* LEFT: Menu Button (Hamburger / X) */}
-                                <button
-                                    onClick={toggleMobileMenu}
-                                    className="flex items-center justify-center active:scale-95 transition-all flex-shrink-0"
-                                    style={{
-                                        background: 'transparent',
-                                        backgroundColor: 'transparent',
-                                        border: 'none',
-                                        outline: 'none',
-                                        boxShadow: 'none',
-                                        padding: 0,
-                                        WebkitAppearance: 'none',
-                                        appearance: 'none'
-                                    }}
-                                    aria-label="Toggle Menu"
-                                >
-                                    {isMobileMenuOpen ? (
-                                        /* X icon when menu is open - 24x24 */
-                                        <span style={{ fontSize: '24px', width: '24px', height: '24px', lineHeight: '24px' }} className="font-bold text-[#1a3d0c]">✕</span>
-                                    ) : (
-                                        /* Hamburger icon when menu is closed */
-                                        <div className="flex flex-col gap-1.5">
-                                            <span className="w-7 h-[2.5px] bg-[#47622A] rounded-full"></span>
-                                            <span className="w-7 h-[2.5px] bg-[#47622A] rounded-full"></span>
-                                            <span className="w-7 h-[2.5px] bg-[#47622A] rounded-full"></span>
-                                        </div>
-                                    )}
-                                </button>
-
-                                {/* CENTER: Mobile Logo */}
-                                <a
-                                    href="/"
-                                    onClick={handleHomeClick}
-                                    className="flex items-center gap-2.5 transition-transform duration-300"
-                                >
-                                    <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-[#47622A] to-[#799851] flex items-center justify-center shadow-md">
-                                        <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.76 0 3.41-.46 4.84-1.26C14.08 19.2 12 16.79 12 14c0-3.31 2.69-6 6-6 .68 0 1.34.11 1.95.32C18.46 4.93 15.48 2 12 2z" />
-                                        </svg>
-                                    </div>
-                                    <span className="font-bold text-xl tracking-tight text-[#111827] whitespace-nowrap">MS Asia</span>
-                                </a>
-
-                                {/* RIGHT: Mobile Search */}
-                                <button
-                                    onClick={toggleSearch}
-                                    className="flex items-center justify-center w-11 h-11 rounded-full bg-transparent p-0 active:scale-90 transition-all border-none outline-none shadow-none"
-                                    aria-label="Toggle Search"
-                                >
-                                    <svg
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="#47622A"
-                                        strokeWidth="2.5"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    >
-                                        <circle cx="11" cy="11" r="8"></circle>
-                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                    </svg>
-                                </button>
-                            </>
-                        ) : (
-                            /* === MOBILE SEARCH UI === */
-                            <div className="w-full flex items-center h-full animate-fadeIn px-[10px] bg-white/10 rounded-full">
-                                <div className="flex-none flex items-center text-[#47622A]">
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                    </svg>
+                {!isSearchExpanded ? (
+                    <>
+                        {/* LEFT: Menu Button (Hamburger / X) */}
+                        <button
+                            onClick={toggleMobileMenu}
+                            className="flex items-center justify-center active:scale-95 flex-shrink-0"
+                            style={{
+                                background: 'transparent',
+                                backgroundColor: 'transparent',
+                                border: 'none',
+                                outline: 'none',
+                                boxShadow: 'none',
+                                padding: '0 0 0 8px',
+                                WebkitAppearance: 'none',
+                                appearance: 'none'
+                            }}
+                            aria-label="Toggle Menu"
+                        >
+                            {isMobileMenuOpen ? (
+                                /* X icon when menu is open - 24x24 */
+                                <span style={{ fontSize: '24px', width: '24px', height: '24px', lineHeight: '24px' }} className="font-bold text-[#1a3d0c]">✕</span>
+                            ) : (
+                                /* Hamburger icon when menu is closed - 24x24 */
+                                <div className="flex flex-col justify-center items-center gap-[5px]" style={{ width: '24px', height: '24px' }}>
+                                    <span className="w-6 h-[2px] bg-[#47622A] rounded-full"></span>
+                                    <span className="w-6 h-[2px] bg-[#47622A] rounded-full"></span>
+                                    <span className="w-6 h-[2px] bg-[#47622A] rounded-full"></span>
                                 </div>
-                                <input
-                                    type="text"
-                                    placeholder="Search..."
-                                    className="flex-1 bg-transparent text-base text-gray-700 outline-none border-none ring-0 focus:ring-0 placeholder:text-gray-400 mx-[10px] h-full relative top-[5px]"
-                                    autoFocus
-                                />
-                                <button
-                                    onClick={toggleSearch}
-                                    className="flex-none p-1 text-gray-400 hover:text-red-500 transition-colors !bg-transparent !border-none !shadow-none outline-none"
-                                >
-                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </button>
+                            )}
+                        </button>
+
+                        {/* CENTER: Mobile Logo */}
+                        <a
+                            href="/"
+                            onClick={handleHomeClick}
+                            className="flex items-center gap-2.5 no-underline hover:no-underline"
+                            style={{
+                                textDecoration: 'none'
+                            }}
+                        >
+                            <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-[#47622A] to-[#799851] flex items-center justify-center shadow-md">
+                                <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.76 0 3.41-.46 4.84-1.26C14.08 19.2 12 16.79 12 14c0-3.31 2.69-6 6-6 .68 0 1.34.11 1.95.32C18.46 4.93 15.48 2 12 2z" />
+                                </svg>
                             </div>
-                        )}
-                    </nav>
-                </div>
-            </header>
+                            <span className="font-bold text-xl tracking-tight text-[#111827] whitespace-nowrap">MS Asia</span>
+                        </a>
+
+                        {/* RIGHT: Mobile Search */}
+                        <button
+                            onClick={toggleSearch}
+                            className="flex items-center justify-center w-11 h-11 rounded-full bg-transparent p-0 active:scale-90 border-none outline-none shadow-none"
+                            aria-label="Toggle Search"
+                        >
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="#47622A"
+                                strokeWidth="2.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            >
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </button>
+                    </>
+                ) : (
+                    /* === MOBILE SEARCH UI === */
+                    <div className="w-full flex items-center h-full animate-fadeIn px-[10px] bg-white/10 rounded-full">
+                        <div className="flex-none flex items-center text-[#47622A]">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </div>
+                        <input
+                            type="text"
+                            placeholder="Search..."
+                            className="flex-1 bg-transparent text-base text-gray-700 outline-none border-none ring-0 focus:ring-0 placeholder:text-gray-400 mx-[10px] h-full relative top-[5px]"
+                            autoFocus
+                        />
+                        <button
+                            onClick={toggleSearch}
+                            className="flex-none p-1 text-gray-400 hover:text-red-500 transition-colors !bg-transparent !border-none !shadow-none outline-none"
+                        >
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                )}
+            </nav>
 
             {/* ===== MOBILE MENU OVERLAY (Side Drawer) ===== */}
             {isMobileMenuOpen && createPortal(
@@ -406,7 +416,7 @@ function NavbarPill({
                     />
 
                     {/* Content Drawer - Slides in from left, starts BELOW fixed header */}
-                    <div className="mobile-drawer-content animate-slideInLeft" style={{ top: '82px' }}>
+                    <div className="mobile-drawer-content animate-slideInLeft" style={{ top: '70px' }}>
                         {/* Mobile Content - NO header here, header stays in place above */}
                         <div className="flex-1 p-[12px] overflow-y-auto custom-scrollbar">
                             <div className="space-y-1">
@@ -424,7 +434,7 @@ function NavbarPill({
                                                     href={href}
                                                     className="flex items-center justify-between py-[12px] group cursor-pointer"
                                                 >
-                                                    <span className="text-[17px] font-bold text-gray-800 dark:text-gray-200 group-hover:text-[#47622A] transition-colors">
+                                                    <span className="text-[16px] font-bold text-gray-800 dark:text-gray-200 group-hover:text-[#47622A] transition-colors">
                                                         {item}
                                                     </span>
                                                     <svg className="w-5 h-5 text-gray-400 group-hover:text-[#47622A] transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -439,7 +449,7 @@ function NavbarPill({
                                                             setMobileActiveL1(isL1Active ? null : item);
                                                         }}
                                                     >
-                                                        <span className={`text-[17px] font-bold transition-colors ${isL1Active ? 'text-[#47622A]' : 'text-gray-800 dark:text-gray-200'}`}>
+                                                        <span className={`text-[16px] font-bold transition-colors ${isL1Active ? 'text-[#47622A]' : 'text-gray-800 dark:text-gray-200'}`}>
                                                             {item}
                                                         </span>
                                                         <div className={`transition-transform duration-300 ${isL1Active ? 'rotate-180' : ''}`}>
@@ -487,7 +497,7 @@ function NavbarPill({
                                                                                             <Link
                                                                                                 to={`/services/${slug}`}
                                                                                                 onClick={() => toggleMobileMenu()}
-                                                                                                className="block py-[12px] px-[12px] text-[14.5px] font-medium text-gray-600 dark:text-gray-400 hover:text-[#47622A] dark:hover:text-[#799851] rounded-lg transition-colors"
+                                                                                                className="block py-[12px] px-[12px] text-[15px] font-medium text-gray-800 dark:text-gray-200 hover:text-[#47622A] dark:hover:text-[#799851] rounded-lg transition-colors"
                                                                                             >
                                                                                                 {label}
                                                                                             </Link>
