@@ -147,7 +147,7 @@ function NavbarPill({
                                             onMouseLeave={handleMenuLeave}
                                             onClick={(e) => hasDropdown && e.preventDefault()}
                                         >
-                                            <h2 className="m-0 p-0 text-base font-medium inline">{item}</h2>
+                                            <h6 className="m-0 p-0 font-medium inline normal-case tracking-normal text-[16px]">{item}</h6>
                                             {hasDropdown && (
                                                 <svg
                                                     className={`w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 transition-transform duration-200 ${isActive ? 'rotate-180' : ''}`}
@@ -176,7 +176,7 @@ function NavbarPill({
 
                                 {/* Internal Contact (Visible on Scroll) */}
                                 <a
-                                    href="#contact"
+                                    href="/contact"
                                     onMouseEnter={() => setIsInternalHovered(true)}
                                     onMouseLeave={() => setIsInternalHovered(false)}
                                     style={{
@@ -232,7 +232,7 @@ function NavbarPill({
                             : 'opacity-100 translate-x-0'
                             }`}>
                             <a
-                                href="#contact"
+                                href="/contact"
                                 id="external-contact"
                                 onMouseEnter={() => setIsExternalHovered(true)}
                                 onMouseLeave={() => setIsExternalHovered(false)}
@@ -436,9 +436,9 @@ function NavbarPill({
                                                     href={href}
                                                     className="flex items-center justify-between py-[12px] group cursor-pointer"
                                                 >
-                                                    <h2 className="m-0 p-0 text-base font-bold text-gray-900 dark:text-gray-100 group-hover:text-[#3d5423] transition-colors">
+                                                    <h6 className="m-0 p-0 text-[16px] font-bold text-gray-900 dark:text-gray-100 group-hover:text-[#3d5423] transition-colors normal-case tracking-normal">
                                                         {item}
-                                                    </h2>
+                                                    </h6>
                                                     <svg className="w-5 h-5 text-gray-600 group-hover:text-[#47622A] transition-all" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                                                     </svg>
@@ -451,9 +451,9 @@ function NavbarPill({
                                                             setMobileActiveL1(isL1Active ? null : item);
                                                         }}
                                                     >
-                                                        <h2 className={`m-0 p-0 text-base font-bold transition-colors ${isL1Active ? 'text-[#3d5423]' : 'text-gray-900 dark:text-gray-100'}`}>
+                                                        <h6 className={`m-0 p-0 text-[16px] font-bold transition-colors normal-case tracking-normal ${isL1Active ? 'text-[#3d5423]' : 'text-gray-900 dark:text-gray-100'}`}>
                                                             {item}
-                                                        </h2>
+                                                        </h6>
                                                         <div className={`transition-transform duration-300 ${isL1Active ? 'rotate-180' : ''}`}>
                                                             <svg className={`w-5 h-5 ${isL1Active ? 'text-[#47622A]' : 'text-gray-600'}`} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
@@ -477,9 +477,9 @@ function NavbarPill({
                                                                             className={`flex items-center justify-between p-[12px] cursor-pointer transition-all duration-300 ${isL2Active ? 'bg-[#47622A]/20 text-[#2d4016]' : 'bg-gray-100 dark:bg-gray-800/50 text-gray-900 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800'}`}
                                                                             onClick={() => setActiveSubMenu(isL2Active ? null : col.title)}
                                                                         >
-                                                                            <h3 className="m-0 p-0 text-[15px] font-bold">
+                                                                            <h6 className="m-0 p-0 text-[16px] font-bold normal-case tracking-normal">
                                                                                 {col.title}
-                                                                            </h3>
+                                                                            </h6>
                                                                             <div className={`transition-transform duration-300 ${isL2Active ? 'rotate-180' : ''}`}>
                                                                                 <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                                                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
@@ -501,9 +501,9 @@ function NavbarPill({
                                                                                                 onClick={() => toggleMobileMenu()}
                                                                                                 className="block py-[12px] px-[12px] rounded-lg transition-colors"
                                                                                             >
-                                                                                                <h4 className="m-0 p-0 text-[15px] font-semibold text-gray-900 dark:text-gray-100 hover:text-[#3d5423] dark:hover:text-[#799851]">
+                                                                                                <h6 className="m-0 p-0 text-[16px] font-semibold text-gray-900 dark:text-gray-100 hover:text-[#3d5423] dark:hover:text-[#799851] normal-case tracking-normal">
                                                                                                     {label}
-                                                                                                </h4>
+                                                                                                </h6>
                                                                                             </Link>
                                                                                         </li>
                                                                                     );
@@ -525,14 +525,18 @@ function NavbarPill({
                             {/* Call to Action & Footer */}
                             <div className="border-t border-gray-100 dark:border-gray-800">
                                 <div className="py-[12px]">
-                                    <button className="bg-[#47622A] text-white font-semibold px-5 py-2.5 rounded-lg transition-colors duration-200 text-sm focus:outline-none focus:bg-[#47622A] active:bg-[#47622A] hover:bg-[#5a7a35] transform-none active:transform-none">
+                                    <Link
+                                        to="/contact"
+                                        onClick={() => toggleMobileMenu()}
+                                        className="bg-[#47622A] text-white font-semibold px-5 py-2.5 rounded-lg transition-colors duration-200 text-sm focus:outline-none focus:bg-[#47622A] active:bg-[#47622A] hover:bg-[#5a7a35] transform-none active:transform-none block text-center"
+                                    >
                                         Contact Us
-                                    </button>
+                                    </Link>
                                 </div>
                                 <div className="flex items-center gap-4 text-[12px] text-gray-400 font-medium py-[12px]">
-                                    <a href="#" className="hover:text-[#47622A] transition-colors">Privacy</a>
+                                    <a href="/privacy-policy" className="hover:text-[#47622A] transition-colors">Privacy</a>
                                     <span className="w-1 h-1 rounded-full bg-gray-300"></span>
-                                    <a href="#" className="hover:text-[#47622A] transition-colors">Terms</a>
+                                    <a href="/terms-of-service" className="hover:text-[#47622A] transition-colors">Terms</a>
                                     <span className="w-1 h-1 rounded-full bg-gray-300"></span>
                                     <a href="#" className="hover:text-[#47622A] transition-colors">Support</a>
                                 </div>

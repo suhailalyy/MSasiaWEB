@@ -320,7 +320,7 @@ nav {
 
 .nav-item {
     font-family: var(--font-heading);
-    font-size: 16px;
+    font-size: 14px;
     color: var(--text-main);
     text-decoration: none;
     white-space: nowrap;
@@ -463,6 +463,8 @@ aside {
 
 /* ===== TYPOGRAPHY ===== */
 /* ===== GLOBAL HEADING SYSTEM (Professional Scale) ===== */
+
+/* Universal Heading Styles */
 h1,
 h2,
 h3,
@@ -475,36 +477,42 @@ h6 {
     color: var(--heading-h1);
 }
 
+/* H1 Styles */
 h1 {
     font-size: clamp(36px, 5vw, 52px);
     line-height: 1.15;
     color: var(--heading-h1);
 }
 
+/* H2 Styles */
 h2 {
     font-size: clamp(28px, 4vw, 42px);
     line-height: 1.25;
     color: var(--heading-h2);
 }
 
+/* H3 Styles */
 h3 {
     font-size: clamp(24px, 3.5vw, 34px);
     line-height: 1.3;
     color: var(--heading-h3);
 }
 
+/* H4 Styles */
 h4 {
     font-size: clamp(20px, 3vw, 28px);
     line-height: 1.3;
     color: var(--heading-h4);
 }
 
+/* H5 Styles */
 h5 {
     font-size: clamp(18px, 2.5vw, 22px);
     line-height: 1.3;
     color: var(--text-muted);
 }
 
+/* H6 Styles */
 h6 {
     font-size: clamp(14px, 2vw, 18px);
     line-height: 1.3;
@@ -1904,7 +1912,7 @@ footer a:hover {
 
 /* --- NAVBAR HEADING CLASSES --- */
 .nav-h1 {
-    font-size: 3rem;
+    font-size: 32px;
     line-height: 1;
     font-weight: 800;
     color: var(--nav-heading-h1);
@@ -1913,7 +1921,7 @@ footer a:hover {
 }
 
 .nav-h2 {
-    font-size: 2.5rem;
+    font-size: 28px;
     line-height: 1.2;
     font-weight: 700;
     color: var(--nav-heading-h2);
@@ -1921,7 +1929,7 @@ footer a:hover {
 }
 
 .nav-h3 {
-    font-size: 2rem;
+    font-size: 16px;
     line-height: 1.3;
     font-weight: 600;
     color: var(--nav-heading-h3);
@@ -1929,7 +1937,7 @@ footer a:hover {
 }
 
 .nav-h4 {
-    font-size: 1.5rem;
+    font-size: 14px;
     line-height: 1.4;
     font-weight: 600;
     color: var(--nav-heading-h4);
@@ -1937,7 +1945,7 @@ footer a:hover {
 }
 
 .nav-h5 {
-    font-size: 1.25rem;
+    font-size: 12px;
     line-height: 1.5;
     font-weight: 500;
     color: var(--nav-text-main);
@@ -1945,7 +1953,7 @@ footer a:hover {
 }
 
 .nav-h6 {
-    font-size: 1rem;
+    font-size: 10px;
     line-height: 1.5;
     font-weight: 500;
     color: var(--nav-text-muted);
@@ -3184,7 +3192,7 @@ button.bg-brand-btn-primary:hover {
 }
 
 .hero-visual-step-content h4 {
-    font-size: 0.9375rem;
+    font-size: 14px;
     font-weight: 700;
     color: #000000;
     margin-bottom: 0.25rem;

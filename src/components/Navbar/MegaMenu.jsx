@@ -4,7 +4,6 @@ import { NAV_MENU_DATA } from './NavbarData';
 import './MegaMenu.css';
 
 // Content content map for Mega Menu Interactivity
-// ... existing CATEGORY_CONTENT_MAP ...
 const CATEGORY_CONTENT_MAP = {
     'Electronics': {
         heading: 'E-Waste & IT Asset Disposal',
@@ -42,11 +41,11 @@ const CATEGORY_CONTENT_MAP = {
         buttonText: 'Explore Healthcare',
         image: '/images/scene_healthcare.png'
     },
-    'Pharmacy, Labs & Research': {
-        heading: 'Pharmaceutical Disposal',
-        description: 'Expert disposal services for pharmacies, laboratories, and research centers dealing with effectively managing waste.',
-        buttonText: 'Explore Pharma',
-        image: '/images/scene_pharma.png'
+    'Industrial & Public': {
+        heading: 'Public Sector Solutions',
+        description: 'Waste management solutions for government agencies, transportation hubs, and public facilities.',
+        buttonText: 'Explore Public Sector',
+        image: '/images/scene_industrial.png'
     },
     'Other Industries': {
         heading: 'Commercial Waste Services',
@@ -128,7 +127,7 @@ const MegaMenu = ({ activeMenu, isVisible, onMouseEnter, onMouseLeave, onClose }
 
                         {/* COL 1: SIDEBAR (Categories) */}
                         <div className="mm-sidebar">
-                            <h3 className="mm-section-title">Categories</h3>
+                            <h6 className="mm-section-title text-center">Categories</h6>
                             <ul className="mm-category-list">
                                 {menuData.columns.map((column, index) => (
                                     <li
@@ -136,10 +135,10 @@ const MegaMenu = ({ activeMenu, isVisible, onMouseEnter, onMouseLeave, onClose }
                                         className={`mm-category-item ${index === activeCategoryIndex ? 'active' : ''}`}
                                         onMouseEnter={() => {
                                             setActiveCategoryIndex(index);
-                                            setHoveredLink(null); // Reset link preview when switching categories
+                                            setHoveredLink(null);
                                         }}
                                     >
-                                        <h3 className="m-0 p-0 text-sm font-medium mm-category-text">{column.title}</h3>
+                                        <h6 className="m-0 p-0 font-medium mm-category-text">{column.title}</h6>
                                         <svg className="mm-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 5l7 7-7 7" />
                                         </svg>
@@ -160,7 +159,7 @@ const MegaMenu = ({ activeMenu, isVisible, onMouseEnter, onMouseLeave, onClose }
                                             onMouseLeave={() => setHoveredLink(null)}
                                             onClick={onClose}
                                         >
-                                            <h4 className="m-0 p-0 text-sm font-normal">{item.label}</h4>
+                                            <h6 className="m-0 p-0 font-normal normal-case tracking-normal">{item.label}</h6>
                                             <svg className="mm-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 5l7 7-7 7" />
                                             </svg>
@@ -185,7 +184,7 @@ const MegaMenu = ({ activeMenu, isVisible, onMouseEnter, onMouseLeave, onClose }
                                     </span>
                                 </div>
                                 <div className="mm-promo-content">
-                                    <h3>{displayHeading}</h3>
+                                    <h5>{displayHeading}</h5>
                                     <p>{displayDesc}</p>
                                     <Link
                                         to={`/services/${promoSlug}`}

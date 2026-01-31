@@ -232,14 +232,13 @@
 }
 
 .mm-section-title {
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--mm-text-muted);
-    padding: 8px 10px;
-    /* 8px top/bottom, 10px left/right */
-    margin-bottom: 5px;
+    padding: 0;
+    margin: 0;
 }
 
 .mm-category-list {
@@ -286,8 +285,10 @@
 .mm-category-text {
     font-weight: 400;
     /* Normal weight to match Links */
-    font-size: 16px;
-    /* Ensure 16px matches Links */
+    font-size: 16px !important;
+    /* Force exact 16px */
+    text-transform: none !important;
+    letter-spacing: normal !important;
 }
 
 .mm-arrow-icon {
@@ -324,8 +325,8 @@
 }
 
 .mm-category-heading {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 500;
     color: var(--mm-text-main);
     margin: 0 0 5px 0;
 }
@@ -463,7 +464,7 @@
     /* Center button */
 }
 
-.mm-promo-content h3 {
+.mm-promo-content h5 {
     margin: 0 0 10px 0;
     color: var(--mm-text-main);
     font-size: 18px;
@@ -555,23 +556,18 @@
 }
 
 /* Override global heading styles inside Navbar and Mega Menu for SEO headings */
-#navbar-pill-mobile h2,
-#navbar-pill-mobile h3,
-#navbar-pill-mobile h4,
-.mobile-drawer-content h2,
-.mobile-drawer-content h3,
-.mobile-drawer-content h4 {
-    font-size: inherit;
+#navbar-pill-mobile h6,
+.mobile-drawer-content h6 {
+    font-size: 16px;
     line-height: inherit;
     margin: 0;
     padding: 0;
     color: inherit;
 }
 
-.mega-menu-container h2,
-.mega-menu-container h3,
-.mega-menu-container h4 {
-    font-size: inherit;
+.mega-menu-container h6:not(.mm-section-title) {
+    font-size: 16px;
+    font-weight: 500;
     line-height: inherit;
     margin: 0;
     padding: 0;
@@ -579,8 +575,8 @@
 }
 
 /* Desktop navbar heading overrides */
-nav h2 {
-    font-size: inherit;
+nav h6 {
+    font-size: 14px;
     line-height: inherit;
     margin: 0;
     padding: 0;
