@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { NAV_MENU_DATA } from './NavbarData';
 import MegaMenu from './MegaMenu';
 import './MegaMenu.css';
@@ -15,6 +15,7 @@ function NavbarPill({
     isDark,
     toggleTheme,
 }) {
+    const location = useLocation();
     // Mega Menu State
     const [activeMenu, setActiveMenu] = useState(null);
     const [mobileActiveL1, setMobileActiveL1] = useState(null); // Isolated Mobile L1 State
@@ -290,7 +291,7 @@ function NavbarPill({
             {/* ===== MOBILE NAVBAR - FIXED AT TOP ===== */}
             <nav
                 id="navbar-pill-mobile"
-                className="md:hidden fixed z-[100000] pointer-events-auto flex items-center justify-between gap-2 left-0 right-0 rounded-none"
+                className="md:hidden fixed z-[100000] pointer-events-auto flex items-center justify-center gap-2 left-0 right-0 rounded-none"
                 style={{
                     top: '-1px',
                     minHeight: '72px',
@@ -313,9 +314,8 @@ function NavbarPill({
                         {/* LEFT: Menu Button (Hamburger / X) */}
                         <button
                             onClick={toggleMobileMenu}
-                            className="flex items-center justify-center w-11 h-11 rounded-full p-0 active:scale-90 flex-shrink-0"
+                            className="absolute left-2 top-1/2 -translate-y-1/2 flex items-center justify-center w-11 h-11 rounded-full p-0 flex-shrink-0 z-20"
                             style={{
-                                marginLeft: '8px',
                                 WebkitAppearance: 'none',
                                 appearance: 'none',
                                 border: 'none',
@@ -327,27 +327,47 @@ function NavbarPill({
                             }}
                             aria-label="Toggle Menu"
                         >
-                            {isMobileMenuOpen ? (
-                                /* X icon when menu is open - matches search icon size */
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#47622A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                                </svg>
-                            ) : (
-                                /* Hamburger icon - matches search icon size */
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#47622A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                                </svg>
-                            )}
+                            {/* Hamburger Icon */}
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="#000000"
+                                strokeWidth="2.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                style={{ top: '50%', left: '50%', marginTop: '-12px', marginLeft: '-12px' }}
+                                className={`absolute transition-all duration-300 transform ${isMobileMenuOpen ? 'opacity-0 rotate-90 scale-75' : 'opacity-100 rotate-0 scale-100'}`}
+                            >
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <line x1="3" y1="12" x2="21" y2="12"></line>
+                                <line x1="3" y1="18" x2="21" y2="18"></line>
+                            </svg>
+
+                            {/* Close Icon */}
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="#000000"
+                                strokeWidth="2.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                style={{ top: '50%', left: '50%', marginTop: '-12px', marginLeft: '-12px' }}
+                                className={`absolute transition-all duration-300 transform ${isMobileMenuOpen ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-75'}`}
+                            >
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
                         </button>
 
                         {/* CENTER: Mobile Logo */}
                         <a
                             href="/"
                             onClick={handleHomeClick}
-                            className="flex items-center gap-2.5 no-underline hover:no-underline"
+                            className="flex items-center gap-2.5 no-underline hover:no-underline z-10"
                             style={{
                                 textDecoration: 'none'
                             }}
@@ -363,8 +383,7 @@ function NavbarPill({
                         {/* RIGHT: Mobile Search */}
                         <button
                             onClick={toggleSearch}
-                            className="flex items-center justify-center w-11 h-11 rounded-full bg-transparent p-0 active:scale-90 border-none outline-none shadow-none"
-                            style={{ marginRight: '8px' }}
+                            className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center justify-center w-11 h-11 rounded-full bg-transparent p-0 active:scale-90 border-none outline-none shadow-none z-20"
                             aria-label="Toggle Search"
                         >
                             <svg
@@ -372,7 +391,7 @@ function NavbarPill({
                                 height="24"
                                 viewBox="0 0 24 24"
                                 fill="none"
-                                stroke="#47622A"
+                                stroke="#000000"
                                 strokeWidth="2.5"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
@@ -426,23 +445,25 @@ function NavbarPill({
                                     const menuData = NAV_MENU_DATA[item];
                                     const isAccordion = item === 'What We Do' || item === 'Industries We Serve' || item === 'Company';
                                     const isLink = !isAccordion;
-                                    const href = item === 'Blog' ? '/blog' : '#';
+                                    const path = '/blog';
+                                    const isActive = isLink && location.pathname === path;
                                     const isL1Active = mobileActiveL1 === item;
 
                                     return (
                                         <div key={idx} className="border-b border-gray-50 dark:border-gray-800/50 last:border-0">
                                             {isLink ? (
-                                                <a
-                                                    href={href}
+                                                <Link
+                                                    to={path}
+                                                    onClick={() => toggleMobileMenu()}
                                                     className="flex items-center justify-between py-[12px] group cursor-pointer"
                                                 >
-                                                    <h6 className="m-0 p-0 text-[16px] font-bold text-gray-900 dark:text-gray-100 group-hover:text-[#3d5423] transition-colors normal-case tracking-normal">
+                                                    <h6 className="m-0 p-0 text-[16px] font-bold !text-black dark:text-gray-100 group-hover:!text-[#47622A] transition-colors normal-case tracking-normal">
                                                         {item}
                                                     </h6>
                                                     <svg className="w-5 h-5 text-gray-600 group-hover:text-[#47622A] transition-all" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                                                     </svg>
-                                                </a>
+                                                </Link>
                                             ) : (
                                                 <div className="py-0">
                                                     <div

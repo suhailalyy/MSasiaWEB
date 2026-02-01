@@ -1,27 +1,26 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { getServiceData } from './ServiceData';
 
 const DynamicServicePage = () => {
     const { slug } = useParams();
+    const data = getServiceData(slug);
 
-    // Helper to format slug back to Title Case
-    const formatTitle = (s) => {
-        if (!s) return "Service Details";
-        return s.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-    };
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [slug]);
 
-    const serviceName = formatTitle(slug);
     const breadcrumbs = ["Home", "Services"];
 
     return (
         <div className="min-h-screen bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
             {/* 1. HERO SECTION */}
             <div className="relative w-full h-[400px] lg:h-[500px] overflow-hidden">
-                {/* Background Image Placeholder (Industrial Theme) */}
+                {/* Background Image Placeholder */}
                 <div
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 hover:scale-105"
                     style={{
-                        backgroundImage: `url('https://images.unsplash.com/photo-1530124560676-586cad324960?q=80&w=2070&auto=format&fit=crop')`,
+                        backgroundImage: `url('${data.image}')`,
                     }}
                 >
                     {/* Dark Overlay for legibility */}
@@ -43,13 +42,16 @@ const DynamicServicePage = () => {
                                     </svg>
                                 </React.Fragment>
                             ))}
-                            <li className="text-white font-semibold">{serviceName}</li>
+                            <li className="text-white font-semibold">{data.title}</li>
                         </ol>
                     </nav>
 
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-4 animate-slideInLeft text-white">
-                        {serviceName}
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-2 animate-slideInLeft text-white">
+                        {data.title}
                     </h1>
+                    <p className="text-xl md:text-2xl text-gray-200 mb-6 font-light max-w-2xl animate-slideInLeft" style={{ animationDelay: '0.1s' }}>
+                        {data.subtitle}
+                    </p>
                     <div className="w-24 h-1.5 bg-[#799851] rounded-full animate-widthGrow"></div>
                 </div>
             </div>
@@ -66,11 +68,11 @@ const DynamicServicePage = () => {
                                 <span className="w-2 h-8 bg-[#47622A] rounded-full"></span>
                                 Service Overview
                             </h2>
-                            <p className="leading-relaxed mb-6">
-                                We provide comprehensive industrial waste management solutions tailored to the unique needs of pharmaceutical and chemical manufacturing. Our approach prioritizes compliance, environmental safety, and operational efficiency, ensuring that your facility meets all regulatory standards while minimizing its ecological footprint.
+                            <p className="leading-relaxed mb-6 text-lg">
+                                {data.description}
                             </p>
                             <p className="leading-relaxed">
-                                Our team of certified professionals utilizes state-of-the-art technology and industry-best practices to handle, transport, and dispose of hazardous materials with the utmost care and precision.
+                                Our team of certified professionals utilizes state-of-the-art technology and industry-best practices to ensure your waste management needs are met with precision, compliance, and environmental stewardship.
                             </p>
                         </section>
 
@@ -79,20 +81,9 @@ const DynamicServicePage = () => {
                             {/* Subtle Background Decoration */}
                             <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-[#799851]/10 rounded-full blur-3xl group-hover:bg-[#799851]/20 transition-all duration-500"></div>
 
-                            <h3 className="text-2xl font-bold text-[#47622A] dark:text-[#799851] mb-8 relative z-10">Key Features & Benefits</h3>
+                            <h3 className="text-2xl font-bold text-[#47622A] dark:text-[#799851] mb-8 relative z-10">Key Features</h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
-                                {
-                                    /* ... cards ... */
-                                }
-                                {
-                                    /* Note: Re-writing the map to avoid partial match issues with complex nested code */
-                                }
-                                {[
-                                    { title: "Zero Leakage Policy", desc: "Advanced containment systems for all hazardous transport." },
-                                    { title: "24/7 Monitoring", desc: "Real-time tracking of waste processing cycles." },
-                                    { title: "ISO Certified", desc: "Fully compliant with international environmental standards." },
-                                    { title: "Custom Disposal", desc: "Tailored strategies for complex chemical waste streams." }
-                                ].map((feature, i) => (
+                                {data.features && data.features.map((feature, i) => (
                                     <div key={i} className="flex gap-4 p-4 rounded-2xl bg-white dark:bg-[#1a1a1a] shadow-sm border border-gray-50 dark:border-gray-800 hover:border-[#799851]/30 transition-all">
                                         <div className="flex-none w-10 h-10 rounded-lg bg-[#47622A] flex items-center justify-center text-white">
                                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -100,27 +91,21 @@ const DynamicServicePage = () => {
                                             </svg>
                                         </div>
                                         <div>
-                                            <h4 className="font-bold text-black dark:text-white mb-1">{feature.title}</h4>
-                                            <p className="text-sm text-gray-600 dark:text-gray-400">{feature.desc}</p>
+                                            <h4 className="font-bold text-black dark:text-white mb-1">{feature}</h4>
                                         </div>
                                     </div>
                                 ))}
                             </div>
                         </div>
 
-                        {/* Detailed Content / Bullet Points */}
+                        {/* Benefits Section */}
                         <section className="space-y-6 text-gray-700 dark:text-gray-300">
-                            <h3 className="text-2xl font-bold text-black dark:text-white">Why Partner With MS Asia?</h3>
+                            <h3 className="text-2xl font-bold text-black dark:text-white">Why Choose Our {data.title} Solutions?</h3>
                             <ul className="space-y-4 list-none p-0">
-                                {[
-                                    "Dedicated hazardous waste experts with decades of experience.",
-                                    "Comprehensive audit trails for every disposal action.",
-                                    "Cost-effective recycling programs for non-hazardous medical waste.",
-                                    "Emergency spill response and containment services available 24/7."
-                                ].map((point, i) => (
+                                {data.benefits && data.benefits.map((benefit, i) => (
                                     <li key={i} className="flex items-start gap-4">
                                         <span className="mt-1.5 w-2 h-2 rounded-full bg-[#799851] flex-none"></span>
-                                        <span className="text-lg">{point}</span>
+                                        <span className="text-lg">{benefit}</span>
                                     </li>
                                 ))}
                             </ul>
@@ -137,14 +122,14 @@ const DynamicServicePage = () => {
                                 <div className="absolute inset-0 bg-gradient-to-br from-[#47622A]/40 to-transparent pointer-events-none"></div>
 
                                 <div className="relative z-10">
-                                    <h3 className="text-2xl font-black mb-4 tracking-tight">Need a Custom Quote?</h3>
+                                    <h3 className="text-2xl font-black mb-4 tracking-tight">Need a Quote?</h3>
                                     <p className="text-gray-300 mb-8 text-sm leading-relaxed">
-                                        Contact our experts today for a personalized analysis of your facility's waste requirements.
+                                        Get a customized solution for your facility's {data.title} requirements.
                                     </p>
 
-                                    <button className="w-full bg-[#799851] hover:bg-[#47622A] text-white font-bold py-4 rounded-2xl transition-all shadow-lg hover:shadow-xl active:scale-95 mb-6">
-                                        Get Your Audit
-                                    </button>
+                                    <Link to="/contact" className="block w-full text-center bg-[#799851] hover:bg-[#47622A] text-white font-bold py-4 rounded-2xl transition-all shadow-lg hover:shadow-xl active:scale-95 mb-6">
+                                        Request Audit
+                                    </Link>
 
                                     <div className="space-y-4 border-t border-white/10 pt-6">
                                         <div className="flex items-center gap-4 text-sm hover:text-[#799851] transition-colors cursor-pointer group">
@@ -167,28 +152,6 @@ const DynamicServicePage = () => {
                                 </div>
                             </div>
 
-                            {/* RELATED SERVICES */}
-                            <div className="bg-gray-50 dark:bg-[#1a1a1a] rounded-3xl p-8 border border-gray-100 dark:border-gray-800 shadow-sm">
-                                <h3 className="text-xl font-bold text-black dark:text-white mb-6">Expertise Areas</h3>
-                                <ul className="space-y-3 p-0 m-0 list-none">
-                                    {[
-                                        "Chemical Waste Disposal",
-                                        "Medical Waste Solutions",
-                                        "Asset Recovery",
-                                        "Compliance Auditing",
-                                        "Sustainability Consulting"
-                                    ].map((service, i) => (
-                                        <li key={i}>
-                                            <a href="#" className="flex items-center justify-between p-3 rounded-xl hover:bg-white dark:hover:bg-gray-800 hover:text-[#47622A] dark:text-gray-300 dark:hover:text-[#799851] hover:shadow-sm transition-all group border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
-                                                <span className="font-medium">{service}</span>
-                                                <svg className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                                                </svg>
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
                         </div>
                     </div>
 

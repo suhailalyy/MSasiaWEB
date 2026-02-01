@@ -37,9 +37,12 @@ function Industries() {
                                     <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm leading-relaxed">
                                         {item.desc}
                                     </p>
-                                    <span className="text-sm font-semibold text-[#47622A] hover:underline cursor-pointer">
+                                    <Link
+                                        to={`/industries/${item.label.toLowerCase().replace(/ & /g, '-and-').replace(/ /g, '-').replace(/[^a-z0-9-]/g, '')}`}
+                                        className="text-sm font-semibold text-[#47622A] hover:underline cursor-pointer inline-flex items-center gap-1"
+                                    >
                                         View Solutions &rarr;
-                                    </span>
+                                    </Link>
                                 </div>
                             ))}
                         </div>

@@ -153,7 +153,13 @@ const MegaMenu = ({ activeMenu, isVisible, onMouseEnter, onMouseLeave, onClose }
                                 {activeCategoryData?.items?.map((item, idx) => (
                                     <li key={idx}>
                                         <Link
-                                            to={`/services/${getSlug(item.label)}`}
+                                            to={activeMenu === 'Company'
+                                                ? (item.label === 'About Us' ? '/about' :
+                                                    item.label === 'Contact Us' ? '/contact' :
+                                                        `/${getSlug(item.label)}`)
+                                                : activeMenu === 'Industries We Serve'
+                                                    ? `/industries/${getSlug(item.label)}`
+                                                    : `/services/${getSlug(item.label)}`}
                                             className="mm-link-item group"
                                             onMouseEnter={() => setHoveredLink(item)}
                                             onMouseLeave={() => setHoveredLink(null)}
@@ -187,7 +193,11 @@ const MegaMenu = ({ activeMenu, isVisible, onMouseEnter, onMouseLeave, onClose }
                                     <h5>{displayHeading}</h5>
                                     <p>{displayDesc}</p>
                                     <Link
-                                        to={`/services/${promoSlug}`}
+                                        to={activeMenu === 'Company'
+                                            ? `/${promoSlug}`
+                                            : activeMenu === 'Industries We Serve'
+                                                ? `/industries/${promoSlug}`
+                                                : `/services/${promoSlug}`}
                                         className="mm-promo-btn"
                                         onClick={onClose}
                                     >

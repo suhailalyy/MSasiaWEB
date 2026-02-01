@@ -431,7 +431,6 @@
     padding: 0;
     /* Remove padding */
     position: relative;
-    border-bottom: 1px solid var(--mm-border);
     overflow: hidden;
     /* Ensure image fits */
 }
@@ -474,7 +473,7 @@
 .mm-promo-content p {
     margin: 0 0 20px 0;
     color: var(--mm-text-muted);
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.5;
 }
 
@@ -582,4 +581,53 @@ nav h6 {
     padding: 0;
     color: inherit;
     display: inline;
+}
+
+/* --- EXPLICIT HEADING DEFINITIONS FOR MEGA MENU --- */
+.mega-menu-container h1 {
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--mm-text-main);
+}
+
+.mega-menu-container h2 {
+    font-size: 28px;
+    line-height: 1.25;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--mm-text-main);
+}
+
+.mega-menu-container h3 {
+    font-size: 24px;
+    line-height: 1.3;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--mm-text-main);
+}
+
+.mega-menu-container h4 {
+    font-size: 20px;
+    line-height: 1.35;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--mm-text-main);
+}
+
+.mega-menu-container h5 {
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--mm-text-main);
+}
+
+.mega-menu-container h6 {
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--mm-text-main);
 }

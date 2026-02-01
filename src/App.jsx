@@ -18,6 +18,16 @@ import WhatWeDo from './components/Pages/WhatWeDo'
 import Industries from './components/Pages/Industries'
 import Contact from './components/Pages/Contact'
 
+// Company Pages
+import MissionValues from './components/Pages/Company/MissionValues'
+import Certifications from './components/Pages/Company/Certifications'
+import TechnologyInnovation from './components/Pages/Company/TechnologyInnovation'
+import SafetyStandards from './components/Pages/Company/SafetyStandards'
+import SustainabilityReport from './components/Pages/Company/SustainabilityReport'
+import Testimonials from './components/Pages/Company/Testimonials'
+import CaseStudies from './components/Pages/Company/CaseStudies'
+import StandardOfExcellence from './components/Pages/Company/StandardOfExcellence'
+
 // HomePage Component (Existing Content)
 const HomePage = () => (
     <>
@@ -69,6 +79,18 @@ function App() {
                 <Route path="/industries" element={<Industries />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/services/:slug" element={<DynamicServicePage />} />
+                <Route path="/industries/:slug" element={<DynamicServicePage />} />
+
+                {/* Company Pages */}
+                <Route path="/mission-and-values" element={<MissionValues />} />
+                <Route path="/certifications" element={<Certifications />} />
+                <Route path="/technology-and-innovation" element={<TechnologyInnovation />} />
+                <Route path="/safety-standards" element={<SafetyStandards />} />
+                <Route path="/sustainability-report" element={<SustainabilityReport />} />
+                <Route path="/client-testimonials" element={<Testimonials />} />
+                <Route path="/case-studies" element={<CaseStudies />} />
+                <Route path="/standard-of-excellence" element={<StandardOfExcellence />} />
+
                 <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer />
