@@ -59,15 +59,31 @@ function NavbarPill({
         }, 150);
     };
 
-    // Lock Body Scroll when Mobile Menu is Open
+    // Lock Body Scroll when Mobile Menu is Open & Compensate for Scrollbar Shift
     useEffect(() => {
+        const nav = document.getElementById('navbar-pill-mobile');
         if (isMobileMenuOpen) {
+            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
             document.body.style.overflow = 'hidden';
+            document.body.style.paddingRight = `${scrollbarWidth}px`;
+            if (nav) {
+                // Determine original paddingRight (assuming equal to paddingLeft or standard 12px)
+                // Simply add scrollbarWidth to our standard 12px right padding
+                nav.style.paddingRight = `${12 + scrollbarWidth}px`;
+            }
         } else {
             document.body.style.overflow = '';
+            document.body.style.paddingRight = '';
+            if (nav) {
+                nav.style.paddingRight = '12px';
+            }
         }
         return () => {
             document.body.style.overflow = '';
+            document.body.style.paddingRight = '';
+            if (nav) {
+                nav.style.paddingRight = '12px';
+            }
         };
     }, [isMobileMenuOpen]);
 
@@ -202,11 +218,11 @@ function NavbarPill({
                                 </div>
 
                                 {/* MIDDLE: Input Field */}
-                                <div className="flex-1 h-full flex items-center justify-center">
+                                <div className="flex-1 h-full flex items-center justify-center px-2">
                                     <input
                                         type="text"
                                         placeholder="Search..."
-                                        className="w-full bg-transparent text-lg lg:text-xl text-left text-gray-700 outline-none border-none ring-0 focus:ring-0 placeholder:text-gray-400 mt-1 pt-1 mb-1 pb-0 pl-2"
+                                        className="w-full bg-transparent text-lg lg:text-xl text-left text-gray-700 outline-none border-none ring-0 focus:ring-0 placeholder:text-gray-400 h-full !m-0 !mb-0 !p-0 !border-0"
                                         autoFocus
                                     />
                                 </div>
@@ -215,7 +231,7 @@ function NavbarPill({
                                 <button
                                     onClick={toggleSearch}
                                     style={{ backgroundColor: 'transparent', boxShadow: 'none', border: 'none' }}
-                                    className="mr-2 !bg-transparent !shadow-none !border-none !outline-none text-gray-400 hover:text-red-500 transition-colors"
+                                    className="flex h-10 w-10 lg:h-12 lg:w-12 flex-none items-center justify-center rounded-full !bg-transparent !shadow-none !border-none !outline-none !p-0 hover:!transform-none text-gray-400 hover:text-gray-600 transition-colors mr-1"
                                 >
                                     <svg className="w-6 h-6 lg:w-7 lg:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -296,7 +312,7 @@ function NavbarPill({
                     top: '-1px',
                     minHeight: '72px',
                     height: '72px',
-                    padding: '0 0',
+                    padding: '12px 12px',
                     background: '#ffffff',
                     backdropFilter: 'none',
                     WebkitBackdropFilter: 'none',
@@ -310,11 +326,11 @@ function NavbarPill({
                 }}
             >
                 {!isSearchExpanded ? (
-                    <>
+                    <div className="w-full h-full flex items-center justify-between relative">
                         {/* LEFT: Menu Button (Hamburger / X) */}
                         <button
                             onClick={toggleMobileMenu}
-                            className="absolute left-2 top-1/2 -translate-y-1/2 flex items-center justify-center w-11 h-11 rounded-full p-0 flex-shrink-0 z-20"
+                            className="flex items-center justify-center w-11 h-11 rounded-full p-0 flex-shrink-0 z-20 relative overflow-hidden"
                             style={{
                                 WebkitAppearance: 'none',
                                 appearance: 'none',
@@ -327,63 +343,65 @@ function NavbarPill({
                             }}
                             aria-label="Toggle Menu"
                         >
-                            {/* Hamburger Icon */}
-                            <svg
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="#000000"
-                                strokeWidth="2.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                style={{ top: '50%', left: '50%', marginTop: '-12px', marginLeft: '-12px' }}
-                                className={`absolute transition-all duration-300 transform ${isMobileMenuOpen ? 'opacity-0 rotate-90 scale-75' : 'opacity-100 rotate-0 scale-100'}`}
-                            >
-                                <line x1="3" y1="6" x2="21" y2="6"></line>
-                                <line x1="3" y1="12" x2="21" y2="12"></line>
-                                <line x1="3" y1="18" x2="21" y2="18"></line>
-                            </svg>
+                            <div className="relative w-full h-full grid place-items-center">
+                                {/* Hamburger Icon */}
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="#000000"
+                                    strokeWidth="2.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className={`col-start-1 row-start-1 transition-all duration-300 transform ${isMobileMenuOpen ? 'opacity-0 rotate-90 scale-75' : 'opacity-100 rotate-0 scale-100'}`}
+                                >
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                                </svg>
 
-                            {/* Close Icon */}
-                            <svg
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="#000000"
-                                strokeWidth="2.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                style={{ top: '50%', left: '50%', marginTop: '-12px', marginLeft: '-12px' }}
-                                className={`absolute transition-all duration-300 transform ${isMobileMenuOpen ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-75'}`}
-                            >
-                                <line x1="18" y1="6" x2="6" y2="18"></line>
-                                <line x1="6" y1="6" x2="18" y2="18"></line>
-                            </svg>
+                                {/* Close Icon */}
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="#000000"
+                                    strokeWidth="2.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className={`col-start-1 row-start-1 transition-all duration-300 transform ${isMobileMenuOpen ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-75'}`}
+                                >
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                            </div>
                         </button>
 
                         {/* CENTER: Mobile Logo */}
-                        <a
-                            href="/"
-                            onClick={handleHomeClick}
-                            className="flex items-center gap-2.5 no-underline hover:no-underline z-10"
-                            style={{
-                                textDecoration: 'none'
-                            }}
-                        >
-                            <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-[#47622A] to-[#799851] flex items-center justify-center shadow-md">
-                                <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.76 0 3.41-.46 4.84-1.26C14.08 19.2 12 16.79 12 14c0-3.31 2.69-6 6-6 .68 0 1.34.11 1.95.32C18.46 4.93 15.48 2 12 2z" />
-                                </svg>
-                            </div>
-                            <span className="font-bold text-xl tracking-tight text-[#111827] whitespace-nowrap">MS Asia</span>
-                        </a>
+                        <div className="flex-1 flex justify-center items-center absolute inset-0 pointer-events-none">
+                            <a
+                                href="/"
+                                onClick={handleHomeClick}
+                                className="flex items-center gap-2.5 no-underline hover:no-underline z-10 pointer-events-auto"
+                                style={{
+                                    textDecoration: 'none'
+                                }}
+                            >
+                                <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-[#47622A] to-[#799851] flex items-center justify-center shadow-md">
+                                    <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.76 0 3.41-.46 4.84-1.26C14.08 19.2 12 16.79 12 14c0-3.31 2.69-6 6-6 .68 0 1.34.11 1.95.32C18.46 4.93 15.48 2 12 2z" />
+                                    </svg>
+                                </div>
+                                <span className="font-bold text-xl tracking-tight text-[#111827] whitespace-nowrap">MS Asia</span>
+                            </a>
+                        </div>
 
                         {/* RIGHT: Mobile Search */}
                         <button
                             onClick={toggleSearch}
-                            className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center justify-center w-11 h-11 rounded-full bg-transparent p-0 active:scale-90 border-none outline-none shadow-none z-20"
+                            className="flex items-center justify-center w-11 h-11 rounded-full bg-transparent p-0 active:scale-90 border-none outline-none shadow-none z-20"
                             aria-label="Toggle Search"
                         >
                             <svg
@@ -400,7 +418,7 @@ function NavbarPill({
                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                             </svg>
                         </button>
-                    </>
+                    </div>
                 ) : (
                     /* === MOBILE SEARCH UI === */
                     <div className="w-full flex items-center h-full animate-fadeIn px-[10px] bg-white/10 rounded-full">
@@ -460,7 +478,7 @@ function NavbarPill({
                                                     <h6 className="m-0 p-0 text-[16px] font-bold !text-black dark:text-gray-100 group-hover:!text-[#47622A] transition-colors normal-case tracking-normal">
                                                         {item}
                                                     </h6>
-                                                    <svg className="w-5 h-5 text-gray-600 group-hover:text-[#47622A] transition-all" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                                    <svg className="w-5 h-5 text-gray-600 transition-all" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                                                     </svg>
                                                 </Link>
