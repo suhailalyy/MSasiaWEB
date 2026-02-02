@@ -464,17 +464,19 @@
 }
 
 .mm-promo-content h5 {
-    margin: 0 0 10px 0;
+    margin: 0 !important;
     color: var(--mm-text-main);
     font-size: 18px;
     font-weight: 700;
 }
 
 .mm-promo-content p {
-    margin: 0 0 20px 0;
+    margin: 0 !important;
     color: var(--mm-text-muted);
     font-size: 14px;
     line-height: 1.5;
+    flex-grow: 1;
+    /* Push button to bottom */
 }
 
 .mm-promo-btn {
@@ -494,8 +496,8 @@
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s;
-    margin-top: auto;
-    /* Push button to bottom */
+    margin-top: 0;
+    /* Remove auto spacing */
 }
 
 .mm-promo-btn:hover {
