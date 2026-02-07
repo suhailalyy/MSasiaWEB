@@ -3975,7 +3975,6 @@ html.dark .backdrop {
     margin-top: 0;
     padding-top: 12px;
     padding-bottom: 12px;
-    border-top: 1px solid var(--brand-border-soft, rgba(0, 0, 0, 0.1));
 }
 
 .industrial-hero-logos p {
@@ -3984,9 +3983,7 @@ html.dark .backdrop {
     /* Added spacing (mb-6 equivalent) */
 }
 
-.dark .industrial-hero-logos {
-    border-top-color: rgba(255, 255, 255, 0.1);
-}
+
 
 .dark .industrial-hero-logos p {
     color: var(--brand-text-muted, #94a3b8);

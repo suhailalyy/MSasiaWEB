@@ -238,7 +238,7 @@
     letter-spacing: 0.1em;
     color: var(--mm-text-muted);
     padding: 0;
-    margin: 0;
+    margin: 0 !important;
 }
 
 .mm-category-list {

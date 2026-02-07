@@ -109,11 +109,11 @@ function NavbarPill({
                             }`}
                     >
                         {/* Logo Scales on Large Screens (lg:w-12) */}
-                        <div className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-xl bg-gradient-to-tr from-[#47622A] to-[#799851] flex items-center justify-center flex-shrink-0 shadow-sm -mt-[16px]">
-                            <svg className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.76 0 3.41-.46 4.84-1.26C14.08 19.2 12 16.79 12 14c0-3.31 2.69-6 6-6 .68 0 1.34.11 1.95.32C18.46 4.93 15.48 2 12 2z" />
-                            </svg>
-                        </div>
+                        <img
+                            src="/images/ms-asia-logo.png"
+                            alt="MS Asia Logo"
+                            className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 flex-shrink-0 -mt-[16px] object-contain"
+                        />
                     </a>
 
                     {/* CENTER: Navigation Pill */}
@@ -140,11 +140,11 @@ function NavbarPill({
                                     className={`flex items-center transition-all duration-300 overflow-hidden ${isScrolled ? 'w-7 md:w-8 lg:w-9 opacity-100 mr-1 md:mr-2' : 'w-0 opacity-0 mr-0'
                                         }`}
                                 >
-                                    <div className="w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-lg bg-gradient-to-tr from-[#47622A] to-[#799851] flex items-center justify-center flex-shrink-0">
-                                        <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.76 0 3.41-.46 4.84-1.26C14.08 19.2 12 16.79 12 14c0-3.31 2.69-6 6-6 .68 0 1.34.11 1.95.32C18.46 4.93 15.48 2 12 2z" />
-                                        </svg>
-                                    </div>
+                                    <img
+                                        src="/images/ms-asia-logo.png"
+                                        alt="MS Asia Logo"
+                                        className="w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 flex-shrink-0 object-contain"
+                                    />
                                 </a>
 
                                 {/* NAV ITEMS */}
@@ -389,11 +389,11 @@ function NavbarPill({
                                     textDecoration: 'none'
                                 }}
                             >
-                                <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-[#47622A] to-[#799851] flex items-center justify-center shadow-md">
-                                    <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.76 0 3.41-.46 4.84-1.26C14.08 19.2 12 16.79 12 14c0-3.31 2.69-6 6-6 .68 0 1.34.11 1.95.32C18.46 4.93 15.48 2 12 2z" />
-                                    </svg>
-                                </div>
+                                <img
+                                    src="/images/ms-asia-logo.png"
+                                    alt="MS Asia Logo"
+                                    className="w-11 h-11 flex-shrink-0 object-contain"
+                                />
                                 <span className="font-bold text-xl tracking-tight text-[#111827] whitespace-nowrap">MS Asia</span>
                             </a>
                         </div>

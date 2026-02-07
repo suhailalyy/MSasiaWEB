@@ -153,7 +153,7 @@ function LogoLoop({
                                     height: '100%',
                                     width: 'auto',
                                     objectFit: 'contain',
-                                    filter: 'grayscale(100%) brightness(1.2)',
+                                    // filter: 'grayscale(100%) brightness(1.2)', // Removed to show original colors
                                 }}
                             />
                         ) : (

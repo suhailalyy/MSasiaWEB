@@ -5,12 +5,12 @@ function IndustrialHero() {
     const partnerLogos = [
         '/partnerslogo/Alkem_Laboratories_logo.svg',
         '/partnerslogo/patanjali.svg',
-        '/partnerslogo/pritam-international.svg',
-        '/partnerslogo/indica-logo.svg',
-        '/partnerslogo/klintoz_logo.svg',
+        // '/partnerslogo/pritam-international.svg', // Missing file
+        // '/partnerslogo/indica-logo.svg', // Missing file
+        // '/partnerslogo/klintoz_logo.svg', // Missing file
         '/partnerslogo/Himalaya_logos.svg',
-        '/partnerslogo/fena_corp_logo_mob.svg',
-        '/partnerslogo/cipla.logo.svg',
+        // '/partnerslogo/fena_corp_logo_mob.svg', // Missing file
+        // '/partnerslogo/cipla.logo.svg', // Missing file
     ]
 
     return (
@@ -19,7 +19,7 @@ function IndustrialHero() {
            - !pt-32 etc : Controls top padding responsively (Mobile vs Laptop).
            - preserved 'industrial-hero' class to keep your Background Color intact.
         */
-        <section className="industrial-hero !px-4 sm:!px-6 lg:!px-8 !pt-28 !pb-0 sm:!pt-36 sm:!pb-0 lg:!pt-44 lg:!pb-0 relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-white dark:from-gray-900 dark:via-gray-950 dark:to-black">
+        <section className="industrial-hero min-h-screen flex flex-col gap-8 !px-4 sm:!px-6 lg:!px-8 !pt-32 !pb-16 sm:!pt-40 sm:!pb-16 lg:!pt-[115px] lg:!pb-16 relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-white dark:from-gray-900 dark:via-gray-950 dark:to-black">
             {/* Ambient Background Glow for Glass Effect Visibility */}
             <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-br from-[#799851]/10 via-transparent to-transparent pointer-events-none dark:opacity-20" />
 
@@ -34,12 +34,12 @@ function IndustrialHero() {
                     </div>
 
                     {/* Main Heading */}
-                    <h1 className="industrial-hero-heading">
+                    <h1 className="industrial-hero-heading !text-3xl sm:!text-4xl lg:!text-5xl !leading-tight !mb-4">
                         Pharmaceutical Waste Management & Compliance Solutions
                     </h1>
 
                     {/* Sub-heading */}
-                    <p className="industrial-hero-subheading">
+                    <p className="industrial-hero-subheading !text-base sm:!text-lg !max-w-xl !mb-6">
                         Ms Asia delivers certified collection, recycling, and disposal services across Southeast Asia.
                     </p>
 
@@ -71,7 +71,7 @@ function IndustrialHero() {
             </div>
 
             {/* Logo Loop Section - Trusted Partners */}
-            <div className="industrial-hero-logos mt-12 sm:mt-16">
+            <div className="industrial-hero-logos">
                 <p className="text-center text-sm text-brand-text-muted mb-6 font-medium tracking-wide uppercase">
                     Trusted By Industry Leaders & Certified Partners
                 </p>
