@@ -3,14 +3,14 @@ import LogoLoop from '../common/LogoLoop'
 function IndustrialHero() {
     // Partner logos from /partnerslogo/ directory
     const partnerLogos = [
-        '/partnerslogo/Alkem_Laboratories_logo.svg',
-        '/partnerslogo/patanjali.svg',
-        // '/partnerslogo/pritam-international.svg', // Missing file
-        // '/partnerslogo/indica-logo.svg', // Missing file
-        // '/partnerslogo/klintoz_logo.svg', // Missing file
-        '/partnerslogo/Himalaya_logos.svg',
-        // '/partnerslogo/fena_corp_logo_mob.svg', // Missing file
-        // '/partnerslogo/cipla.logo.svg', // Missing file
+        '/partnerslogo/1. Alkem_Laboratories_logo.svg',
+        '/partnerslogo/2. cipla.png',
+        '/partnerslogo/3. Himalaya_logos.svg',
+        '/partnerslogo/4. patanjali.svg',
+        '/partnerslogo/5. klintoz-logo.png',
+        '/partnerslogo/6. fena.png',
+        '/partnerslogo/7. indica.png',
+        '/partnerslogo/8. pritam-international.png',
     ]
 
     return (
