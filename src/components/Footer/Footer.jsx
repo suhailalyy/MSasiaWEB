@@ -5,9 +5,13 @@ function Footer() {
                 <div className="footer-grid">
                     {/* Column 1: Company Info */}
                     <div className="footer-column">
-                        <div className="footer-logo">
-                            <div className="footer-logo-badge">MA</div>
-                            <span className="footer-logo-text">Ms Asia</span>
+                        <div className="footer-logo flex items-center gap-2">
+                            <img
+                                src="/images/ms-asia-logo.png"
+                                alt="Ms Asia Logo"
+                                className="w-10 h-10 object-contain"
+                            />
+                            <span className="footer-logo-text text-xl font-bold">Ms Asia</span>
                         </div>
                         <p className="footer-description">
                             Leading pharmaceutical waste management solutions provider in Southeast Asia.

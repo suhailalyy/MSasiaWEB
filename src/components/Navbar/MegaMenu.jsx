@@ -59,7 +59,13 @@ const CATEGORY_CONTENT_MAP = {
         buttonText: 'Who We Are',
         image: '/images/scene_corporate.png'
     },
-    'More': {
+    'Blog': {
+        heading: 'Latest Insights',
+        description: 'Stay updated with the latest trends in waste management, sustainability practices, and company news.',
+        buttonText: 'Read Our Blog',
+        image: '/images/scene_corporate.png'
+    },
+    'Connect': {
         heading: 'Join Our Team',
         description: 'Building a better future together. Explore career opportunities, client success stories, and contact us directly.',
         buttonText: 'Work With Us',

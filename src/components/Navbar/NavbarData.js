@@ -115,10 +115,24 @@ export const NAV_MENU_DATA = {
                     { label: "Safety Standards", desc: "Our commitment to safety." },
                     { label: "Sustainability Report", desc: "Review our annual impact." }
                 ]
+            }
+        ]
+    },
+    "More": {
+        columns: [
+            {
+                title: "Blog",
+                description: "Insights and updates",
+                items: [
+                    { label: "All Posts", desc: "Browse all our articles and updates." },
+                    { label: "Company News", desc: "Latest announcements from MS Asia." },
+                    { label: "Industry Insights", desc: "Expert analysis on waste management trends." },
+                    { label: "Sustainability", desc: "Articles on green practices and eco-solutions." }
+                ]
             },
             {
-                title: "More",
-                description: "Careers and connect with us",
+                title: "Connect",
+                description: "Join our network",
                 items: [
                     { label: "Careers", desc: "Join our growing team." },
                     { label: "Client Testimonials", desc: "What our partners say." },

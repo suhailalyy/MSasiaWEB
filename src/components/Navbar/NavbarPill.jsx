@@ -87,7 +87,7 @@ function NavbarPill({
         };
     }, [isMobileMenuOpen]);
 
-    const dropdownItems = ['What We Do', 'Industries We Serve', 'Company'];
+    const dropdownItems = ['What We Do', 'Industries We Serve', 'Company', 'More'];
 
     return (
         <>
@@ -148,7 +148,7 @@ function NavbarPill({
                                 </a>
 
                                 {/* NAV ITEMS */}
-                                {['What We Do', 'Industries We Serve', 'Company', 'Blog'].map((item) => {
+                                {['What We Do', 'Industries We Serve', 'Company', 'More'].map((item) => {
                                     const hasDropdown = dropdownItems.includes(item);
                                     const isActive = activeMenu === item;
 
@@ -459,9 +459,9 @@ function NavbarPill({
                         {/* Mobile Content - NO header here, header stays in place above */}
                         <div className="flex-1 p-[12px] overflow-y-auto custom-scrollbar">
                             <div className="space-y-1">
-                                {['What We Do', 'Industries We Serve', 'Company', 'Blog'].map((item, idx) => {
+                                {['What We Do', 'Industries We Serve', 'Company', 'More'].map((item, idx) => {
                                     const menuData = NAV_MENU_DATA[item];
-                                    const isAccordion = item === 'What We Do' || item === 'Industries We Serve' || item === 'Company';
+                                    const isAccordion = item === 'What We Do' || item === 'Industries We Serve' || item === 'Company' || item === 'More';
                                     const isLink = !isAccordion;
                                     const path = '/blog';
                                     const isActive = isLink && location.pathname === path;
